@@ -1,5 +1,9 @@
 title: IMM
-# logo
-# description:
+# logo: /assets/img/logo.png
+# favicon: /assets/img/favicon.png
+
+description: This is a portfolio of data analyst projects.
+
 show_downloads: true
+
 theme: jekyll-theme-minimal
