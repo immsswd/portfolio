@@ -7,3 +7,8 @@ description: This is a portfolio of data analyst projects.
 show_downloads: true
 
 theme: jekyll-theme-minimal
+plugins:
+  - jekyll-remote-theme
+
+# Custom styles
+style: /style.scss

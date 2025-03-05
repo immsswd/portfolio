@@ -1,5 +1,11 @@
 ## Data Analysis Project
 
+<div class="github-buttons">
+  <a href="https://github.com/YOUR_USERNAME/YOUR_REPO/archive/refs/heads/main.zip" download>Download ZIP File</a>
+  <a href="https://github.com/YOUR_USERNAME/YOUR_REPO/tarball/main" download>Download TAR Ball</a>
+  <a href="https://github.com/YOUR_USERNAME/YOUR_REPO">View On GitHub</a>
+</div>
+
 **Tags:** `#SQL` `#PowerBI` `#DataVisualization`
 
 **Description:**
