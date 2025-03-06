@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "My First Blog Post"
+title: "Lorem Ipsum"
 date: 2025-03-06
 categories: [blog]
 ---
