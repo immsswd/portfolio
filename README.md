@@ -1,82 +1,63 @@
-## Data Analysis Project
+# Portfolio
 
-**Tags:** `#SQL` `#PowerBI` `#DataVisualization`
+## Projects
 
-**Description:**
-This project involves creating dynamic reports and dashboards using Power BI. The main objective was to transform raw data into actionable insights for better decision-making.
+### 1. **Managed Care (MQARE) Web Application**
 
-![Data Analysis Project](image_link_here)
+**Technology:** React JS, Next JS  
+**Description:**  
+MQARE is a web-based application developed for the Managed Care division of Klinik SehatQ, part of the Sinarmas Group. This platform allows corporate clients to efficiently oversee healthcare processes and manage member portals, streamlining health service administration.
+👉[See project](https://mc-isdev.vercel.app/)
 
-[Link to Project](project_link_here)
+---
 
-## Web Application Development
+### 2. **Klinik SehatQ Membership [DEMO]**
 
-**Tags:** `#Laravel` `#PostgreSQL` `#PHP`
+**Technology:** React JS  
+**Description:**  
+A dynamic web application designed for Third Party Administrator (TPA) services, supporting essential healthcare operations, including:
 
-**Description:**
-This project features a web application built with Laravel and connected to PostgreSQL. It includes user authentication, CRUD operations, and responsive design.
+- Member Admission
+- Benefit Verification
+- Claims Processing
+- Member Discharge
 
-![Web Application Development](image_link_here)
+The platform simplifies healthcare workflows, ensuring seamless member management.
+👉[See project](https://immsswd-front.vercel.app/) _limited_
 
-[Link to Project](project_link_here)
+---
 
-## Financial Dashboard
+### 3. **Claims Data Analysis Report**
 
-**Tags:** `#PowerBI` `#Finance` `#DataVisualization`
+**Technology:** Google Looker  
+**Description:**  
+This data analysis and visualization report, built using Google Looker, transforms complex datasets into clear, interactive visual representations. It empowers stakeholders to make data-driven decisions by providing intuitive insights and trends from claims data.
+👉[See project](#) _limited_
 
-**Description:**
-A financial dashboard created using Power BI to monitor and analyze key financial metrics. The dashboard provides real-time insights into financial performance.
+---
 
-![Financial Dashboard](image_link_here)
+### 4. **Power BI Data Analysis Report**
 
-[Link to Project](project_link_here)
+**Technology:** Power BI  
+**Description:**  
+A comprehensive data analysis report created with Power BI. This project converts intricate datasets into easy-to-understand visualizations, enabling strategic decision-making through detailed data insights and interactive dashboards.
+👉[See project](#) _limited_
 
-## ETL Pipeline
+---
 
-**Tags:** `#Databricks` `#ETL` `#DataEngineering`
+### 5. **Cashless Guarantor System**
 
-**Description:**
-Developed an ETL pipeline using Databricks to process and analyze large datasets. The project aimed at optimizing data workflows and ensuring data quality.
+**Technology:** Web Application  
+**Description:**  
+The Cashless Guarantor System is a crucial component of the TPA/Healthcare workflow. It assists the Cashless Team in managing:
 
-![ETL Pipeline](image_link_here)
+- Inpatient & Outpatient Processes
+- Member Admission & Discharge
+- Initial & Final Guarantee Letters
+- Case Monitoring & Activity Logging
+- Copayment Calculation
+- ICD-10 Diagnosis Coding
+- Reporting and Analytics
 
-[Link to Project](project_link_here)
-
-## Machine Learning Model
-
-**Tags:** `#Python` `#pandas` `#MachineLearning`
-
-**Description:**
-Implemented a machine learning model using Python and pandas for predictive analytics. The project involved data preprocessing, model training, and evaluation.
-
-![Machine Learning Model](image_link_here)
-
-[Link to Project](project_link_here)
-
-## Tax Calculation Tool
-
-**Tags:** `#Python` `#Finance` `#Tax`
-
-**Description:**
-Created a tax calculation tool in Python to simplify and automate tax-related calculations. The tool helps users understand and manage their tax obligations.
-
-![Tax Calculation Tool](image_link_here)
-
-[Link to Project](project_link_here)
-
-## Interview Preparation Guide
-
-**Tags:** `#ProfessionalCommunication` `#CareerAdvancement`
-
-**Description:**
-Developed a comprehensive interview preparation guide to help job seekers practice common questions and refine their responses for better interview performance.
-
-![Interview Preparation Guide](image_link_here)
-
-[Link to Project](project_link_here)
-
-## Storytelling for Children
-
-**Tags:** `#Storytelling` `#Creativity` `#Education`
-
-\*\*Description
+This system enhances operational efficiency by automating key healthcare processes.
+👉[See project](https://dash.kliniksehatq.com/kliniksehatq/)
