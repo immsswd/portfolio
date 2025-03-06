@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <title>{{ page.title }}</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css" />
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css" />
+    <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}" />
+    <link
+      rel="stylesheet"
+      href="{{ '/assets/pygment_trac.css' | relative_url }}" />
     <meta name="viewport" content="width=device-width" />
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -15,13 +17,8 @@
   <body>
     <div class="wrapper">
       <header>
-        <h2>Imam</h2>
-        <p>
-          I'm into data analytics, data modeling, and software dev. I love
-          diving into datasets to find cool insights, building data models for
-          efficiency, and creating software that solves problems and drives
-          innovation.
-        </p>
+        <h2>{{site.title}}</h2>
+        <p>{{site.description}}</p>
         <!-- <p class="view">
           <a href="http://github.com/orderedlist/minimal"
             >View the Project on GitHub <small>orderedlist/minimal</small></a
@@ -29,7 +26,7 @@
         </p> -->
         <ul>
           <li>
-            <a href="#">Media <strong>Github</strong></a>
+            <a href="{{ '/' | relative_url }}">Back <strong>Home</strong></a>
           </li>
           <li>
             <a href="https://linkedin.com/in/imam" target="_blank"
@@ -40,12 +37,16 @@
             <a
               href="https://public.tableau.com/app/profile/imam.imam6383/vizzes"
               target="_blank"
-              >BI Analytic <strong>Tableau</strong></a
+              >Portfolio <strong>Data Analytic</strong></a
             >
           </li>
         </ul>
       </header>
-      <section>{{ content }}</section>
+      <section>
+        {% if page.url == "/" %} {% else %}
+        <h1>{{ page.title }}</h1>
+        {% endif %} {{ content }}
+      </section>
       <footer>
         <button onclick="topFunction()" id="scrollUpBtn" title="Go to top">
           Top
@@ -66,7 +67,7 @@
         </p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+    <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
     <script>
       var scrollUpBtn = document.getElementById("scrollUpBtn");
 

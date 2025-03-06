@@ -1,120 +1,27 @@
 ---
-title: Portfolio Page
 layout: default
-pagination: true
+title: Home
 ---
 
-<h1>🎨 Portfolio</h1>
-<h2>🌟 Projects</h2>
-<h3>1. <strong>Managed Care (MQARE) Web Application</strong></h3>
-<div class="preview">
-  <img
-    src="/portfolio/assets/portfolio/mc.webp"
-    alt="Image Preview"
-    width="300" />
+<h1>Recent Posts</h1>
+{% for post in paginator.posts %}
+<article>
+  <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+  <p>{{ post.excerpt }}</p>
+</article>
+{% endfor %}
+
+<!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+  <a href="{{ paginator.previous_page_path | relative_url }}"
+    >&laquo; Previous</a
+  >
+  {% endif %}
+
+  <span>Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+
+  {% if paginator.next_page %}
+  <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+  {% endif %}
 </div>
-<p><strong>Technology:</strong> React JS, Next JS</p>
-<p>
-  <strong>Description:</strong><br />
-  MQARE is a web-based application developed for the Managed Care division of
-  Klinik SehatQ, part of the Sinarmas Group. This platform allows corporate
-  clients to efficiently oversee healthcare processes and manage member portals,
-  streamlining health service administration.<br />
-  <a href="https://mc-isdev.vercel.app/">👉 See project</a>
-</p>
-
-<hr />
-
-<h3>2. <strong>Klinik SehatQ Membership [DEMO]</strong></h3>
-<div class="preview">
-  <img
-    src="/portfolio/assets/portfolio/member.webp"
-    alt="Image Preview"
-    width="300" />
-</div>
-<p><strong>Technology:</strong> React JS</p>
-<p>
-  <strong>Description:</strong><br />
-  A dynamic web application designed for Third Party Administrator (TPA)
-  services, supporting essential healthcare operations, including:
-</p>
-<ul>
-  <li>Member Admission</li>
-  <li>Benefit Verification</li>
-  <li>Claims Processing</li>
-  <li>Member Discharge</li>
-</ul>
-<p>
-  The platform simplifies healthcare workflows, ensuring seamless member
-  management.<br />
-  <a href="https://immsswd-front.vercel.app/">👉 See project</a>
-  <em>(limited)</em>
-</p>
-
-<hr />
-
-<h3>3. <strong>Claims Data Analysis Report</strong></h3>
-<div class="preview">
-  <img
-    src="/portfolio/assets/portfolio/glk.webp"
-    alt="Image Preview"
-    width="300" />
-</div>
-<p><strong>Technology:</strong> Google Looker</p>
-<p>
-  <strong>Description:</strong><br />
-  This data analysis and visualization report, built using Google Looker,
-  transforms complex datasets into clear, interactive visual representations. It
-  empowers stakeholders to make data-driven decisions by providing intuitive
-  insights and trends from claims data.<br />
-  <a href="#">👉 See project</a> <em>(limited)</em>
-</p>
-
-<hr />
-
-<h3>4. <strong>Power BI Data Analysis Report</strong></h3>
-<div class="preview">
-  <img
-    src="/portfolio/assets/portfolio/pbi.webp"
-    alt="Image Preview"
-    width="300" />
-</div>
-<p><strong>Technology:</strong> Power BI</p>
-<p>
-  <strong>Description:</strong><br />
-  A comprehensive data analysis report created with Power BI. This project
-  converts intricate datasets into easy-to-understand visualizations, enabling
-  strategic decision-making through detailed data insights and interactive
-  dashboards.<br />
-  <a href="#">👉 See project</a> <em>(limited)</em>
-</p>
-
-<hr />
-
-<h3>5. <strong>Cashless Guarantor System</strong></h3>
-<div class="preview">
-  <img
-    src="/portfolio/assets/portfolio/3b.webp"
-    alt="Image Preview"
-    width="300" />
-</div>
-<p><strong>Technology:</strong> Web Application</p>
-<p>
-  <strong>Description:</strong><br />
-  The Cashless Guarantor System is a crucial component of the TPA/Healthcare
-  workflow. It assists the Cashless Team in managing:
-</p>
-<ul>
-  <li>Inpatient & Outpatient Processes</li>
-  <li>Member Admission & Discharge</li>
-  <li>Initial & Final Guarantee Letters</li>
-  <li>Case Monitoring & Activity Logging</li>
-  <li>Copayment Calculation</li>
-  <li>ICD-10 Diagnosis Coding</li>
-  <li>Reporting and Analytics</li>
-</ul>
-<p>
-  This system enhances operational efficiency by automating key healthcare
-  processes.<br />
-  <a href="https://dash.kliniksehatq.com/kliniksehatq/">👉 See project</a>
-</p>
