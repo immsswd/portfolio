@@ -2,3 +2,5 @@ paginate: 1 # Number of posts per page
 paginate_path: "/page:num/"
 plugins:
   - jekyll-paginate
+
+show_excerpts: true
