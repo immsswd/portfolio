@@ -5,3 +5,9 @@ description: I'm into data analytics, data modeling, and software dev. I love di
 # show_downloads: true
 
 theme: jekyll-theme-minimal
+# Pagination settings
+plugins:
+  - jekyll-paginate
+
+paginate: 3
+paginate_path: "/page:num/"
