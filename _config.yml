@@ -4,3 +4,4 @@ plugins:
   - jekyll-paginate
 
 show_excerpts: true
+permalink: /blog/:year/:month/:day/:title/
