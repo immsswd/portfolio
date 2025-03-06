@@ -4,4 +4,4 @@ plugins:
   - jekyll-paginate
 
 show_excerpts: true
-permalink: /portfolio/:year/:month/:day/:title/
+permalink: /portfolio/:year-:month-:day-:title
