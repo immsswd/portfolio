@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "My First Blog Post"
-date: 2025-03-06
+date: 2025-01-25
 categories: [blog]
 ---
 
