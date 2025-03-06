@@ -37,19 +37,21 @@
             <a
               href="https://public.tableau.com/app/profile/imam.imam6383/vizzes"
               target="_blank"
-              >Portfolio <strong>Data Analytic</strong></a
+              >Portfolio <strong>Tableau</strong></a
             >
           </li>
         </ul>
       </header>
       <section>
         {% if page.url == "/" %} {% else %}
-        <h1>{{ page.title }}</h1>
+        <a href="{{ '/' | relative_url }}"> back </a>
+        <h1><u>{{ page.title }}</u></h1>
+
         {% endif %} {{ content }}
       </section>
       <footer>
         <button onclick="topFunction()" id="scrollUpBtn" title="Go to top">
-          Top
+          🔝
         </button>
 
         <!-- <p>
@@ -69,8 +71,10 @@
     </div>
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
     <script>
+      // Get the button
       var scrollUpBtn = document.getElementById("scrollUpBtn");
 
+      // When the user scrolls down 20px from the top of the document, show the button
       window.onscroll = function () {
         scrollFunction();
       };
@@ -86,9 +90,12 @@
         }
       }
 
+      // When the user clicks on the button, smoothly scroll to the top of the document
       function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth", // Smooth scrolling
+        });
       }
     </script>
   </body>

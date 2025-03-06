@@ -293,7 +293,8 @@ footer {
   font-size: 14px;
   border: none;
   outline: none;
-  background-color: rgba(128, 128, 128, 0.7);
+  background-color: rgba(197, 196, 196, 0.7);
+  border: 1px solid #ccc; /* Light gray border */
   color: white;
   cursor: pointer;
   padding: 10px 15px;
@@ -301,7 +302,9 @@ footer {
 }
 
 #scrollUpBtn:hover {
-  background-color: rgba(128, 128, 128, 0.9);
+  background-color: rgba(255, 251, 251, 0.9);
+  /* Minimal CSS Border */
+  border: 1px solid #ccc; /* Light gray border */
 }
 
 @media print, screen and (max-width: 480px) {
