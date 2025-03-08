@@ -7,6 +7,10 @@
 
     <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}" />
     <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet" />
+
+    <link
       rel="stylesheet"
       href="{{ '/assets/pygment_trac.css' | relative_url }}" />
     <meta name="viewport" content="width=device-width" />
@@ -44,7 +48,9 @@
       </header>
       <section>
         {% if page.url == "/" %} {% else %}
-        <a href="{{ '/' | relative_url }}"> back </a>
+        <a href="{{ '/' | relative_url }}"
+          ><i class="fa-solid fa-backward-step"></i> back
+        </a>
         <h1><u>{{ page.title }}</u></h1>
 
         {% endif %} {{ content }}
