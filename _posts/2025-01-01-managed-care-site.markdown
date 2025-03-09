@@ -7,7 +7,7 @@ categories: post
 
 MQARE is a web-based application developed for the Managed Care division of Klinik SehatQ, part of the Sinarmas Group. This platform allows corporate clients to efficiently oversee healthcare processes and manage member portals, streamlining health service administration.
 
-![Image Preview](/assets/img/portfolio/mc.webp)
+![Image Preview](/portfolio/assets/img/portfolio/mc.webp)
 
 **Technology:** React JS, Next JS
 
