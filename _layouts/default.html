@@ -55,8 +55,11 @@
         <a href="{{ '/' | relative_url }}"
           ><i class="fa-solid fa-backward-step"></i> back
         </a>
-        <h1><u>{{ page.title }}</u></h1>
 
+        <h1><u>{{ page.title }}</u></h1>
+        <p class="post-date">
+          &mdash; {{ page.date | date: "%B %d, %Y" }} - [{{ page.categories}}]
+        </p>
         {% endif %} {{ content }}
       </section>
       <footer>
