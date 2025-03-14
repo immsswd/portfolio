@@ -6,7 +6,6 @@ categories: Software
 ---
 
 ![cashless guarantor system](/portfolio/assets/img/portfolio/3b.webp)
-
 This Cashless System, a critical component of the TPA/Healthcare sub-process workflow, is designed to empower the Cashless Team in efficiently managing a wide range of tasks:
 
 - Handling inpatient and outpatient processes
