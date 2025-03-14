@@ -4,8 +4,8 @@ title: Home
 ---
 
 <h1>Recent Posts</h1>
-{% assign sorted_posts = paginator.posts | sort: 'date' %} {% for post in
-sorted_posts %}
+{% assign sorted_posts = paginator.posts | sort: 'date' | reverse %} {% for post
+in sorted_posts %}
 <article>
   <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
   <p>{{ post.excerpt }}</p>
