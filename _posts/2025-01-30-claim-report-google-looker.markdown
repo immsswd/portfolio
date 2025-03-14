@@ -6,5 +6,4 @@ categories: Analytics
 ---
 
 ![claim](/portfolio/assets/img/portfolio/glk.webp)
-
 This data analysis and visualization report, constructed using Google Looker, transforms intricate datasets into lucid visual representations. Looker enables the conversion of complex information into insightful visuals, facilitating informed decision-making processes.
