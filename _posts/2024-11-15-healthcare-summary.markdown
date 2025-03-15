@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Healtcare Summary Report"
+title: "Healhtcare Summary Report"
 date: 2024-11-15 08:22:51 +0700
 categories: Analytics
 ---
