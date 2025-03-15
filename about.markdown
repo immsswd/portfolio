@@ -4,7 +4,7 @@ title: About me
 permalink: /about/
 ---
 
-Hey there! I'm im 👋
+Hey there! 👋
 
 I build cool stuff with **Assembly language** [kidding 😁] and break things occasionally (for tech, of course).  
 Fueled by coffee ☕ and an endless curiosity for tech, I turn ideas into reality—one bug fix at a time.
