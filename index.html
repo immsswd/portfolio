@@ -3,27 +3,78 @@ layout: default
 title: Home
 ---
 
-<h3>Recent Posts</h3>
-{% assign sorted_posts = paginator.posts | sort: 'date' | reverse %} {% for post
-in sorted_posts %}
-<article>
-  <h2 class="">
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-  </h2>
-  <p>{{ post.excerpt }}</p>
-</article>
-{% endfor %}
-<!-- Pagination links -->
-<div class="pagination">
+<h3 class="text-xl font-semibold mb-4">Recent Posts</h3>
+
+<!-- Category Dropdown -->
+<div class="relative w-48 mb-4 mb-4 select-container">
+  <select
+    id="category-filter"
+    class="w-full px-3 py-2 border styled-select rounded-md text-sm bg-white shadow-sm focus:outline-none">
+    <option value="all">All Categories</option>
+    {% for category in site.categories %}
+    <option value="{{ category[0] }}">{{ category[0] }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<!-- Display Posts -->
+<div id="post-list">
+  {% for post in paginator.posts %}
+  <article
+    class="post-item mb-6 p-4 border rounded-lg shadow-sm"
+    data-category="{{ post.categories | join: ' ' }}">
+    <h2 class="text-lg font-semibold">
+      <a
+        href="{{ post.url | relative_url }}"
+        class="text-blue-600 hover:underline"
+        >{{ post.title }}</a
+      >
+    </h2>
+    <p class="text-gray-600 text-sm">{{ post.excerpt }}</p>
+  </article>
+  {% endfor %}
+</div>
+
+<!-- Pagination -->
+<div class="pagination flex items-center gap-4">
   {% if paginator.previous_page %}
-  <a href="{{ paginator.previous_page_path | relative_url }}"
+  <a
+    href="{{ paginator.previous_page_path | relative_url }}"
+    class="text-blue-600 hover:underline"
     >&laquo; Previous</a
   >
   {% endif %}
 
-  <span>Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+  <span class="text-gray-500"
+    >Page {{ paginator.page }} of {{ paginator.total_pages }}</span
+  >
 
   {% if paginator.next_page %}
-  <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+  <a
+    href="{{ paginator.next_page_path | relative_url }}"
+    class="text-blue-600 hover:underline"
+    >Next &raquo;</a
+  >
   {% endif %}
 </div>
+
+<!-- JavaScript for Filtering -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const filterDropdown = document.getElementById("category-filter");
+    const posts = document.querySelectorAll(".post-item");
+
+    filterDropdown.addEventListener("change", function () {
+      const selectedCategory = this.value;
+
+      posts.forEach((post) => {
+        const postCategories = post.getAttribute("data-category").split(" ");
+        post.style.display =
+          selectedCategory === "all" ||
+          postCategories.includes(selectedCategory)
+            ? "block"
+            : "none";
+      });
+    });
+  });
+</script>

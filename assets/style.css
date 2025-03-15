@@ -347,51 +347,111 @@ footer {
   margin-top: 16px;
 }
 .ml-0 {
-  margin-top: 0;
+  margin-left: 0;
 }
 .ml-1 {
-  margin-top: 4px;
+  margin-left: 4px;
 }
 .ml-2 {
-  margin-top: 8px;
+  margin-left: 8px;
 }
 .ml-3 {
-  margin-top: 12px;
+  margin-left: 12px;
 }
 .ml-4 {
-  margin-top: 16px;
+  margin-left: 16px;
 }
 .mr-0 {
-  margin-top: 0;
+  margin-right: 0;
 }
 .mr-1 {
-  margin-top: 4px;
+  margin-right: 4px;
 }
 .mr-2 {
-  margin-top: 8px;
+  margin-right: 8px;
 }
 .mr-3 {
-  margin-top: 12px;
+  margin-right: 12px;
 }
 .mr-4 {
-  margin-top: 16px;
+  margin-right: 16px;
 }
 
 .mb-0 {
-  margin-top: 0;
+  margin-bottom: 0;
 }
 .mb-1 {
-  margin-top: 4px;
+  margin-bottom: 4px;
 }
 .mb-2 {
-  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .mb-3 {
-  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 .mb-4 {
-  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.pagination a {
+  transition: color 0.2s;
+}
+
+.pagination a:hover {
+  color: #2563eb; /* Tailwind's blue-600 *
+} 
+*/
+
+/* Select Container */
+.select-container {
+  position: relative;
+  width: 220px;
+}
+
+/* Styled Select */
+.styled-select {
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  background: white;
+  color: #333;
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover Effect */
+.styled-select:hover {
+  background: #f1f1f1;
+}
+
+/* Focus Effect */
+.styled-select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0px 0px 4px rgba(37, 99, 235, 0.5);
+}
+
+/* Add a custom dropdown arrow */
+.select-container::after {
+  content: "▼";
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #777;
+  pointer-events: none;
 }
 
 @media print, screen and (max-width: 480px) {
