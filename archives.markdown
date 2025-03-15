@@ -44,7 +44,7 @@ permalink: /archives/
   </div>
   <ul class="post-list" id="{{ category[0] }}">
     {% for post in category[1] %}
-      <li>📄 <a href="{{ post.url }}">{{ post.title }}</a></li>
+      <li>📄 <a href="/portfolio{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
 {% endfor %}
