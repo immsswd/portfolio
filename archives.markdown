@@ -32,19 +32,18 @@ permalink: /archives/
   }
 </style>
 
-<h1>📂</h1>
-<p>Click on a category to expand/collapse its posts.</p>
+<h1 class="mb-3">📂</h1>
+<p class="mb-3">Click on a category to expand/collapse its posts.</p>
 
 {% assign categories = site.categories | sort %}
-
 {% for category in categories %}
 
   <div class="category-title" onclick="toggleCategory('{{ category[0] }}')">
     <span class="arrow" id="arrow-{{ category[0] }}">▶️</span> 📁 {{ category[0] }}
   </div>
-  <ul class="post-list" id="{{ category[0] }}">
+  <ul class="post-list mb-0" id="{{ category[0] }}">
     {% for post in category[1] %}
-      <li>📄 <a href="/portfolio{{ post.url }}">{{ post.title }}</a></li>
+      <li>📄<a href="/portfolio{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
 {% endfor %}

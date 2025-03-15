@@ -394,21 +394,21 @@ footer {
   margin-bottom: 16px;
 }
 
-/* select {
-  appearance: none;
-  cursor: pointer;
+.p-0 {
+  padding: 0;
 }
-
-.pagination a {
-  transition: color 0.2s;
+.p-1 {
+  padding: 4px;
 }
-
-.pagination a:hover {
-  color: #2563eb; /* Tailwind's blue-600 *
-} 
-*/
-
-/* Select Container */
+.p-2 {
+  padding: 8px;
+}
+.p-3 {
+  padding: 12px;
+}
+.p-4 {
+  padding: 16px;
+}
 .select-container {
   position: relative;
   width: 220px;
@@ -491,6 +491,12 @@ footer {
 .select-container:focus-within::after {
   background: #0070f3; /* SAP-style blue */
   color: white; /* White arrow */
+}
+
+.remove-decoration-li-ul {
+  list-style: none; /* Removes bullets (for unordered lists) and numbers (for ordered lists) */
+  /* padding: 0; /* Optional: Removes left padding */
+  /* margin: 0; Optional: Removes top/bottom margins */
 }
 
 @media print, screen and (max-width: 480px) {

@@ -1,0 +1,17 @@
+{% if page.url == "/" %} {% else %}
+<div class="header-tools mb-1">
+  <a class="mr-2" href="javascript:history.back()" onclick="goBack()"
+    >⬅️ Back</a
+  >
+  <a class="mr-2" href="{{ '/' | relative_url }}" onclick="editCard()"
+    >🏠 Back home</a
+  >
+  <!-- <a class="mr-2" href="#" onclick="openSettings()">⚙️ Settings</a> -->
+</div>
+<hr />
+<h1 class="mt-3">{{ page.title }}</h1>
+{% if page.url == "/about/" or page.url == "/archives/"%} {%else %}
+<p class="post-date">
+  &mdash; {{ page.date | date: "%B %d, %Y" }} - [{{ page.categories}}]
+</p>
+{% endif %} {% endif %} {{ content }}
