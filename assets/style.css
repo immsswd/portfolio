@@ -454,6 +454,10 @@ footer {
   pointer-events: none;
 }
 
+.header-tools a:hover {
+  text-decoration: underline;
+}
+
 @media print, screen and (max-width: 480px) {
   body {
     padding: 15px;
