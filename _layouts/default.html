@@ -9,7 +9,11 @@
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet" />
-
+    <!-- for custom font  -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap");
+    </style>
+    <!--  -->
     <link
       rel="stylesheet"
       href="{{ '/assets/pygment_trac.css' | relative_url }}" />
@@ -25,7 +29,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <h2>{{site.title}}</h2>
+        <h1 class="libre-bodoni-700">{{site.title}}</h1>
         <p>{{site.description}}</p>
         <!-- <p class="view">
           <a href="http://github.com/orderedlist/minimal"
@@ -55,8 +59,7 @@
         <a href="{{ '/' | relative_url }}"
           ><i class="fa-solid fa-backward-step"></i> back
         </a>
-
-        <h1><u>{{ page.title }}</u></h1>
+        <h1 class="libre-bodoni-400 mt-3">{{ page.title }}</h1>
         <p class="post-date">
           &mdash; {{ page.date | date: "%B %d, %Y" }} - [{{ page.categories}}]
         </p>

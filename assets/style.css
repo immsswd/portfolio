@@ -313,6 +313,57 @@ footer {
   font-style: italic; /* Optional for better appearance */
 }
 
+.libre-bodoni-400 {
+  font-family: "Libre Bodoni", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libre-bodoni-700 {
+  font-family: "Libre Bodoni", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+.mt-1 {
+  margin-top: 4px;
+}
+.mt-2 {
+  margin-top: 8px;
+}
+.mt-3 {
+  margin-top: 12px;
+}
+.mt-4 {
+  margin-top: 16px;
+}
+
+.mb-0 {
+  margin-top: 0;
+}
+.mb-1 {
+  margin-top: 4px;
+}
+.mb-2 {
+  margin-top: 8px;
+}
+.mb-3 {
+  margin-top: 12px;
+}
+
+.mb-4 {
+  margin-top: 16px;
+}
+
 @media print, screen and (max-width: 480px) {
   body {
     padding: 15px;
