@@ -28,10 +28,9 @@
       <header>{% include header.html %}</header>
       <section>
         {% if page.url == "/" %} {% else %}
-        <a class="mr-3" href="javascript:history.back()"
-          ><i class="fa-solid fa-backward-step"></i> back
-        </a>
-        |
+        <a href="javascript:history.back()"
+          ><i class="fa-solid fa-backward-step"></i> back </a
+        >|
         <a class="ml-3" href="{{ '/' | relative_url }}"
           ><i class="fa-solid fa-house"></i
         ></a>

@@ -346,6 +346,36 @@ footer {
 .mt-4 {
   margin-top: 16px;
 }
+.ml-0 {
+  margin-top: 0;
+}
+.ml-1 {
+  margin-top: 4px;
+}
+.ml-2 {
+  margin-top: 8px;
+}
+.ml-3 {
+  margin-top: 12px;
+}
+.ml-4 {
+  margin-top: 16px;
+}
+.mr-0 {
+  margin-top: 0;
+}
+.mr-1 {
+  margin-top: 4px;
+}
+.mr-2 {
+  margin-top: 8px;
+}
+.mr-3 {
+  margin-top: 12px;
+}
+.mr-4 {
+  margin-top: 16px;
+}
 
 .mb-0 {
   margin-top: 0;
