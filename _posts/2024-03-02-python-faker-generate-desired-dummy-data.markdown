@@ -12,11 +12,7 @@ The Python Faker library is a powerful tool for generating synthetic data. It is
 - Faker is an open-source Python library designed to generate fake data for various purposes.
 - It supports multiple locales, allowing users to create data in different languages and formats.
 
-## What is Python Faker?
-
-- Data Variety: Generate names, addresses, emails, phone numbers, and even custom data types
-- Customizability: Users can define specific formats or constraints for the generated data
-- Ease of Use: Simple installation
+### Ease of Use: Simple installation
 
 ```powershell
 pip install Faker
