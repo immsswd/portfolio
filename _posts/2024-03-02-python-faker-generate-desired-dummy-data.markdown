@@ -336,3 +336,6 @@ Go to **results/fact_inpatient_visits_with_names.csv** path to see generated fil
 - Open your data and see the columns and data types
 - Adjust the data based on your need
 - For fact table, see the Dates column and ensure it is stick with `date` data type
+
+Here is the result:
+![rslt faker generated](/portfolio/assets/img/post/ss_1.jpg)
