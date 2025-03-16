@@ -6,7 +6,9 @@
   <body>
     <div class="wrapper">
       <header>{% include header.html %}</header>
-      <section>{% include tools-header.html %}</section>
+      <section class="pl-0">
+        {% include tools-header.html %}{{ content }}
+      </section>
       <footer>
         <button onclick="topFunction()" id="scrollUpBtn" title="Go to top">
           🔝

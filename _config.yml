@@ -9,6 +9,8 @@ description: >- # this means to ignore newlines until "baseurl:"
 # url: "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "portfolio/" # the subpath of your site, e.g. /blog
 url: "https://immsswd.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+
+# social-media
 twitter_username: jekyllrb
 github_username: jekyll
 
@@ -20,6 +22,11 @@ plugins:
 paginate: 5 # Number of posts per page
 paginate_path: "/page:num/"
 permalink: /:year/:month/:day/:title/
+
+# code highlighter
+markdown: kramdown
+highlighter: rouge
+input: GFM
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
