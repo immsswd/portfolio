@@ -18,6 +18,169 @@ The Python Faker library is a powerful tool for generating synthetic data. It is
 pip install Faker
 ```
 
+## Faker functions
+
+The `Faker` library has **many functions** to generate different types of fake data. Below is a **comprehensive list** of useful Faker functions categorized by their purpose.
+
+---
+
+### **General Data**
+
+| Function                | Description                       |
+| ----------------------- | --------------------------------- |
+| `fake.name()`           | Full name                         |
+| `fake.first_name()`     | First name                        |
+| `fake.last_name()`      | Last name                         |
+| `fake.suffix()`         | Name suffix (e.g., Jr., Sr.)      |
+| `fake.prefix()`         | Name prefix (e.g., Dr., Mr.)      |
+| `fake.job()`            | Job title                         |
+| `fake.company()`        | Company name                      |
+| `fake.company_suffix()` | Company suffix (e.g., Inc., Ltd.) |
+| `fake.catch_phrase()`   | Company tagline                   |
+
+---
+
+### **Contact & Personal Info**
+
+| Function                           | Description                                 |
+| ---------------------------------- | ------------------------------------------- |
+| `fake.email()`                     | Email address                               |
+| `fake.safe_email()`                | Email from safe domains (e.g., example.com) |
+| `fake.free_email()`                | Free email (Gmail, Yahoo, etc.)             |
+| `fake.user_name()`                 | Random username                             |
+| `fake.password()`                  | Random password                             |
+| `fake.phone_number()`              | Random phone number                         |
+| `fake.msisdn()`                    | Mobile number                               |
+| `fake.ssn()`                       | Social Security Number (US-style)           |
+| `fake.iban()`                      | Random IBAN (bank account number)           |
+| `fake.credit_card_number()`        | Fake credit card number                     |
+| `fake.credit_card_provider()`      | Random credit card provider                 |
+| `fake.credit_card_expire()`        | Expiration date for credit card             |
+| `fake.credit_card_security_code()` | CVV number                                  |
+
+---
+
+### **Address & Location**
+
+| Function                | Description           |
+| ----------------------- | --------------------- |
+| `fake.address()`        | Full address          |
+| `fake.street_address()` | Street address        |
+| `fake.street_name()`    | Street name           |
+| `fake.city()`           | City name             |
+| `fake.state()`          | US state name         |
+| `fake.state_abbr()`     | US state abbreviation |
+| `fake.postcode()`       | Zip or postal code    |
+| `fake.country()`        | Country name          |
+| `fake.country_code()`   | 2-letter country code |
+| `fake.latitude()`       | Random latitude       |
+| `fake.longitude()`      | Random longitude      |
+
+---
+
+### **Finance**
+
+| Function                 | Description                    |
+| ------------------------ | ------------------------------ |
+| `fake.currency()`        | Random currency (code & name)  |
+| `fake.currency_code()`   | Currency code (e.g., USD, EUR) |
+| `fake.currency_name()`   | Currency name                  |
+| `fake.bitcoin_address()` | Random Bitcoin wallet address  |
+| `fake.iban()`            | Random IBAN                    |
+
+---
+
+### **Date & Time**
+
+| Function               | Description                |
+| ---------------------- | -------------------------- |
+| `fake.date()`          | Random date (`YYYY-MM-DD`) |
+| `fake.time()`          | Random time (`HH:MM:SS`)   |
+| `fake.date_of_birth()` | Random birth date          |
+| `fake.future_date()`   | Future date                |
+| `fake.past_date()`     | Past date                  |
+| `fake.date_time()`     | Random datetime object     |
+| `fake.timezone()`      | Random timezone            |
+
+---
+
+### **Internet & Tech**
+
+| Function             | Description                     |
+| -------------------- | ------------------------------- |
+| `fake.ipv4()`        | Random IPv4 address             |
+| `fake.ipv6()`        | Random IPv6 address             |
+| `fake.uri()`         | Random URI                      |
+| `fake.url()`         | Random URL                      |
+| `fake.domain_name()` | Random domain name              |
+| `fake.domain_word()` | Random domain word              |
+| `fake.slug()`        | Random slug (`my-awesome-post`) |
+| `fake.uuid4()`       | Random UUID                     |
+| `fake.mac_address()` | Random MAC address              |
+| `fake.mime_type()`   | Random MIME type                |
+
+---
+
+### **Text & Lorem Ipsum**
+
+| Function            | Description        |
+| ------------------- | ------------------ |
+| `fake.word()`       | Random word        |
+| `fake.words()`      | List of words      |
+| `fake.sentence()`   | Random sentence    |
+| `fake.sentences()`  | List of sentences  |
+| `fake.text()`       | Random paragraph   |
+| `fake.paragraph()`  | Random paragraph   |
+| `fake.paragraphs()` | List of paragraphs |
+
+---
+
+### **Government & IDs**
+
+| Function               | Description                    |
+| ---------------------- | ------------------------------ |
+| `fake.ssn()`           | Social Security Number (US)    |
+| `fake.license_plate()` | Vehicle license plate          |
+| `fake.ein()`           | Employer Identification Number |
+
+---
+
+### **Miscellaneous**
+
+| Function                                 | Description               |
+| ---------------------------------------- | ------------------------- |
+| `fake.boolean()`                         | True/False                |
+| `fake.random_int(min, max)`              | Random integer            |
+| `fake.random_digit()`                    | Random digit (0-9)        |
+| `fake.random_element(["A", "B", "C"])`   | Random choice from a list |
+| `fake.random_sample(["A", "B", "C"], 2)` | Random sample from a list |
+| `fake.pystr(min_chars=5, max_chars=10)`  | Random string             |
+| `fake.file_name(extension="pdf")`        | Random file name          |
+
+---
+
+### **Example: Generate a Fake User Profile**
+
+```python
+from faker import Faker
+
+fake = Faker()
+
+profile = {
+    "name": fake.name(),
+    "email": fake.email(),
+    "phone": fake.phone_number(),
+    "address": fake.address(),
+    "company": fake.company(),
+    "job": fake.job(),
+    "dob": fake.date_of_birth(minimum_age=18, maximum_age=65),
+}
+
+print(profile)
+```
+
+---
+
 ## Usage (Case: Data Hospital Patient visits)
 
 I am using this on `Jupyter lab`
