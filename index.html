@@ -11,7 +11,8 @@ title: Home
     id="category-filter"
     class="w-full px-3 py-2 border styled-select rounded-md text-sm bg-white shadow-sm focus:outline-none">
     <option value="all">All Categories</option>
-    {% for category in site.categories %}
+    {% assign sorted_categories = site.categories | sort %} {% for category in
+    sorted_categories %}
     <option value="{{ category[0] }}">{{ category[0] }}</option>
     {% endfor %}
   </select>
