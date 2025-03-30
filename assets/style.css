@@ -542,13 +542,13 @@ footer {
     word-wrap: break-word;
   }
 
-  p,
+  /* p,
   li,
   table,
   pre,
   td {
     font-size: 110%;
-  }
+  } */
 
   header {
     padding: 0;
