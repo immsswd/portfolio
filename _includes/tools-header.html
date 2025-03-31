@@ -1,5 +1,5 @@
 {% if page.url == "/" %} {% else %}
-<div class="header-tools mb-1">
+<div class="header-tools mb-2">
   <a class="mr-2" href="javascript:history.back()" onclick="goBack()"
     >⬅️ Back</a
   >
@@ -9,8 +9,10 @@
   <!-- <a class="mr-2" href="#" onclick="openSettings()">⚙️ Settings</a> -->
 </div>
 <hr />
+{% assign filtered_pages = site.pages | where_exp: "item", "item.url contains
+'/page'" %} {% if page.url == "/about/" or page.url == "/archives/" or page.url
+== filtered_pages[0].url %} {%else %}
 <h1 class="mt-3">{{ page.title }}</h1>
-{% if page.url == "/about/" or page.url == "/archives/"%} {%else %}
 <p class="post-date">
   &mdash; {{ page.date | date: "%B %d, %Y" }} - [{{ page.categories}}]
 </p>
