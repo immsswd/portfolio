@@ -12,8 +12,8 @@
 {% assign filtered_pages = site.pages | where_exp: "item", "item.url contains
 '/page'" %} {% if page.url == "/about/" or page.url == "/archives/" or page.url
 == filtered_pages[0].url %} {%else %}
-<h1 class="mt-3">{{ page.title }}</h1>
-<p class="post-date">
-  &mdash; {{ page.date | date: "%B %d, %Y" }} - [{{ page.categories}}]
+<h1 class="mb-4">{{ page.title }}</h1>
+<p class="post-date p-0 mb-0">
+  {{ page.date | date: "%B %d, %Y" }}. [{{ page.categories}}]
 </p>
 {% endif %} {% endif %}
