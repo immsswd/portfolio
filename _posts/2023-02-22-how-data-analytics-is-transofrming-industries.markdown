@@ -7,6 +7,8 @@ categories: Analytics
 
 In today’s fast-paced world, data is more than just numbers on a spreadsheet—it is the foundation of smarter decision-making, optimized operations, and personalized customer experiences. Businesses across industries are leveraging data analytics to uncover patterns, predict trends, and drive innovation. From retail to healthcare, finance to manufacturing, data is revolutionizing the way industries operate.
 
+![illustration](/portfolio/assets/img/post/ss_2.jpg)
+
 ## **Retail & E-commerce: Understanding Customers Like Never Before**
 
 Retailers and e-commerce platforms are using data analytics to gain deeper insights into customer behavior, optimize inventory, and personalize the shopping experience. By analyzing browsing habits, purchase history, and seasonal trends, businesses can forecast demand and ensure they stock the right products at the right time.
@@ -22,8 +24,6 @@ The healthcare industry is undergoing a transformation with predictive analytics
 Predictive models help identify at-risk patients before conditions worsen, allowing for early intervention and better healthcare planning. Pharmaceutical companies are leveraging big data to accelerate drug development by analyzing clinical trials and genetic information, reducing the time needed to bring new medicines to market.
 
 Wearable devices and electronic health records are also playing a crucial role, providing real-time patient data that allows doctors to make informed decisions faster than ever before.
-
-![illustration](/portfolio/assets/img/post/ss_2.jpg)
 
 ## **Finance & Banking: Smarter and Safer Transactions**
 
