@@ -1,5 +1,5 @@
 title: Imam
-email: your-email@example.com
+email: i.mail@tuta.io
 description: >- # this means to ignore newlines until "baseurl:"
   I'm into data analytics, data modeling, and software dev. I love
   diving into datasets to find cool insights, building data models for
@@ -11,15 +11,15 @@ baseurl: "portfolio/" # the subpath of your site, e.g. /blog
 url: "https://immsswd.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
 # social-media
-twitter_username: jekyllrb
-github_username: jekyll
+twitter_username: null
+github_username: null
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
   - jekyll-paginate
-paginate: 5 # Number of posts per page
+paginate: 7 # Number of posts per page
 paginate_path: "/page:num/"
 permalink: /:year/:month/:day/:title/
 

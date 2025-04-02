@@ -5,7 +5,7 @@ date: 2023-02-22 13:44:51 +0700
 categories: Analytics
 ---
 
-In today’s fast-paced world, data is more than just numbers on a spreadsheet—it is the foundation of smarter decision-making, optimized operations, and personalized customer experiences. Businesses across industries are leveraging data analytics to uncover patterns, predict trends, and drive innovation. From retail to healthcare, finance to manufacturing, data is revolutionizing the way industries operate.
+In today’s fast-paced world, data is more than just numbers on a spreadsheet—it is the foundation of smarter decision-making, optimized operations, and personalized customer experiences. Businesses across industries are leveraging data analytics to uncover patterns, predict trends, and drive innovation. From retail to healthcare, finance to manufacturing, data is revolutionizing the way industries operate.[1]
 
 ![illustration](/portfolio/assets/img/post/ss_2.jpg)
 
@@ -86,3 +86,5 @@ In addition, data analytics plays a key role in enhancing safety in the industry
 Furthermore, energy companies are using analytics to optimize supply chain logistics, ensuring that oil and gas products are transported efficiently and at lower costs. Advanced analytics also help in energy consumption forecasting, enabling companies to plan better and reduce waste across their operations.
 
 By embracing data analytics, the oil and gas sector is becoming more sustainable, safer, and cost-efficient, which is critical as it faces increasing pressure to adapt to environmental concerns and market fluctuations.
+
+[1]: hallo
