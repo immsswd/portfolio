@@ -39,11 +39,11 @@ permalink: /archives/
 {% for category in categories %}
 
   <div class="category-title" onclick="toggleCategory('{{ category[0] }}')">
-    <span class="arrow" id="arrow-{{ category[0] }}">▶️</span> 📁 {{ category[0] }}
+    <span class="arrow mb-1" id="arrow-{{ category[0] }}">▶️</span> 📁 {{ category[0] }}
   </div>
   <ul class="post-list" id="{{ category[0] }}">
     {% for post in category[1] %}
-      <li class="mb-2">📄<a href="/portfolio{{ post.url }}">{{ post.title }}</a></li>
+      <li class="mb-1"><a href="/portfolio{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
 {% endfor %}
