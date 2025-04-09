@@ -1,10 +1,13 @@
 title: Imam
 email: i.mail@tuta.io
 description: >- # this means to ignore newlines until "baseurl:"
-  I'm into data analytics, data modeling, and software dev. I love
-  diving into datasets to find cool insights, building data models for
-  efficiency, and creating software that solves problems and drives
-  innovation.
+  I’m all about turning raw data into clear, visual stories. From digging into datasets to uncover insights, to building models and dashboards that make data come alive—I thrive where analysis meets creativity.
+
+# into data analytics, data modeling, and software dev. I love
+# diving into datasets to find cool insights, building data models for
+# efficiency, and creating software that solves problems and drives
+# innovation.
+
 # -- dev
 # baseurl: "" # the subpath of your site, e.g. /blog
 # url: "" # the base hostname & protocol for your site, e.g. http://example.com
