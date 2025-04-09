@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-<h3 class="text-xl font-semibold mb-2">All Posts</h3>
+<h3>All Posts</h3>
 
 <!-- Category Dropdown -->
 <div class="relative w-48 mb-4 mb-4 select-container">
@@ -21,17 +21,11 @@ title: Home
 <!-- Display Posts -->
 <div id="post-list">
   {% for post in paginator.posts %}
-  <article
-    class="post-item border rounded-lg shadow-sm"
-    data-category="{{ post.categories | join: ' ' }}">
-    <h2 class="text-lg font-semibold">
-      <a
-        href="{{ post.url | relative_url }}"
-        class="text-blue-600 hover:underline"
-        >{{ post.title }}
-      </a>
+  <article data-category="{{ post.categories | join: ' ' }}">
+    <h2>
+      <a href="{{ post.url | relative_url }}">{{ post.title }} </a>
     </h2>
-    <p class="text-gray-600 text-sm">{{ post.excerpt }}</p>
+    <p>{{ post.excerpt }}</p>
   </article>
   {% endfor %}
 </div>
