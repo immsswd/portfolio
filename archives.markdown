@@ -32,8 +32,8 @@ permalink: /archives/
   }
 </style>
 
-<h1 class="mb-3">📂</h1>
-<p class="mb-3">Click on a category to expand/collapse its posts.</p>
+<h1 class="mb-3">{{ page.title }}</h1>
+<p class="mb-2">Click on a category to expand/collapse its posts.</p>
 
 {% assign categories = site.categories | sort %}
 {% for category in categories %}

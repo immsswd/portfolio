@@ -4,6 +4,7 @@ title: About me
 permalink: /about/
 ---
 
+<h1 class="mb-3">{{ page.title }}</h1>
 Hey there! 👋
 
 I build cool stuff with **Assembly language** [kidding 😁] and break things occasionally.  

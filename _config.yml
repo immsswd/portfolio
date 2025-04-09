@@ -4,11 +4,13 @@ description: >- # this means to ignore newlines until "baseurl:"
   I'm into data analytics, data modeling, and software dev. I love
   diving into datasets to find cool insights, building data models for
   efficiency, and creating software that solves problems and drives
-  innovation..
+  innovation.
+# -- dev
 # baseurl: "" # the subpath of your site, e.g. /blog
 # url: "" # the base hostname & protocol for your site, e.g. http://example.com
-# baseurl: "portfolio/" # the subpath of your site, e.g. /blog
-# url: "https://immsswd.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+# -- prod
+baseurl: "portfolio/" # the subpath of your site, e.g. /blog
+url: "https://immsswd.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
 # social-media
 twitter_username: null
