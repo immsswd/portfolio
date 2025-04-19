@@ -67,13 +67,7 @@ In education, data analytics is transforming the way students learn and educator
 
 Online learning platforms use data to recommend courses, assess student progress, and provide instant feedback. Schools and universities are also using predictive analytics to improve student retention rates and optimize resource allocation.
 
-By integrating AI into education, institutions are making learning more efficient and tailored to individual needs.
-
-## **The Future of Data Analytics in Business**
-
-Data analytics is no longer a luxury—it is a necessity for businesses looking to stay competitive. Companies that harness data effectively can enhance efficiency, improve customer experiences, and drive innovation.
-
-As technology continues to evolve, industries will rely even more on AI, machine learning, and big data to make smarter, real-time decisions. The businesses that embrace this transformation will be the ones leading the future.
+By integrating AI into education, institutions are making learning more efficient and tailored to individual ne
 
 ## **Oil & Gas: Maximizing Efficiency and Safety with Data Analytics**
 
@@ -86,3 +80,9 @@ In addition, data analytics plays a key role in enhancing safety in the industry
 Furthermore, energy companies are using analytics to optimize supply chain logistics, ensuring that oil and gas products are transported efficiently and at lower costs. Advanced analytics also help in energy consumption forecasting, enabling companies to plan better and reduce waste across their operations.
 
 By embracing data analytics, the oil and gas sector is becoming more sustainable, safer, and cost-efficient, which is critical as it faces increasing pressure to adapt to environmental concerns and market fluctuations.
+
+## **The Future of Data Analytics in Business**
+
+Data analytics is no longer a luxury—it is a necessity for businesses looking to stay competitive. Companies that harness data effectively can enhance efficiency, improve customer experiences, and drive innovation.
+
+As technology continues to evolve, industries will rely even more on AI, machine learning, and big data to make smarter, real-time decisions. The businesses that embrace this transformation will be the ones leading the future.
