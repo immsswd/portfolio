@@ -5,7 +5,7 @@ date: 2024-11-15 08:22:51 +0700
 categories: Analytics
 ---
 
-![hc-summ](/assets/img/portfolio/glk.webp)
+![hc-summ](/portfolio/assets/img/portfolio/glk.webp)
 Using Power BI, I transformed complex datasets into clear and intuitive visualizations, enabling insightful interpretations. The visualizations highlight crucial information for healthcare providers, such as the top diseases, the most common patient demographics, and key performance metrics of healthcare professionals. These insights are presented in an accessible way to ensure quick understanding and informed action.
 
 The analysis also uncovers patterns and trends within the data, helping stakeholders prioritize resources and address pressing healthcare challenges. For example, identifying the most prevalent diseases allows for targeted interventions, while recognizing patient demographics helps tailor services to meet specific needs effectively.
