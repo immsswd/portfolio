@@ -1,4 +1,73 @@
 ---
-layout: home
-# Index page
+layout: default
+title: Home
 ---
+
+<h3>All Posts</h3>
+
+<!-- Category Dropdown -->
+<div class="relative w-48 mb-4 select-container">
+  <select
+    id="category-filter"
+    class="w-full px-3 py-2 border styled-select rounded-md text-sm bg-white shadow-sm focus:outline-none">
+    <option value="all">All Categories</option>
+    {% assign sorted_categories = site.categories | sort %}
+    {% for category in sorted_categories %}
+    <option value="{{ category[0] }}">{{ category[0] }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<!-- Display Posts -->
+<div id="post-list">
+  {% for post in paginator.posts %}
+  <article class="post-item" data-category="{{ post.categories | join: ' ' }}">
+    <h2>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </h2>
+    <p>{{ post.excerpt }}</p>
+  </article>
+  {% endfor %}
+</div>
+
+<!-- Pagination -->
+<div class="pagination flex items-center gap-4">
+  {% if paginator.previous_page %}
+  <a
+    href="{{ paginator.previous_page_path | relative_url }}"
+    class="text-blue-600 hover:underline"
+    >&laquo; Previous</a
+  >
+  {% endif %}
+
+  <span class="text-gray-500">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+
+  {% if paginator.next_page %}
+  <a
+    href="{{ paginator.next_page_path | relative_url }}"
+    class="text-blue-600 hover:underline"
+    >Next &raquo;</a
+  >
+  {% endif %}
+</div>
+
+<!-- JavaScript for Filtering -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const filterDropdown = document.getElementById("category-filter");
+    const posts = document.querySelectorAll(".post-item");
+
+    filterDropdown.addEventListener("change", function () {
+      const selectedCategory = this.value;
+
+      posts.forEach((post) => {
+        const postCategories = post.getAttribute("data-category").split(" ");
+        post.style.display =
+          selectedCategory === "all" ||
+          postCategories.includes(selectedCategory)
+            ? "block"
+            : "none";
+      });
+    });
+  });
+</script>
