@@ -1,49 +1,16 @@
-<!-- The Footer -->
+<button onclick="topFunction()" id="scrollUpBtn" title="Go to top">🔝</button>
 
-<footer
-  aria-label="Site Info"
-  class="
-    d-flex flex-column justify-content-center text-muted
-    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
-  "
->
-  <p>
-    {{- '©' }}
-    <time>{{ 'now' | date: '%Y' }}</time>
-
-    {% if site.social.links %}
-      <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
-    {% else %}
-      <em class="fst-normal">{{ site.social.name }}</em>.
-    {% endif %}
-
-    {% if site.data.locales[include.lang].copyright.brief %}
-      <span
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        title="{{ site.data.locales[include.lang].copyright.verbose }}"
-      >
-        {{- site.data.locales[include.lang].copyright.brief -}}
-      </span>
-    {% endif %}
-  </p>
-
-  <p>
-    {%- capture _platform -%}
-      <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
-    {%- endcapture -%}
-
-    {%- capture _theme -%}
-      <a
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        title="v{{ theme.version }}"
-        href="https://github.com/cotes2020/jekyll-theme-chirpy"
-        target="_blank"
-        rel="noopener"
-      >Chirpy</a>
-    {%- endcapture -%}
-
-    {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
-  </p>
-</footer>
+<!-- <p>
+    This project is maintained by
+    <a href="http://github.com/orderedlist">Steve Smith</a>
+  </p> -->
+<p>
+  <small
+    >Hosted on GitHub Pages &mdash; Theme by
+    <a href="https://github.com/orderedlist">orderedlist</a> <br />
+    Imam,
+    <script>
+      document.write(new Date().getFullYear());
+    </script></small
+  >
+</p>

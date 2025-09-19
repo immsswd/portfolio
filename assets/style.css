@@ -1,0 +1,598 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+body {
+  background-color: #fff;
+  padding: 50px;
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #595959;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #222;
+  margin: 0 0 20px;
+}
+
+/* p,
+ul,
+ol,
+table,
+pre,
+dl {
+  font-family: Arial, "PT Serif", serif;
+  margin: 0 0 20px;
+} */
+
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+h2 {
+  color: #393939;
+  font-weight: 500;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  color: #494949;
+  font-weight: 500;
+}
+
+a {
+  color: #39c;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #069;
+}
+
+a small {
+  font-size: 11px;
+  color: #777;
+  margin-top: -0.3em;
+  display: block;
+}
+
+a:hover small {
+  color: #777;
+}
+
+.wrapper {
+  width: 860px;
+  margin: 0 auto;
+}
+
+blockquote {
+  border-left: 1px solid #e5e5e5;
+  margin: 0;
+  padding: 0 0 0 20px;
+  font-style: italic;
+}
+
+code,
+pre {
+  font-family: Lucida Console, Monaco, Bitstream Vera Sans Mono, Terminal,
+    Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
+  color: #333;
+  font-size: 90%; /* 10% smaller than the default font size */
+  line-height: 1.5;
+}
+
+pre {
+  padding: 8px 15px;
+  background: #f8f8f8;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 5px 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+b {
+  font-weight: 700;
+}
+
+dt {
+  color: #444;
+  font-weight: 500;
+}
+
+th {
+  color: #444;
+}
+
+img {
+  max-width: 100%;
+}
+
+header {
+  width: 270px;
+  float: left;
+  position: fixed;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+header ul {
+  list-style: none;
+  height: 40px;
+  padding: 0;
+  background: #f4f4f4;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  width: 270px;
+}
+
+header li {
+  width: 89px;
+  float: left;
+  border-right: 1px solid #e0e0e0;
+  height: 40px;
+}
+
+header li:first-child a {
+  border-radius: 5px 0 0 5px;
+}
+
+header li:last-child a {
+  border-radius: 0 5px 5px 0;
+}
+
+header ul a {
+  line-height: 1;
+  font-size: 11px;
+  color: #999;
+  display: block;
+  text-align: center;
+  padding-top: 6px;
+  height: 34px;
+}
+
+header ul a:hover {
+  color: #999;
+}
+
+header ul a:active {
+  background-color: #f0f0f0;
+}
+
+strong {
+  color: #222;
+  font-weight: 500;
+}
+
+header ul li + li + li {
+  border-right: none;
+  width: 89px;
+}
+
+header ul a strong {
+  font-size: 14px;
+  display: block;
+  color: #222;
+}
+
+section {
+  width: 500px;
+  float: right;
+  padding-bottom: 50px;
+}
+
+small {
+  font-size: 11px;
+}
+
+hr {
+  border: 0;
+  background: #e5e5e5;
+  height: 1px;
+  margin: 0 0 20px;
+}
+
+footer {
+  width: 270px;
+  float: left;
+  position: fixed;
+  bottom: 50px;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.preview {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: inline-block;
+}
+
+#scrollUpBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background-color: rgba(197, 196, 196, 0.7);
+  border: 1px solid #ccc; /* Light gray border */
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+#scrollUpBtn:hover {
+  background-color: rgba(255, 251, 251, 0.9);
+  /* Minimal CSS Border */
+  border: 1px solid #ccc; /* Light gray border */
+}
+
+.post-date {
+  color: grey;
+  font-size: 0.9em; /* Adjust to your preference */
+  font-style: italic; /* Optional for better appearance */
+}
+
+.libre-bodoni-400 {
+  font-family: "Libre Bodoni", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libre-bodoni-700 {
+  font-family: "Libre Bodoni", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+.mt-1 {
+  margin-top: 4px;
+}
+.mt-2 {
+  margin-top: 8px;
+}
+.mt-3 {
+  margin-top: 12px;
+}
+.mt-4 {
+  margin-top: 16px;
+}
+.ml-0 {
+  margin-left: 0;
+}
+.ml-1 {
+  margin-left: 4px;
+}
+.ml-2 {
+  margin-left: 8px;
+}
+.ml-3 {
+  margin-left: 12px;
+}
+.ml-4 {
+  margin-left: 16px;
+}
+.mr-0 {
+  margin-right: 0;
+}
+.mr-1 {
+  margin-right: 4px;
+}
+.mr-2 {
+  margin-right: 8px;
+}
+.mr-3 {
+  margin-right: 12px;
+}
+.mr-4 {
+  margin-right: 16px;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+.mb-1 {
+  margin-bottom: 4px;
+}
+.mb-2 {
+  margin-bottom: 8px;
+}
+.mb-3 {
+  margin-bottom: 12px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.p-0 {
+  padding: 0;
+}
+.p-1 {
+  padding: 4px;
+}
+.p-2 {
+  padding: 8px;
+}
+.p-3 {
+  padding: 12px;
+}
+.p-4 {
+  padding: 16px;
+}
+.select-container {
+  position: relative;
+  width: 220px;
+}
+
+.pl-0 {
+  padding-left: 0;
+}
+.pl-1 {
+  padding-left: 4px;
+}
+.pl-2 {
+  padding-left: 8px;
+}
+.pl-3 {
+  padding-left: 12px;
+}
+.pl-4 {
+  padding-left: 16px;
+}
+
+.pt-0 {
+  padding-top: 0;
+}
+.pt-1 {
+  padding-top: 4px;
+}
+.pt-2 {
+  padding-top: 8px;
+}
+.pt-3 {
+  padding-top: 12px;
+}
+.pt-4 {
+  padding-top: 16px;
+}
+
+.pr-0 {
+  padding-right: 0;
+}
+.pr-1 {
+  padding-right: 4px;
+}
+.pr-2 {
+  padding-right: 8px;
+}
+.pr-3 {
+  padding-right: 12px;
+}
+.pr-4 {
+  padding-right: 16px;
+}
+
+.pb-0 {
+  padding-bottom: 0;
+}
+.pb-1 {
+  padding-bottom: 4px;
+}
+.pb-2 {
+  padding-bottom: 8px;
+}
+.pb-3 {
+  padding-bottom: 12px;
+}
+.pb-4 {
+  padding-bottom: 16px;
+}
+
+/* Styled Select */
+.styled-select {
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  background: white;
+  color: #333;
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover Effect */
+.styled-select:hover {
+  background: #f1f1f1;
+}
+
+/* Focus Effect */
+.styled-select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0px 0px 4px rgba(37, 99, 235, 0.5);
+}
+
+/* Add a custom dropdown arrow */
+/* Dropdown Container */
+.select-container {
+  position: relative;
+  display: inline-block;
+  width: 180px; /* Adjust width as needed */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  /* padding: 8px; */
+  cursor: pointer;
+}
+
+/* Hide default select arrow */
+.select-container select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Custom Arrow */
+.select-container::after {
+  content: "▼";
+  position: absolute;
+  top: 50%;
+  right: 3px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #777;
+  background: #e0e0e0; /* Light grey background for arrow */
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+/* Hover & Focus Effect */
+.select-container:hover::after,
+.select-container:focus-within::after {
+  background: #0070f3; /* SAP-style blue */
+  color: white; /* White arrow */
+}
+
+.remove-decoration-li-ul {
+  list-style: none; /* Removes bullets (for unordered lists) and numbers (for ordered lists) */
+  /* padding: 0; /* Optional: Removes left padding */
+  /* margin: 0; Optional: Removes top/bottom margins */
+}
+
+@media print, screen and (max-width: 960px) {
+  div.wrapper {
+    width: auto;
+    margin: 0;
+  }
+
+  header,
+  section,
+  footer {
+    float: none;
+    position: static;
+    width: auto;
+  }
+
+  header {
+    padding-right: 320px;
+  }
+
+  section {
+    border: 1px solid #e5e5e5;
+    border-width: 1px 0;
+    padding: 20px 0;
+    margin: 0 0 20px;
+  }
+
+  header a small {
+    display: inline;
+  }
+
+  header ul {
+    position: absolute;
+    right: 50px;
+    top: 52px;
+  }
+}
+
+@media print, screen and (max-width: 720px) {
+  body {
+    word-wrap: break-word;
+    font: 105%/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial,
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+
+  /* p,
+  li,
+  table,
+  pre,
+  td {
+    font-size: 110%;
+  } */
+
+  header {
+    padding: 0;
+  }
+
+  header ul,
+  header p.view {
+    position: static;
+  }
+
+  pre,
+  code {
+    word-wrap: normal;
+  }
+}
+
+@media print, screen and (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+  header ul {
+    width: 99%;
+  }
+
+  header li,
+  header ul li + li + li {
+    width: 33%;
+  }
+}
+
+@media print {
+  body {
+    padding: 0.4in;
+    font-size: 12pt;
+    color: #444;
+  }
+}
