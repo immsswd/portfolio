@@ -1,8 +1,9 @@
 ---
-layout: default
 title: "Python Faker, For Generating Desired Dummy Data"
-date: 2025-03-02 14:10:51 +0700
-categories: Data
+author: imam
+date: 2023-03-02 14:10:51 +0700
+categories: [Data]
+tags: [data-analytics]
 ---
 
 The Python Faker library is a powerful tool for generating synthetic data. It is widely used for testing, bootstrapping databases, anonymizing sensitive information, and creating realistic datasets for development and analysis. By leveraging Faker, developers can produce diverse and customizable data, such as names, addresses, emails, and more, without compromising privacy.
