@@ -21,6 +21,11 @@
         scrollFunction();
       };
 
+/**
+ * Shows or hides the "Scroll to top" button based on the scroll position.
+ * If the user has scrolled more than 20px from the top of the document, the button is shown.
+ * Otherwise, it is hidden.
+ */
       function scrollFunction() {
         if (
           document.body.scrollTop > 20 ||
