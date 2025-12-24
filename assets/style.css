@@ -2,7 +2,7 @@
 
 html {
   background-color: #fff;
-  padding: 50px;
+  padding: 20px;
   font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -552,6 +552,7 @@ footer {
 @media print, screen and (max-width: 720px) {
   body {
     word-wrap: break-word;
+    padding: 0px;
     font: 105%/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial,
       sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
