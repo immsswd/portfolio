@@ -25,7 +25,8 @@ title: Home
     <h2>
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
     </h2>
-    {{ post.excerpt }}
+    {{ post.excerpt | remove: "[^1]" | remove: "[^2]" | remove: "[^3]" | remove:
+    "[^4]" }}
   </article>
   {% endfor %}
 </div>
