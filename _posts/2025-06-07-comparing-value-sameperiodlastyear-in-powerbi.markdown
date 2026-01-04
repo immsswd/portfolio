@@ -38,7 +38,7 @@ Current year revenue:
 Revenue AC = SUM(Fact_Summarized[Revenue])
 ```
 
-Now we compare Actual Revenue to last period revenue
+Now we compare Actual Revenue to last Year with same month's period revenue
 
 ```dax
 Revenue PY =
