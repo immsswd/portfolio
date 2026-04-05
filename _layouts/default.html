@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     {% include head.html %}
@@ -21,11 +21,11 @@
         scrollFunction();
       };
 
-/**
- * Shows or hides the "Scroll to top" button based on the scroll position.
- * If the user has scrolled more than 20px from the top of the document, the button is shown.
- * Otherwise, it is hidden.
- */
+      /**
+       * Shows or hides the "Scroll to top" button based on the scroll position.
+       * If the user has scrolled more than 20px from the top of the document, the button is shown.
+       * Otherwise, it is hidden.
+       */
       function scrollFunction() {
         if (
           document.body.scrollTop > 20 ||
@@ -44,6 +44,23 @@
           behavior: "smooth", // Smooth scrolling
         });
       }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".pl-0 img").forEach((img) => {
+          // Skip if already wrapped
+          if (img.closest("a")) return;
+
+          const link = document.createElement("a");
+          link.href = img.src;
+          link.className = "glightbox";
+
+          img.parentNode.insertBefore(link, img);
+          link.appendChild(img);
+        });
+
+        GLightbox();
+      });
     </script>
   </body>
 </html>
