@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Comparing Value with SAMEPERIODLASTYEAR in Power BI"
+title: "Comparing Value Current Year or Selected Year vs Year Before in Power BI"
 date: 2025-06-07 07:09:51 +0700
 categories: Analytics
 ---
