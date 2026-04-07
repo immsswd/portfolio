@@ -7,7 +7,9 @@ permalink: /archives/
 <style>
 .fa {
   max-width: 680px;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 13px;
   color: #1d1d1f;
 }
@@ -56,9 +58,9 @@ permalink: /archives/
 
 {% assign postsByYear = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
 {% for yearGroup in postsByYear %}
-  {% assign year = yearGroup.name %}
-  {% assign yearPosts = yearGroup.items %}
-  {% assign postCount = yearPosts | size %}
+{% assign year = yearGroup.name %}
+{% assign yearPosts = yearGroup.items %}
+{% assign postCount = yearPosts | size %}
 
   <div>
     <div class="fa-row" onclick="toggle('y-{{ year }}')">
@@ -88,9 +90,11 @@ permalink: /archives/
         </div>
       {% endfor %}
     </div>
+
   </div>
 
 {% endfor %}
+
 </div>
 
 <script>
