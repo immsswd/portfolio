@@ -3,3 +3,8 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+tools/
+Pipfile
+Pipfile.lock
+node_modules/   
+.env

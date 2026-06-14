@@ -5,110 +5,242 @@ permalink: /archives/
 ---
 
 <style>
-.fa {
-  max-width: 680px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 13px;
-  color: #1d1d1f;
+.archive-tree {
+  max-width: 900px;
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding: 24px 20px 36px;
+  color: #111827;
 }
-.fa-row {
+.archive-tree h1 {
+  margin: 0 0 24px;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  letter-spacing: -0.03em;
+}
+.archive-tree details {
+  border: none;
+  border-radius: 18px;
+  background: transparent;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.archive-tree summary {
+  list-style: none;
+}
+.archive-tree summary::-webkit-details-marker {
+  display: none;
+}
+.archive-category {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 22px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 16px 50px rgba(15, 23, 42, 0.06);
+}
+.archive-year {
+  margin: 0 0 0 18px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #f8fbff;
+}
+.category-summary,
+.year-summary {
   display: flex;
   align-items: center;
-  padding: 4px 8px;
-  border-radius: 6px;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 18px 22px;
   cursor: pointer;
-  user-select: none;
+  transition: background 0.2s ease, color 0.2s ease;
 }
-.fa-row:hover { background: #f5f5f7; }
-.tri {
+.category-summary {
+  background: #ffffff;
+}
+.year-summary {
+  background: #eff7ff;
+}
+.category-summary:hover,
+.year-summary:hover {
+  background: rgba(15, 23, 42, 0.08);
+}
+.category-summary::after,
+.year-summary::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  margin-left: auto;
+  transition: transform 0.2s ease;
+}
+details[open] > summary::after {
+  transform: rotate(135deg);
+}
+.summary-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.summary-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.summary-copy strong {
+  font-size: 1.05rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.summary-meta {
+  color: #64748b;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.archive-icon,
+.year-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  flex-shrink: 0;
+}
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 18px 20px 20px;
+}
+.post-list li {
+  margin: 0;
+}
+.post-link {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  padding: 16px 20px;
+  color: #0f172a;
+  text-decoration: none;
+  background: #ffffff;
+  border-radius: 16px;
+  transition: background 0.2s ease;
+}
+.post-link + .post-link {
+  margin-top: 12px;
+}
+.post-link:hover {
+  background: rgba(59, 130, 246, 0.08);
+}
+.post-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+.post-meta {
+  display: inline-flex;
+  color: #64748b;
+  font-size: 0.92rem;
+  white-space: nowrap;
+}
+.post-icon {
   width: 16px;
   height: 16px;
-  display: flex;
+  color: #475569;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.15s ease;
 }
-.tri.open { transform: rotate(90deg); }
-.tri svg path { fill: #6e6e73; }
-.tri-leaf { width: 16px; flex-shrink: 0; }
-.icon { width: 16px; height: 16px; margin-right: 5px; flex-shrink: 0; }
-.children { display: none; }
-.label { font-size: 13px; }
-.muted { color: #6e6e73; font-size: 12px; margin-left: 6px; }
-.fa-file {
-  display: flex;
-  align-items: center;
-  padding: 3px 8px;
-  border-radius: 6px;
+@media (max-width: 720px) {
+  .archive-tree {
+    padding: 18px 14px 28px;
+  }
+  .category-summary,
+  .year-summary,
+  .post-link {
+    padding: 14px 16px;
+  }
+  .archive-year {
+    margin-left: 0;
+  }
+  .post-link {
+    grid-template-columns: 1fr;
+  }
+  .post-meta {
+    display: none;
+  }
 }
-.fa-file:hover { background: #f5f5f7; }
-.fa-file a {
-  color: #1463d0;
-  text-decoration: none;
-  font-size: 13px;
-}
-.fa-file a:hover { text-decoration: underline; }
 </style>
 
-<div class="fa">
+<div class="archive-tree">
   <h1>{{ page.title }}</h1>
 
-{% assign postsByYear = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
-{% for yearGroup in postsByYear %}
-{% assign year = yearGroup.name %}
-{% assign yearPosts = yearGroup.items %}
-{% assign postCount = yearPosts | size %}
+{% assign postsByCategory = site.posts | sort: "date" | reverse | group_by_exp: "post", "post.categories[0]" | sort: "name" %}
+{% for categoryGroup in postsByCategory %}
+{% assign categoryName = categoryGroup.name | default: "Uncategorized" %}
 
-  <div>
-    <div class="fa-row" onclick="toggle('y-{{ year }}')">
-      <span class="tri" id="t-y-{{ year }}">
-        <svg width="8" height="8" viewBox="0 0 8 8"><path d="M2 1.5l4 2.5-4 2.5V1.5z"/></svg>
-      </span>
-      <svg class="icon" id="fi-y-{{ year }}" viewBox="0 0 16 16" fill="none">
-        <path d="M2.5 3A1.5 1.5 0 001 4.5v7A1.5 1.5 0 002.5 13h11A1.5 1.5 0 0015 11.5V6A1.5 1.5 0 0013.5 4.5H7.5L6 3H2.5z" fill="#F5C842"/>
-      </svg>
-      <span class="label">{{ year }}</span>
-      <span class="muted">{{ postCount }} posts</span>
-    </div>
-
-    <div class="children" id="y-{{ year }}">
-      {% for post in yearPosts %}
-        <div class="fa-file" style="margin-left:20px">
-          <span class="tri-leaf"></span>
-          <svg class="icon" viewBox="0 0 16 16" fill="none">
-            <rect x="2" y="1" width="10" height="13" rx="1.5" fill="#E8F0FB" stroke="#B5D4F4" stroke-width="0.8"/>
-            <path d="M9 1v4h4" stroke="#B5D4F4" stroke-width="0.8" fill="none"/>
-            <path d="M9 1l4 4" stroke="#B5D4F4" stroke-width="0.8"/>
-            <rect x="4" y="7" width="6" height="1" rx="0.5" fill="#378ADD"/>
-            <rect x="4" y="9.5" width="5" height="1" rx="0.5" fill="#378ADD"/>
-            <rect x="4" y="12" width="4" height="1" rx="0.5" fill="#378ADD"/>
+  <details class="archive-category" open>
+    <summary class="category-summary">
+      <span class="summary-left">
+        <span class="archive-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7.5A1.5 1.5 0 014.5 6h3l1.5 1.5h8A1.5 1.5 0 0120.5 9v9A1.5 1.5 0 0119 19.5h-14A1.5 1.5 0 013.5 18v-10.5z" />
           </svg>
-          <a href="/portfolio{{ post.url }}">{{ post.title }}</a>
-        </div>
-      {% endfor %}
-    </div>
+        </span>
+        <span class="summary-copy">
+          <strong>{{ categoryName }}</strong>
+          <span class="summary-meta">{{ categoryGroup.items | size }} posts</span>
+        </span>
+      </span>
+    </summary>
 
-  </div>
+    {% assign postsByYear = categoryGroup.items | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
+    {% for yearGroup in postsByYear %}
+      <details class="archive-year">
+        <summary class="year-summary">
+          <span class="summary-left">
+            <span class="year-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7.5V5.5A1.5 1.5 0 014.5 4h3l1.5 1.5h7.5A1.5 1.5 0 0118 7.5v10.5A1.5 1.5 0 0116.5 19.5h-9A1.5 1.5 0 016 18V7.5z" />
+              </svg>
+            </span>
+            <span class="summary-copy">
+              <strong>{{ yearGroup.name }}</strong>
+              <span class="summary-meta">{{ yearGroup.items | size }} posts</span>
+            </span>
+          </span>
+        </summary>
+
+        <ul class="post-list">
+          {% for post in yearGroup.items %}
+            <li>
+              <a class="post-link" href="{{ post.url | relative_url }}">
+                <span class="post-name">
+                  <span class="post-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 4.5h9.75a1.75 1.75 0 011.75 1.75v12.5a1.75 1.75 0 01-1.75 1.75H6a1.75 1.75 0 01-1.75-1.75V6.25A1.75 1.75 0 016 4.5z" />
+                      <path d="M11.25 4.5v4.5h4.5" />
+                    </svg>
+                  </span>
+                  {{ post.title }}
+                </span>
+                <span class="post-meta">{{ post.date | date: "%b %-d" }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </details>
+    {% endfor %}
+
+  </details>
 
 {% endfor %}
 
 </div>
-
-<script>
-const openFolderPath = `<path d="M1 4.5A1.5 1.5 0 012.5 3H6l1.5 1.5H13.5A1.5 1.5 0 0115 6v5.5A1.5 1.5 0 0113.5 13h-11A1.5 1.5 0 011 11.5v-7z" fill="#FBD061"/>
-  <path d="M1 6h14v5.5A1.5 1.5 0 0113.5 13h-11A1.5 1.5 0 011 11.5V6z" fill="#F5C842"/>`;
-const closedFolderPath = `<path d="M2.5 3A1.5 1.5 0 001 4.5v7A1.5 1.5 0 002.5 13h11A1.5 1.5 0 0015 11.5V6A1.5 1.5 0 0013.5 4.5H7.5L6 3H2.5z" fill="#F5C842"/>`;
-
-function toggle(id) {
-  const children = document.getElementById(id);
-  const tri = document.getElementById('t-' + id);
-  const folderIcon = document.getElementById('fi-' + id);
-  const isOpen = children.style.display === 'block';
-  children.style.display = isOpen ? 'none' : 'block';
-  tri.classList.toggle('open', !isOpen);
-  if (folderIcon) folderIcon.innerHTML = isOpen ? closedFolderPath : openFolderPath;
-}
-</script>

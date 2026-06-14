@@ -4,9 +4,22 @@ html {
   background-color: #fff;
   /* padding: 20px; */
   padding-top: 10px;
-  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font:
+    14px/1.5 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol";
   color: #595959;
   /* font-weight: 400; */
 }
@@ -94,8 +107,16 @@ blockquote {
 
 code,
 pre {
-  font-family: Lucida Console, Monaco, Bitstream Vera Sans Mono, Terminal,
-    Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
+  font-family:
+    Lucida Console,
+    Monaco,
+    Bitstream Vera Sans Mono,
+    Terminal,
+    Consolas,
+    Liberation Mono,
+    DejaVu Sans Mono,
+    Courier New,
+    monospace;
   color: #333;
   font-size: 90%; /* 10% smaller than the default font size */
   line-height: 1.5;
@@ -278,6 +299,19 @@ footer {
   font-style: normal;
 }
 
+/* font weights */
+.bold {
+  font-weight: bold;
+}
+
+.light {
+  font-weight: 300; /* or lighter */
+}
+
+.underline {
+  text-decoration: underline;
+}
+
 .m-0 {
   margin: 0;
 }
@@ -326,6 +360,55 @@ footer {
 }
 .mr-4 {
   margin-right: 16px;
+}
+
+.header-tools {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+  color: #222;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+.tool-btn:hover {
+  background: #ededed;
+}
+
+.tool-btn:active {
+  transform: translateY(1px);
+}
+
+.tool-icon {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.back-btn {
+  color: #111;
 }
 
 .mb-0 {
@@ -442,7 +525,9 @@ footer {
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
-  transition: background 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 /* Hover Effect */
@@ -555,9 +640,22 @@ footer {
     word-wrap: break-word;
     margin: 0;
     padding: 0;
-    font: 110%/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial,
-      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font:
+      110%/1.5 -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      Arial,
+      sans-serif,
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol";
   }
 
   /* p,
