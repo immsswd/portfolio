@@ -113,7 +113,7 @@ details[open] > summary .summary-disclosure {
 }
 .post-item {
   margin: 0;
-  padding: 0;
+  padding: 0 5px;
 }
 .post-item + .post-item {
   margin-top: 10px;
@@ -162,7 +162,7 @@ details[open] > summary .summary-disclosure {
   .category-summary,
   .year-summary,
   .post-link {
-    padding: 14px 16px;
+    padding: 0px 16px;
   }
   .archive-year {
     margin-left: 0;
