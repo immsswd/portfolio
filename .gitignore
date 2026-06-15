@@ -3,7 +3,7 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
-tools/
+tools/*
 Pipfile
 Pipfile.lock
 node_modules/   
