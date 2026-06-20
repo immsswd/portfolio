@@ -16,4 +16,4 @@ This experience reinforced an important principle in my career: solving business
 
 **Technology:** React JS, Next JS
 
-👉 [See project](https://mc-isdev.vercel.app/)
+👉 [See project's sketch mockup](https://mc-isdev.vercel.app/)
