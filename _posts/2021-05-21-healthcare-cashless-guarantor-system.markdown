@@ -5,7 +5,10 @@ date: 2021-05-21 21:44:51 +0700
 categories: Software
 ---
 
+![Login page](/portfolio/assets/img/portfolio/1.png)
 ![cashless guarantor system](/portfolio/assets/img/portfolio/3b.webp)
+![Monitoring page](/portfolio/assets/img/portfolio/2.png)
+
 As the company was in its early growth stage and healthcare operations were largely managed through manual processes, I designed and implemented a Cashless Management System to centralize and automate the end-to-end healthcare administration workflow.
 
 The system serves as a core platform for the Cashless Team, enabling them to efficiently manage healthcare cases and monitor operational activities across the TPA process. Key capabilities include:

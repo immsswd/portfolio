@@ -157,6 +157,11 @@ th {
 
 img {
   max-width: 100%;
+  border: 1px solid #e8e8e8;
+  box-sizing: border-box;
+  margin: 0 0 10px;
+  padding: 3px;
+  border-radius: 5px;
 }
 
 header {
