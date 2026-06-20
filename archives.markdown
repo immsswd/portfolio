@@ -5,252 +5,197 @@ permalink: /archives/
 ---
 
 <style>
-.archive-tree {
-  max-width: 980px;
-  width: min(100%, 980px);
+.win-explorer {
+  --win-border-strong: #d6d6d6;
+  --win-header-bg: #f7f7f7;
+  --win-row-hover: #e8f1fc;
+  --win-row-hover-border: #cce4fa;
+  --win-text: #1f1f1f;
+  --win-text-dim: #5e5e5e;
+  --win-accent: #0067c0;
+  --win-folder-fill1: #8ec7f7;
+  --win-folder-fill2: #5fa8ee;
+  max-width: 820px;
   margin: 0 auto;
-  padding: 28px 20px 40px;
-  color: #0f172a;
+  font-family: "Segoe UI Variable", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  color: var(--win-text);
 }
-.archive-tree h1 {
-  margin: 0 0 24px;
-  font-size: clamp(2rem, 3vw, 2.8rem);
-  letter-spacing: -0.03em;
-}
-.archive-tree details {
-  border: none;
-  margin-bottom: 18px;
-}
-.archive-tree summary {
-  list-style: none;
-}
-.archive-tree summary::-webkit-details-marker {
-  display: none;
-}
-.archive-category {
-  border: 1px solid #e5e7eb;
-  border-radius: 22px;
+
+/* ---- window chrome ---- */
+.win-window {
+  border: 1px solid var(--win-border-strong);
+  border-radius: 8px;
   overflow: hidden;
-  background: #f8fbff;
-  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08), 0 1px 0 rgba(0,0,0,0.04);
 }
-.archive-year {
-  margin: 0 0 0 18px;
-  border: 1px solid #e5e7eb;
-  border-radius: 20px;
-  overflow: hidden;
-  background: #ffffff;
-}
-.category-summary,
-.year-summary {
+.win-titlebar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 16px 20px;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  gap: 8px;
+  padding: 11px 16px;
+  background: #f3f3f3;
+  border-bottom: 1px solid var(--win-border-strong);
+  font-size: 0.92rem;
+  color: var(--win-text-dim);
+  flex-wrap: wrap;
 }
-.category-summary {
-  background: #f8fbff;
+.win-titlebar .win-folder-mini { width: 16px; height: 16px; flex-shrink: 0; }
+.win-crumb { color: var(--win-text); font-weight: 600; }
+.win-crumb-sep { color: #b6b6b6; margin: 0 1px; }
+.win-crumb-dim { color: var(--win-text-dim); }
+
+/* ---- rows: a clean single-column tree, no data columns ---- */
+.win-row {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 0.98rem;
+  line-height: 1.3;
+  cursor: default;
 }
-.year-summary {
-  background: #ffffff;
+.win-row:hover {
+  background: var(--win-row-hover);
+  outline: 1px solid var(--win-row-hover-border);
+  outline-offset: -1px;
 }
-.category-summary:hover,
-.year-summary:hover {
-  background: #eef6ff;
-}
-.summary-disclosure {
-  width: 16px;
-  height: 16px;
+
+.win-explorer details { border: none; }
+.win-explorer summary { list-style: none; cursor: pointer; }
+.win-explorer summary::-webkit-details-marker { display: none; }
+
+.twisty {
+  width: 11px;
+  height: 11px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #475569;
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-details[open] > summary .summary-disclosure {
-  transform: rotate(90deg);
-}
-.summary-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-.summary-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-.summary-copy strong {
-  font-size: 1rem;
-  font-weight: 700;
-  overflow-wrap: anywhere;
-}
-.summary-meta {
-  color: #6b7280;
-  font-size: 0.95rem;
-  white-space: nowrap;
-}
-.archive-icon,
-.year-icon {
-  width: 18px;
-  height: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #475569;
+  color: #6b6b6b;
+  transition: transform 0.15s ease;
   flex-shrink: 0;
 }
-.post-list {
-  list-style: none;
-  margin: 0;
-  padding: 12px 0 20px 42px;
-}
-.post-item {
-  margin: 0;
-  padding: 0 5px;
-}
-.post-item + .post-item {
-  margin-top: 10px;
-}
-.post-link {
+details[open] > summary .twisty { transform: rotate(90deg); }
+
+.col-name-inner {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  width: 100%;
-  padding: 0;
-  color: #0f172a;
-  text-decoration: none;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  transition: color 0.2s ease;
-}
-.post-link:hover {
-  color: #1d4ed8;
-}
-.post-name {
-  display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-weight: 500;
+  min-width: 0;
+  width: 100%;
+  padding: 0 14px;
 }
-.post-meta {
-  color: #6b7280;
-  font-size: 0.92rem;
+.col-name-inner .label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
-.post-icon {
-  width: 16px;
-  height: 16px;
-  color: #475569;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+
+.depth-0 > summary .col-name-inner { padding-left: 14px; font-weight: 600; }
+.depth-1 > summary .col-name-inner { padding-left: 38px; }
+.depth-2 .col-name-inner { padding-left: 62px; }
+.depth-2 .label { font-weight: 400; color: var(--win-text); }
+
+.icon-folder, .icon-file { width: 19px; height: 19px; flex-shrink: 0; }
+.twisty, .icon-folder, .icon-file { flex-shrink: 0; }
+
+a.win-row { text-decoration: none; color: inherit; }
+a.win-row:hover .label { color: var(--win-accent); }
+
+.win-statusbar {
+  padding: 8px 16px;
+  font-size: 0.84rem;
+  color: var(--win-text-dim);
+  background: var(--win-header-bg);
+  border-top: 1px solid var(--win-border-strong);
 }
-@media (max-width: 720px) {
-  .archive-tree {
-    padding: 18px 14px 28px;
-  }
-  .category-summary,
-  .year-summary,
-  .post-link {
-    padding: 0px 16px;
-  }
-  .archive-year {
-    margin-left: 0;
-  }
-  .post-link {
-    grid-template-columns: 1fr;
-  }
-  .post-meta {
-    display: none;
-  }
+
+@media (max-width: 480px) {
+  .win-row { font-size: 0.95rem; min-height: 44px; }
+  .depth-1 > summary .col-name-inner { padding-left: 30px; }
+  .depth-2 .col-name-inner { padding-left: 48px; }
 }
 </style>
 
-<div class="archive-tree">
-  <h1>{{ page.title }}</h1>
+<div class="win-explorer">
+  <div class="win-window">
+    <div class="win-titlebar">
+      <span class="win-folder-mini" aria-hidden="true">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 5.2C2 4.5 2.6 4 3.3 4h4.4l1.4 1.6h7.6c.7 0 1.3.5 1.3 1.2v8c0 .7-.6 1.2-1.3 1.2H3.3C2.6 16 2 15.5 2 14.8V5.2z" fill="var(--win-folder-fill2)"/>
+        </svg>
+      </span>
+      <span class="win-crumb-dim">This PC</span>
+      <span class="win-crumb-sep">&rsaquo;</span>
+      <span class="win-crumb-dim">Blog</span>
+      <span class="win-crumb-sep">&rsaquo;</span>
+      <span class="win-crumb">Archives</span>
+    </div>
 
+{% assign total_items = 0 %}
 {% assign postsByCategory = site.posts | sort: "date" | reverse | group_by_exp: "post", "post.categories[0]" | sort: "name" %}
 {% for categoryGroup in postsByCategory %}
 {% assign categoryName = categoryGroup.name | default: "Uncategorized" %}
+{% assign total_items = total_items | plus: categoryGroup.items.size %}
 
-  <details class="archive-category" open>
-    <summary class="category-summary">
-      <span class="summary-left">
-        <span class="summary-disclosure" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6" />
-          </svg>
+    <details class="depth-0" open>
+      <summary class="win-row">
+        <span class="col-name-inner">
+          <span class="twisty" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+          </span>
+          <span class="icon-folder" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 6.4C3 5.6 3.7 5 4.5 5h5.3l1.7 1.9h9c.8 0 1.5.6 1.5 1.4v9.3c0 .8-.7 1.4-1.5 1.4h-15C3.7 19 3 18.4 3 17.6V6.4z" fill="var(--win-folder-fill1)"/>
+              <path d="M3 9.2c0-.7.7-1.2 1.5-1.2h15c.8 0 1.5.5 1.5 1.2v8.3c0 .8-.7 1.5-1.5 1.5h-15C3.7 19 3 18.3 3 17.5V9.2z" fill="var(--win-folder-fill2)"/>
+            </svg>
+          </span>
+          <span class="label">{{ categoryName }}</span>
         </span>
-        <span class="archive-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 7.5A1.5 1.5 0 014.5 6h3l1.5 1.5h8A1.5 1.5 0 0120.5 9v9A1.5 1.5 0 0119 19.5h-14A1.5 1.5 0 013.5 18v-10.5z" />
-          </svg>
-        </span>
-        <span class="summary-copy">
-          <strong>{{ categoryName }}</strong>
-          <span class="summary-meta">{{ categoryGroup.items | size }} posts</span>
-        </span>
-      </span>
-    </summary>
+      </summary>
 
-    {% assign postsByYear = categoryGroup.items | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
-    {% for yearGroup in postsByYear %}
-      <details class="archive-year">
-        <summary class="year-summary">
-          <span class="summary-left">
-            <span class="summary-disclosure" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6" />
+      {% assign postsByYear = categoryGroup.items | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
+      {% for yearGroup in postsByYear %}
+
+      <details class="depth-1">
+        <summary class="win-row">
+          <span class="col-name-inner">
+            <span class="twisty" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+            </span>
+            <span class="icon-folder" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 6.4C3 5.6 3.7 5 4.5 5h5.3l1.7 1.9h9c.8 0 1.5.6 1.5 1.4v9.3c0 .8-.7 1.4-1.5 1.4h-15C3.7 19 3 18.4 3 17.6V6.4z" fill="var(--win-folder-fill1)"/>
+                <path d="M3 9.2c0-.7.7-1.2 1.5-1.2h15c.8 0 1.5.5 1.5 1.2v8.3c0 .8-.7 1.5-1.5 1.5h-15C3.7 19 3 18.3 3 17.5V9.2z" fill="var(--win-folder-fill2)"/>
               </svg>
             </span>
-            <span class="year-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" />
-                <path d="M16 2v4" />
-                <path d="M8 2v4" />
-                <path d="M3 10h18" />
-              </svg>
-            </span>
-            <span class="summary-copy">
-              <strong>{{ yearGroup.name }}</strong>
-              <span class="summary-meta">{{ yearGroup.items | size }} posts</span>
-            </span>
+            <span class="label">{{ yearGroup.name }}</span>
           </span>
         </summary>
 
-        <ul class="post-list">
-          {% for post in yearGroup.items %}
-            <li class="post-item">
-              <a class="post-link" href="{{ post.url | relative_url }}">
-                <span class="post-name">
-                  <span class="post-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M6 4.5h9.75a1.75 1.75 0 011.75 1.75v12.5a1.75 1.75 0 01-1.75 1.75H6a1.75 1.75 0 01-1.75-1.75V6.25A1.75 1.75 0 016 4.5z" />
-                      <path d="M11.25 4.5v4.5h4.5" />
-                    </svg>
-                  </span>
-                  {{ post.title }}
-                </span>
-                <span class="post-meta">{{ post.date | date: "%b %-d" }}</span>
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
+        {% for post in yearGroup.items %}
+        <a class="win-row depth-2" href="{{ post.url | relative_url }}">
+          <span class="col-name-inner">
+            <span class="icon-file" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.5 3.5h7.6L18 7.6v12.4a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 20V5a1.5 1.5 0 0 1 1.5-1.5z" fill="#ffffff" stroke="#9aa3ad" stroke-width="1"/>
+                <path d="M14.1 3.5v3.1a1 1 0 0 0 1 1H18" fill="none" stroke="#9aa3ad" stroke-width="1"/>
+                <rect x="7.3" y="11.2" width="9" height="2" rx="0.4" fill="var(--win-accent)"/>
+                <rect x="7.3" y="14.4" width="6.4" height="2" rx="0.4" fill="#c7d9ea"/>
+              </svg>
+            </span>
+            <span class="label">{{ post.title }}</span>
+          </span>
+        </a>
+        {% endfor %}
       </details>
-    {% endfor %}
-
-  </details>
+      {% endfor %}
+    </details>
 
 {% endfor %}
 
+    <div class="win-statusbar">{{ total_items }} items &middot; {{ postsByCategory.size }} categories</div>
+
+  </div>
 </div>
