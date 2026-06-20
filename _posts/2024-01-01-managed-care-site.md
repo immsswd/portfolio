@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Managed Care (MQARE) Web"
-date: 2025-01-01 16:44:51 +0700
+date: 2024-01-01 16:44:51 +0700
 categories: Software
 ---
 
