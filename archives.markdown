@@ -21,6 +21,10 @@ permalink: /archives/
   color: var(--win-text);
 }
 
+.cursor-able {
+  cursor: pointer;
+}
+
 /* ---- window chrome ---- */
 .win-window {
   border: 1px solid var(--win-border-strong);
@@ -126,7 +130,7 @@ a.win-row:hover .label { color: var(--win-accent); }
           <path d="M2 5.2C2 4.5 2.6 4 3.3 4h4.4l1.4 1.6h7.6c.7 0 1.3.5 1.3 1.2v8c0 .7-.6 1.2-1.3 1.2H3.3C2.6 16 2 15.5 2 14.8V5.2z" fill="var(--win-folder-fill2)"/>
         </svg>
       </span>
-      <span class="win-crumb-dim">This PC</span>
+      <span class="win-crumb-dim">/</span>
       <span class="win-crumb-sep">&rsaquo;</span>
       <span class="win-crumb-dim">Blog</span>
       <span class="win-crumb-sep">&rsaquo;</span>
@@ -175,8 +179,8 @@ a.win-row:hover .label { color: var(--win-accent); }
         </summary>
 
         {% for post in yearGroup.items %}
-        <a class="win-row depth-2" href="{{ post.url | relative_url }}">
-          <span class="col-name-inner">
+        <a class="win-row depth-2 cursor-able" href="{{ post.url | relative_url }}">
+          <span class="col-name-inner cursor-able">
             <span class="icon-file" aria-hidden="true">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.5 3.5h7.6L18 7.6v12.4a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 20V5a1.5 1.5 0 0 1 1.5-1.5z" fill="#ffffff" stroke="#9aa3ad" stroke-width="1"/>
