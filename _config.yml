@@ -8,10 +8,12 @@ description: > # this means to ignore newlines until "baseurl:"
 # efficiency, and creating software that solves problems and drives
 # innovation.
 
-# # -- activate when in dev mode
+# -- activate when in dev mode
 # baseurl: "" # the subpath of your site, e.g. /blog
 # url: "" # the base hostname & protocol for your site, e.g. http://example.com
-# # -- activate when in prod mode
+show_docs: false
+
+# -- activate when in prod mode
 baseurl: "/portfolio" # the subpath of your site, e.g. /blog
 url: "https://immsswd.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 

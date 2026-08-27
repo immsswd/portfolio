@@ -2,27 +2,27 @@
   <h1 class="">{{site.title}}</h1>
   <p class="bold m-0 p-0">Data Analyst | Analytics Engineer</p>
   <p>{{site.description}}</p>
-<!-- <p class="view">
+  <!-- <p class="view">
       <a href="http://github.com/orderedlist/minimal"
         >View the Project on GitHub <small>orderedlist/minimal</small></a
       >
     </p> -->
-<ul>
-  <li>
-    <a href="{{ '/about/' | relative_url }}">Page <strong>About</strong></a>
-  </li>
-  <li>
-    <a href="{{ '/archives/' | relative_url }}"
-      >Page <strong>Archives</strong></a
-    >
-  </li>
-  <li>
-    
-    <a
-       href="{{ '/immdoc/' | base_url }}"
-       target="_blank"
-      >Page<strong>Docs<strong></a
-    >
-  </li>
-</ul>
+  <ul
+    class="header-nav{% if site.show_docs %} header-nav--with-docs{% endif %}">
+    <li>
+      <a href="{{ '/about/' | relative_url }}">Page <strong>About</strong></a>
+    </li>
+    <li>
+      <a href="{{ '/archives/' | relative_url }}"
+        >Page <strong>Archives</strong></a
+      >
+    </li>
+    {% if site.show_docs %}
+    <li>
+      <a href="{{ '/immdoc/' | relative_url }}" target="_blank"
+        >Page <strong>Docs</strong></a
+      >
+    </li>
+    {% endif %}
+  </ul>
 </span>

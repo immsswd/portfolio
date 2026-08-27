@@ -173,19 +173,26 @@ header {
 
 header ul {
   list-style: none;
-  height: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: auto;
+  min-height: 40px;
   padding: 0;
   background: #f4f4f4;
   border-radius: 5px;
   border: 1px solid #e0e0e0;
-  width: 270px;
+  width: min(270px, 100%);
+  box-sizing: border-box;
 }
 
 header li {
-  width: 89px;
-  float: left;
   border-right: 1px solid #e0e0e0;
-  height: 40px;
+  min-height: 40px;
+  box-sizing: border-box;
+}
+
+header ul.header-nav--with-docs {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 header li:first-child a {
@@ -202,8 +209,9 @@ header ul a {
   color: #999;
   display: block;
   text-align: center;
-  padding-top: 6px;
-  height: 34px;
+  padding: 6px 8px;
+  min-height: 34px;
+  box-sizing: border-box;
 }
 
 header ul a:hover {
@@ -219,9 +227,8 @@ strong {
   font-weight: 500;
 }
 
-header ul li + li + li {
+header ul li:last-child {
   border-right: none;
-  width: 89px;
 }
 
 header ul a strong {
@@ -691,12 +698,27 @@ footer {
     padding: 15px;
   }
   header ul {
-    width: 99%;
+    width: 100%;
   }
 
-  header li,
-  header ul li + li + li {
-    width: 33%;
+  header li {
+    min-width: 0;
+  }
+}
+
+@media print, screen and (max-width: 240px) {
+  header ul,
+  header ul.header-nav--with-docs {
+    grid-template-columns: 1fr;
+  }
+
+  header li {
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  header li:last-child {
+    border-bottom: none;
   }
 }
 
