@@ -31,7 +31,7 @@ permalink: /archives/
   border-radius: 8px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.08), 0 1px 0 rgba(0,0,0,0.04);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 .win-titlebar {
   display: flex;
