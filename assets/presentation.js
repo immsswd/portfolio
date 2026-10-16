@@ -8,6 +8,7 @@
   const previousButton = controls?.querySelector("[data-presentation-previous]");
   const nextButton = controls?.querySelector("[data-presentation-next]");
   const counter = controls?.querySelector(".presentation-counter");
+  const slideOrder = main?.dataset.slideOrder || "auto";
 
   if (
     !main ||
@@ -19,6 +20,13 @@
     !nextButton ||
     !counter
   ) {
+    return;
+  }
+
+  if (!["auto", "content_first", "images_first"].includes(slideOrder)) {
+    console.error(
+      `Invalid slide_order "${slideOrder}". Use auto, content_first, or images_first.`,
+    );
     return;
   }
 
@@ -86,9 +94,7 @@
   titleSlide.className = "presentation-slide";
   titleSlide.setAttribute("aria-label", "Title slide");
   titleSlide.append(header);
-  deck.append(titleSlide);
 
-  const matchedPptSlides = new Set();
   const contentSlides = slidesContent.map((nodes, index) => {
     const slide = document.createElement("section");
     slide.className = "presentation-slide";
@@ -107,61 +113,67 @@
       ? pptSlides.get(normalizeHeading(heading))
       : undefined;
 
-    if (pptSlide) {
-      matchedPptSlides.add(normalizeHeading(heading));
-      slide.classList.add("is-ppt-slide");
+    const slideContent = document.createElement("article");
+    slideContent.className = content.className;
+    slideContent.append(...nodes);
+    slide.append(slideContent);
 
-      const image = document.createElement("img");
-      image.className = "presentation-ppt-slide-image";
-      image.src = pptSlide.image;
-      image.alt = pptSlide.heading;
-      image.addEventListener(
-        "error",
-        () => {
-          console.error(`Could not load PowerPoint slide image: ${pptSlide.image}`);
-        },
-        { once: true },
-      );
-      slide.append(image);
-    } else {
-      const slideContent = document.createElement("article");
-      slideContent.className = content.className;
-      slideContent.append(...nodes);
-      slide.append(slideContent);
-    }
-    deck.append(slide);
-
-    return slide;
+    return { slide, pptSlide };
   });
 
-  const additionalPptSlides = Array.from(pptSlides.entries())
-    .filter(([heading]) => !matchedPptSlides.has(heading))
-    .map(([, pptSlide]) => {
-      const slide = document.createElement("section");
-      slide.className = "presentation-slide is-ppt-slide";
-      slide.setAttribute(
-        "aria-label",
-        `PowerPoint slide: ${pptSlide.heading}`,
-      );
-      slide.hidden = true;
+  const createPptSlide = (pptSlide) => {
+    const slide = document.createElement("section");
+    slide.className = "presentation-slide is-ppt-slide";
+    slide.setAttribute("aria-label", `PowerPoint slide: ${pptSlide.heading}`);
+    slide.hidden = true;
 
-      const image = document.createElement("img");
-      image.className = "presentation-ppt-slide-image";
-      image.src = pptSlide.image;
-      image.alt = pptSlide.heading;
-      image.addEventListener(
-        "error",
-        () => {
-          console.error(`Could not load PowerPoint slide image: ${pptSlide.image}`);
-        },
-        { once: true },
-      );
-      slide.append(image);
-      deck.append(slide);
-      return slide;
+    const image = document.createElement("img");
+    image.className = "presentation-ppt-slide-image";
+    image.src = pptSlide.image;
+    image.alt = pptSlide.heading;
+    image.addEventListener(
+      "error",
+      () => {
+        console.error(`Could not load PowerPoint slide image: ${pptSlide.image}`);
+      },
+      { once: true },
+    );
+    slide.append(image);
+    return slide;
+  };
+
+  const pptSlideEntries = Array.from(pptSlides.entries());
+  let orderedSlides;
+
+  if (slideOrder === "content_first") {
+    orderedSlides = [
+      ...contentSlides.map(({ slide }) => slide),
+      ...pptSlideEntries.map(([, pptSlide]) => createPptSlide(pptSlide)),
+    ];
+  } else if (slideOrder === "images_first") {
+    orderedSlides = [
+      ...pptSlideEntries.map(([, pptSlide]) => createPptSlide(pptSlide)),
+      ...contentSlides.map(({ slide }) => slide),
+    ];
+  } else {
+    const matchedPptSlides = new Set();
+    orderedSlides = contentSlides.map(({ slide, pptSlide }) => {
+      if (!pptSlide) {
+        return slide;
+      }
+
+      matchedPptSlides.add(normalizeHeading(pptSlide.heading));
+      return createPptSlide(pptSlide);
     });
+    orderedSlides.push(
+      ...pptSlideEntries
+        .filter(([heading]) => !matchedPptSlides.has(heading))
+        .map(([, pptSlide]) => createPptSlide(pptSlide)),
+    );
+  }
 
-  const slides = [titleSlide, ...contentSlides, ...additionalPptSlides];
+  const slides = [titleSlide, ...orderedSlides];
+  deck.append(...slides);
   slides.forEach((slide, index) => {
     slide.setAttribute(
       "aria-label",

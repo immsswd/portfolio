@@ -1,0 +1,125 @@
+.article-callout {
+  margin: 1.5rem 0;
+  padding: 1.1rem 1.25rem;
+  border-left: 6px solid;
+  border-radius: 0 1.4rem 1.4rem 0;
+  box-shadow: 0 2px 5px rgb(15 23 42 / 18%);
+  color: #1e293b;
+}
+
+.article-callout--red {
+  background: #fee2e2;
+  border-left-color: #ef4444;
+}
+
+.article-callout--yellow {
+  background: #fef3c7;
+  border-left-color: #eab308;
+}
+
+.article-callout--green {
+  background: #dcfce7;
+  border-left-color: #22c55e;
+}
+
+.article-callout--blue {
+  background: #dbeafe;
+  border-left-color: #2563eb;
+}
+
+.article-callout__title {
+  margin: 0 0 0.65rem;
+  color: #1e293b;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.article-callout__text > :first-child {
+  margin-top: 0;
+}
+
+.article-callout__text > :last-child {
+  margin-bottom: 0;
+}
+
+.doc-article .article-callout__title {
+  margin: 0 0 0.65rem;
+}
+
+.doc-article .article-callout__text p {
+  color: inherit;
+}
+
+.doc-article .article-callout__text > :first-child {
+  margin-top: 0;
+}
+
+.doc-article .article-callout__text > :last-child {
+  margin-bottom: 0;
+}
+
+.presentation-content .article-callout__title {
+  margin: 0 0 0.65rem;
+  color: #1e293b;
+  font-size: 1.15rem;
+  letter-spacing: normal;
+  line-height: 1.4;
+}
+
+.presentation-content .article-callout__text p {
+  margin: 0;
+  color: inherit;
+}
+
+pre {
+  position: relative;
+  padding-top: 2.8rem;
+}
+
+.highlight {
+  position: relative;
+}
+
+.doc-article pre {
+  padding-top: 2.8rem;
+}
+
+.presentation-content pre {
+  padding-top: 2.8rem;
+}
+
+.code-copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.35rem;
+  background: #fff;
+  color: #334155;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  z-index: 1;
+}
+
+.code-copy-button:hover {
+  background: #f1f5f9;
+}
+
+.code-copy-button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.code-copy-button.is-copied {
+  border-color: #22c55e;
+  color: #166534;
+}
+
+.code-copy-button.is-error {
+  border-color: #ef4444;
+  color: #991b1b;
+}

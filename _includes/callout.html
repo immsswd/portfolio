@@ -1,0 +1,13 @@
+{% assign callout_color = include.color | default: "blue" %}
+{% assign callout_colors = "red,yellow,green,blue" | split: "," %}
+{% unless callout_colors contains callout_color %}
+  {% assign callout_color = "blue" %}
+{% endunless %}
+<aside class="article-callout article-callout--{{ callout_color }}">
+  {% if include.title %}
+    <h3 class="article-callout__title">{{ include.title | escape }}</h3>
+  {% endif %}
+  {% if include.text %}
+    <div class="article-callout__text">{{ include.text | markdownify }}</div>
+  {% endif %}
+</aside>
