@@ -177,11 +177,49 @@ body.presentation-page {
   display: block;
   width: auto;
   max-width: 100%;
+  max-height: min(72svh, 54rem);
   height: auto;
   margin: 2.5rem auto;
   padding: 0;
   border: 0;
   border-radius: 0.75rem;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+.presentation-content img.presentation-image--left {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.presentation-content img.presentation-image--middle {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.presentation-content img.presentation-image--right {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.presentation-content img.presentation-image--very-small,
+.presentation-ppt-slide-image.presentation-image--very-small {
+  max-width: 54px;
+}
+
+.presentation-content img.presentation-image--small,
+.presentation-ppt-slide-image.presentation-image--small {
+  max-width: 40%;
+}
+
+.presentation-content img.presentation-image--medium,
+.presentation-ppt-slide-image.presentation-image--medium {
+  max-width: 65%;
+}
+
+.presentation-content img.presentation-image--large,
+.presentation-ppt-slide-image.presentation-image--large {
+  max-width: 100%;
 }
 
 .presentation-content table {
@@ -237,10 +275,121 @@ body.presentation-page {
 .presentation-ppt-slide-image {
   display: block;
   width: auto;
-  max-width: min(100%, 100rem);
-  max-height: calc(100svh - 8rem);
+  max-width: 100%;
+  max-height: calc(100svh - 10rem);
   margin: auto;
   object-fit: contain;
+  cursor: zoom-in;
+}
+
+.presentation-ppt-slide-image.presentation-image--left {
+  align-self: flex-start;
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.presentation-ppt-slide-image.presentation-image--middle {
+  align-self: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.presentation-ppt-slide-image.presentation-image--right {
+  align-self: flex-end;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.presentation-image-viewer {
+  position: fixed;
+  inset: 0;
+  display: none;
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: max(1.5rem, env(safe-area-inset-top))
+    max(1.5rem, env(safe-area-inset-right))
+    max(1.5rem, env(safe-area-inset-bottom))
+    max(1.5rem, env(safe-area-inset-left));
+  overflow: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  border: 0;
+  background: #0b1120;
+}
+
+.presentation-image-viewer[open] {
+  display: block;
+}
+
+.presentation-image-viewer::backdrop {
+  background: rgb(7 12 22 / 94%);
+}
+
+.presentation-image-viewer-image {
+  display: block;
+  width: auto;
+  max-width: calc(100vw - 3rem);
+  height: auto;
+  max-height: calc(100dvh - 3rem);
+  margin: auto;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+.presentation-image-viewer.is-actual-size
+  .presentation-image-viewer-image {
+  max-width: none;
+  max-height: none;
+  cursor: zoom-out;
+}
+
+.presentation-image-viewer-zoom,
+.presentation-image-viewer-close {
+  position: fixed;
+  z-index: 1;
+  top: max(0.75rem, env(safe-area-inset-top));
+  min-height: 2.75rem;
+  border: 1px solid rgb(255 255 255 / 25%);
+  background: rgb(24 34 51 / 92%);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.presentation-image-viewer-close {
+  right: max(0.75rem, env(safe-area-inset-right));
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  place-items: center;
+  border-radius: 50%;
+  font: inherit;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.presentation-image-viewer-zoom {
+  right: max(4rem, calc(env(safe-area-inset-right) + 3.5rem));
+  padding: 0 0.9rem;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.presentation-image-viewer-zoom:hover,
+.presentation-image-viewer-close:hover {
+  background: rgb(255 255 255 / 22%);
+}
+
+.presentation-image-viewer-zoom:focus-visible,
+.presentation-image-viewer-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 
 .presentation-slide.is-active[data-direction="forward"] {
@@ -360,6 +509,14 @@ body.presentation-page {
 
   .presentation-keyboard-hint {
     display: none;
+  }
+
+  .presentation-ppt-slide-image {
+    max-height: calc(100svh - 8rem);
+  }
+
+  .presentation-content img {
+    max-height: 65svh;
   }
 }
 

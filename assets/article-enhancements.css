@@ -1,10 +1,23 @@
 .article-callout {
-  margin: 1.5rem 0;
-  padding: 1.1rem 1.25rem;
-  border-left: 6px solid;
-  border-radius: 0 1.4rem 1.4rem 0;
-  box-shadow: 0 2px 5px rgb(15 23 42 / 18%);
+  min-width: 0;
+  margin: 0;
+  padding: 1.25rem 1.4rem;
+  border-left: 5px solid;
+  border-radius: 1.15rem;
+  box-shadow: 0 3px 8px rgb(15 23 42 / 12%);
   color: #1e293b;
+}
+
+.article-callout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1.1rem;
+  margin: 1.5rem 0;
+}
+
+.article-callout--default {
+  background: #efefef;
+  border-left-color: #5e5e5e;
 }
 
 .article-callout--red {
@@ -30,8 +43,16 @@
 .article-callout__title {
   margin: 0 0 0.65rem;
   color: #1e293b;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
+}
+
+.article-callout__text {
+  line-height: 1.55;
+}
+
+.article-callout__text p {
+  margin: 0;
 }
 
 .article-callout__text > :first-child {
@@ -61,7 +82,7 @@
 .presentation-content .article-callout__title {
   margin: 0 0 0.65rem;
   color: #1e293b;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   letter-spacing: normal;
   line-height: 1.4;
 }
@@ -71,32 +92,120 @@
   color: inherit;
 }
 
-pre {
-  position: relative;
-  padding-top: 2.8rem;
+.presentation-content h1::after,
+.presentation-content h2::after,
+.presentation-content h3:not(.article-callout__title)::after,
+.presentation-content h4::after,
+.presentation-content h5::after,
+.presentation-content h6::after,
+.doc-article h1::after,
+.doc-article h2::after,
+.doc-article h3:not(.article-callout__title)::after,
+.doc-article h4::after,
+.doc-article h5::after,
+.doc-article h6::after {
+  display: block;
+  width: 2rem;
+  height: 3px;
+  margin-top: 0.28em;
+  border-radius: 999px;
+  background: #35b4b5;
+  content: "";
 }
 
 .highlight {
   position: relative;
+  overflow: hidden;
+  padding-top: 2.55rem;
+  border: 1px solid #293548;
+  border-radius: 0.75rem;
+  background: #101827;
 }
 
-.doc-article pre {
-  padding-top: 2.8rem;
+.highlight pre,
+.doc-article .highlight pre,
+.presentation-content .highlight pre {
+  margin: 0;
+  padding: 0.65rem 1.2rem 1.15rem;
+  overflow-x: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #e2e8f0;
 }
 
-.presentation-content pre {
-  padding-top: 2.8rem;
+.highlight pre code,
+.doc-article .highlight pre code,
+.presentation-content .highlight pre code {
+  padding: 0;
+  background: transparent;
+  color: #e2e8f0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.highlight .c,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs {
+  color: #8492a6;
+}
+
+.highlight .k,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt {
+  color: #c4b5fd;
+  font-weight: 600;
+}
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx {
+  color: #a7f3d0;
+}
+
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .il {
+  color: #fbbf24;
+}
+
+.highlight .nf,
+.highlight .na,
+.highlight .nb,
+.highlight .nc {
+  color: #7dd3fc;
+}
+
+.highlight .o,
+.highlight .ow,
+.highlight .p {
+  color: #cbd5e1;
 }
 
 .code-copy-button {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 0.55rem;
+  right: 0.6rem;
   padding: 0.3rem 0.65rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 0.35rem;
-  background: #fff;
-  color: #334155;
+  border: 1px solid #3a475a;
+  border-radius: 0.4rem;
+  background: #1d2939;
+  color: #dbe4ef;
   cursor: pointer;
   font-family: inherit;
   font-size: 0.75rem;
@@ -106,7 +215,8 @@ pre {
 }
 
 .code-copy-button:hover {
-  background: #f1f5f9;
+  border-color: #607089;
+  background: #29384d;
 }
 
 .code-copy-button:focus-visible {
@@ -115,11 +225,38 @@ pre {
 }
 
 .code-copy-button.is-copied {
-  border-color: #22c55e;
-  color: #166534;
+  border-color: #34d399;
+  color: #a7f3d0;
 }
 
 .code-copy-button.is-error {
-  border-color: #ef4444;
-  color: #991b1b;
+  border-color: #f87171;
+  color: #fecaca;
+}
+
+.doc-article > pre,
+.presentation-content > pre {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 2.8rem 1.2rem 1.15rem;
+  overflow-x: auto;
+  border: 1px solid #293548;
+  border-radius: 0.75rem;
+  background: #101827;
+  color: #e2e8f0;
+}
+
+.doc-article > pre code,
+.presentation-content > pre code {
+  padding: 0;
+  background: transparent;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .article-callout-grid {
+    grid-template-columns: 1fr;
+  }
 }

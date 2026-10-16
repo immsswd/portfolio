@@ -8,6 +8,16 @@
   const previousButton = controls?.querySelector("[data-presentation-previous]");
   const nextButton = controls?.querySelector("[data-presentation-next]");
   const counter = controls?.querySelector(".presentation-counter");
+  const imageViewer = document.querySelector(".presentation-image-viewer");
+  const imageViewerImage = imageViewer?.querySelector(
+    ".presentation-image-viewer-image",
+  );
+  const imageViewerClose = imageViewer?.querySelector(
+    ".presentation-image-viewer-close",
+  );
+  const imageViewerZoom = imageViewer?.querySelector(
+    ".presentation-image-viewer-zoom",
+  );
   const slideOrder = main?.dataset.slideOrder || "auto";
 
   if (
@@ -23,6 +33,16 @@
     return;
   }
 
+  if (
+    !(imageViewer instanceof HTMLDialogElement) ||
+    !imageViewerImage ||
+    !imageViewerClose ||
+    !imageViewerZoom
+  ) {
+    console.error("Presentation image viewer markup is missing or unsupported.");
+    return;
+  }
+
   if (!["auto", "content_first", "images_first"].includes(slideOrder)) {
     console.error(
       `Invalid slide_order "${slideOrder}". Use auto, content_first, or images_first.`,
@@ -32,6 +52,8 @@
 
   const normalizeHeading = (heading) =>
     heading.normalize("NFKC").trim().replace(/\s+/g, " ").toLocaleLowerCase();
+  const imageAlignments = ["left", "middle", "center", "right"];
+  const imageSizes = ["default", "very-small", "small", "medium", "large"];
   const pptSlides = new Map();
 
   for (const entry of slideMap?.children ?? []) {
@@ -43,13 +65,26 @@
       return;
     }
 
+    const align = entry.dataset.imageAlign || "center";
+    const size = entry.dataset.imageSize || "default";
+    if (
+      !imageAlignments.includes(align) ||
+      !imageSizes.includes(size)
+    ) {
+      console.error(
+        `Invalid image options for PowerPoint slide "${heading}". ` +
+          `Use align=${imageAlignments.join("|")} and size=${imageSizes.join("|")}.`,
+      );
+      return;
+    }
+
     const key = normalizeHeading(heading);
     if (pptSlides.has(key)) {
       console.error(`Duplicate PowerPoint slide heading: "${heading}".`);
       return;
     }
 
-    pptSlides.set(key, { heading, image });
+    pptSlides.set(key, { heading, image, align, size });
   }
 
   const groups = [[]];
@@ -129,6 +164,10 @@
 
     const image = document.createElement("img");
     image.className = "presentation-ppt-slide-image";
+    image.classList.add(
+      `presentation-image--${pptSlide.align}`,
+      `presentation-image--${pptSlide.size}`,
+    );
     image.src = pptSlide.image;
     image.alt = pptSlide.heading;
     image.addEventListener(
@@ -174,6 +213,14 @@
 
   const slides = [titleSlide, ...orderedSlides];
   deck.append(...slides);
+  deck.querySelectorAll("img").forEach((image) => {
+    image.tabIndex = 0;
+    image.setAttribute("role", "button");
+    image.setAttribute(
+      "aria-label",
+      `Open image${image.alt ? `: ${image.alt}` : ""}`,
+    );
+  });
   slides.forEach((slide, index) => {
     slide.setAttribute(
       "aria-label",
@@ -185,6 +232,68 @@
 
   content.remove();
   controls.hidden = false;
+
+  let imageViewerOpener = null;
+
+  function openImageViewer(image) {
+    imageViewerImage.src = image.currentSrc || image.src;
+    imageViewerImage.alt = image.alt;
+    imageViewer.classList.remove("is-actual-size");
+    imageViewerZoom.textContent = "Actual size";
+    imageViewerZoom.setAttribute("aria-label", "View image at actual size");
+    imageViewer.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    imageViewerOpener = image;
+    imageViewer.showModal();
+    imageViewerClose.focus();
+  }
+
+  function closeImageViewer() {
+    if (imageViewer.open) {
+      imageViewer.close();
+    }
+  }
+
+  deck.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target instanceof HTMLImageElement) {
+      openImageViewer(target);
+    }
+  });
+
+  deck.addEventListener("keydown", (event) => {
+    const target = event.target;
+    if (
+      target instanceof HTMLImageElement &&
+      (event.key === "Enter" || event.key === " ")
+    ) {
+      event.preventDefault();
+      openImageViewer(target);
+    }
+  });
+
+  imageViewerClose.addEventListener("click", closeImageViewer);
+  imageViewerZoom.addEventListener("click", () => {
+    const isActualSize = imageViewer.classList.toggle("is-actual-size");
+    imageViewerZoom.textContent = isActualSize ? "Fit to screen" : "Actual size";
+    imageViewerZoom.setAttribute(
+      "aria-label",
+      isActualSize ? "Fit image to screen" : "View image at actual size",
+    );
+    imageViewer.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  });
+  imageViewer.addEventListener("click", (event) => {
+    if (event.target === imageViewer) {
+      closeImageViewer();
+    }
+  });
+  imageViewer.addEventListener("close", () => {
+    imageViewerImage.removeAttribute("src");
+    imageViewer.classList.remove("is-actual-size");
+    if (imageViewerOpener?.isConnected) {
+      imageViewerOpener.focus();
+    }
+    imageViewerOpener = null;
+  });
 
   let currentIndex = 0;
   titleSlide.hidden = false;
@@ -224,6 +333,18 @@
   nextButton.addEventListener("click", () => showSlide(currentIndex + 1));
 
   document.addEventListener("keydown", (event) => {
+    if (imageViewer.open) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeImageViewer();
+      }
+      return;
+    }
+
+    if (event.target instanceof HTMLImageElement) {
+      return;
+    }
+
     const target = event.target;
     if (
       event.altKey ||

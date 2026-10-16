@@ -1,0 +1,14 @@
+{% assign image_align = include.align | default: "center" %}
+{% assign image_alignments = "left,middle,center,right" | split: "," %}
+{% unless image_alignments contains image_align %}
+  {% assign image_align = "middle" %}
+{% endunless %}
+{% assign image_size = include["size"] | default: "default" %}
+{% assign image_sizes = "default,very-small,small,medium,large" | split: "," %}
+{% unless image_sizes contains image_size %}
+  {% assign image_size = "default" %}
+{% endunless %}
+<img
+  class="presentation-image--{{ image_align }} presentation-image--{{ image_size }}"
+  src="{{ include.src | relative_url | escape }}"
+  alt="{{ include.alt | escape }}" />

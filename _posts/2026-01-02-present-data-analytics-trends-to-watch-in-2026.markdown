@@ -35,12 +35,3 @@ ppt_slides:
 ## Key idea
 
 Key idea: Bronze preserves what arrived; Silver makes it trustworthy; Gold makes it useful for a business decision.
-
----
-
-# test
-
-In 2026, AI-powered analytics isn’t optional—it’s the baseline for competitive advantage. AI is rapidly embedded into core analytics, enabling automated insights, real-time predictions, and natural-language querying across business functions. Analysts project that by 2026,
-
-- most organizations will rely on AI tools that let any employee ask questions of data in plain English, dramatically accelerating decision-making and reducing technical bottlenecks.
-- This trend toward AI-enabled, conversational analytics isn’t just a feature—it’s transforming who gets to use data and how fast insights drive action.[^1]

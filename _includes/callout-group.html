@@ -1,0 +1,9 @@
+{% assign callout_items = include.items | slice: 0, 4 %}
+<div class="article-callout-grid">
+  {% for callout in callout_items %}
+    {% assign item_color = callout.color %}
+    {% assign item_title = callout.title %}
+    {% assign item_text = callout.text %}
+    {% include callout.html color=item_color title=item_title text=item_text %}
+  {% endfor %}
+</div>
