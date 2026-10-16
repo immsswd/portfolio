@@ -93,7 +93,7 @@ callout_groups:
 
 ### Pola dasar: Input → Process → Output (hasil)
 
-![ipo](/assets/img/py/python2.png)
+![ipo](/portfolio/assets/img/py/python2.png)
 
 **Contoh:**
 
