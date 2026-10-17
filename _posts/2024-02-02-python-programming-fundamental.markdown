@@ -70,7 +70,7 @@ callout_groups:
 
 ---
 
-## Komputer itu pintar atau patuh?
+### Komputer itu pintar atau patuh?
 
 {% include callout.html color="yellow" title="Intruksi Ambigu" text="
 “Buatkan minuman yang enak.”<br>
@@ -485,6 +485,43 @@ continue: lanjut ke iterasi berikutnya.
 " %}
 <br>
 ⓘ **Latihan, minta kata sandi sampai pengguna memasukkan jawaban yang benar.**
+
+---
+
+### List: menyimpan banyak nilai berurutan
+
+List dalam Python adalah tipe data bawaan yang digunakan untuk menyimpan banyak nilai atau objek dalam satu variabel dengan menggunakan tanda kurung siku [].
+
+```python
+# contoh List:
+buah = ["apel", "mangga", "jeruk"]
+
+print(buah[0])  # apel
+buah.append("pisang")
+buah[1] = "anggur"
+
+for item in buah:
+    print(item)
+```
+
+<br>
+**Ciri-ciri List:**
+
+- Berurutan,
+- Dapat diubah (Mutable),
+- Indeks dimulai dari 0
+
+**Operasi umum:**
+
+- `append()`
+- `remove()`
+- `len()`
+- `sort()`
+
+<br>
+{% include callout.html color="gray" icon="ⓘ" title="Latihan" text="Simpan 5 nilai ujian lalu hitung rata-ratanya.
+" %}
+<br>
 
 ---
 
