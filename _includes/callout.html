@@ -1,11 +1,16 @@
 {% assign callout_color = include.color | default: "blue" %}
-{% assign callout_colors = "red,yellow,green,blue" | split: "," %}
+{% assign callout_colors = "red,yellow,green,blue,gray" | split: "," %}
 {% unless callout_colors contains callout_color %}
   {% assign callout_color = "blue" %}
 {% endunless %}
 <aside class="article-callout article-callout--{{ callout_color }}">
   {% if include.title %}
-    <h3 class="article-callout__title">{{ include.title | escape }}</h3>
+    <h3 class="article-callout__title">
+      {% if callout_color == "gray" %}
+        <span class="article-callout__icon" aria-hidden="true">{{ include.icon | default: "💡" | escape }}</span>
+      {% endif %}
+      {{ include.title | escape }}
+    </h3>
   {% endif %}
   {% if include.text %}
     <div class="article-callout__text">{{ include.text | markdownify }}</div>

@@ -20,6 +20,29 @@
   border-left-color: #5e5e5e;
 }
 
+.article-callout--gray {
+  padding: 1.5rem;
+  border: 0;
+  border-radius: 0.8rem;
+  background: #f7f6f4;
+  box-shadow: none;
+  color: #373737;
+}
+
+.article-callout--gray .article-callout__title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.15rem;
+  color: #373737;
+}
+
+.article-callout__icon {
+  flex: 0 0 auto;
+  font-size: 0.95em;
+  line-height: 1;
+}
+
 .article-callout--red {
   background: #fee2e2;
   border-left-color: #ef4444;

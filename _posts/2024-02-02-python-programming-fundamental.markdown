@@ -326,6 +326,136 @@ print(umur >= 13 and umur <= 18)  # True
 
 ---
 
+### `Input`, Menerima input dari pengguna
+
+Fungsi `input()` digunakan untuk menerima masukan (data) dari pengguna melalui keyboard [^4]
+
+{% include callout.html color="blue" title="Input()" text="Hasil `input()` selalu berupa string (str).
+" %}
+<br>
+{% include callout.html color="green" title="f-string" text="F-string (formatted string literals) adalah cara modern, ringkas, dan efisien di Python untuk menyisipkan nilai variabel atau ekspresi secara langsung ke dalam sebuah teks.<br>
+Sisipkan variabel ke teks dengan `f\"...{variabel}...\"`.
+" %}
+<br>
+Contoh:
+
+```python
+nama = input("Siapa namamu? ")
+umur = int(input("Berapa umurmu? "))
+
+print(f"Halo, {nama}!")
+print(f"Tahun depan umurmu {umur + 1}.")
+```
+
+<br>
+
+ⓘ **Latihan, buatkan nama, kelas, dan dua angka, tampilkan jumlahnya**
+
+---
+
+### Percabangan: `if`, `elif`, dan `else`
+
+Program dapat memilih tindakan berdasarkan kondisi.
+
+Percabangan (if, elif, dan else) dalam Python adalah cara untuk membuat komputer mengambil keputusan, seperti halnya manusia berpikir: "Jika cuaca hujan, maka saya bawa payung. Jika mendung, saya pakai jaket. Jika tidak, saya jalan santai."[^5]
+
+Contoh:
+
+```python
+nilai = int(input("Nilai ujian: "))
+
+if nilai >= 85:
+    print("Sangat baik") # Indentasi (1 tab)
+elif nilai >= 70:
+    print("Baik") # Indentasi (1 tab)
+else:
+    print("Perlu latihan lagi") # Indentasi (1 tab)
+```
+
+<br>
+{% include callout.html icon="☑️" color="gray" title="Indentasi" text="
+Indentasi adalah penjorokan atau pergeseran suatu teks atau naskah dari batas kiri atau batas kanan margin, baik berupa ruang kosong di awal baris maupun penataan blok tertentu.
+" %}
+<br>
+Contoh:
+```bash
+kondisi:
+└── disini ada identasi
+    └── ini identasi lagi
+```
+<br>
+{% include callout.html color="blue" title="Aturan penting" text="
+Tanda titik dua : dan indentasi menentukan blok kode.
+" %}
+<br>
+{% include callout.html color="green" title="Urutan kondisi" text="Kondisi diperiksa dari atas ke bawah; cabang pertama yang benar dijalankan.
+" %}
+<br>
+
+---
+
+### Membaca logika percabangan
+
+![logika percabangan](/portfolio/assets/img/py/Student%20Grade%20Decision%20Flowchart.png)
+
+<br>
+{% include callout.html icon="⁉" color="gray" title="Tantangan" text="Jelaskan alur ini dengan kata-kata sendiri sebelum menulis kodenya.
+" %}
+
+---
+
+### Perulangan/Loop
+
+<br>
+{% include callout.html color="red" title="📢" text="Jangan menulis hal yang sama berkali-kali
+" %}
+<br>
+
+**Tanpa perulangan:**
+
+```python
+print(1)
+print(2)
+print(3)
+... sulit angka jika sampai 100.
+```
+
+<br>
+**Menggunakan perulangan:**
+
+```python
+for angka in range(1, 101):
+    print(angka)
+```
+
+<br>
+{% include callout.html icon="🔁" color="gray" title="Loop/Perulangan" text="Loop berguna untuk tugas yang perlu diulang, misalnya memproses daftar nilai.
+" %}
+<br>
+
+```python
+# Contoh kode:
+for nama in ["Ayu", "Bima", "Citra"]:
+    print(f"Halo, {nama}")
+```
+
+<br>
+
+#### `for` dan `range()`
+
+```python
+for i in range(5): # range(5) Menghasilkan 0, 1, 2, 3, 4.
+    print(i)
+
+for i in range(1, 6): # range(1,6) Mulai 1, berhenti sebelum 6.
+    print(i)
+
+for i in range(2, 11, 2): # range(start, stop, step) Argumen stop tidak ikut.
+    print(i)
+```
+
+---
+
 ### Catatan kaki
 
 [^1]: https://dif.telkomuniversity.ac.id/tipe-data/
@@ -333,3 +463,7 @@ print(umur >= 13 and umur <= 18)  # True
 [^2]: https://www.datacamp.com/id/tutorial/python-data-type-conversion
 
 [^3]: https://dqlab.id/belajar-coding-python-bersama-dqlab
+
+[^4]: https://www.petanikode.com/python-input-output/
+
+[^5]: https://dqlab.id/step-by-step-percabangan-else-if-python

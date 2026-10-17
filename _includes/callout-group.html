@@ -4,6 +4,7 @@
     {% assign item_color = callout.color %}
     {% assign item_title = callout.title %}
     {% assign item_text = callout.text %}
-    {% include callout.html color=item_color title=item_title text=item_text %}
+    {% assign item_icon = callout.icon %}
+    {% include callout.html color=item_color title=item_title text=item_text icon=item_icon %}
   {% endfor %}
 </div>
