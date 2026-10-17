@@ -6,8 +6,6 @@ categories: Programming
 subtitle: Belajar berpikir komputasional melalui pemrograman (Python dasar)
 slide_order: auto # auto, content_first, or images_first
 ppt_slides:
-  - heading: "Komputer itu pintar atau patuh"
-    image: /assets/img/py/python1.png
   - heading: "Bagaimana Bahasa Python Bermanfaat untuk Industri"
     image: /assets/img/py/1f07f81.png
 callout_groups:
@@ -72,7 +70,19 @@ callout_groups:
 
 ---
 
-## Komputer itu pintar atau patuh
+## Komputer itu pintar atau patuh?
+
+{% include callout.html color="yellow" title="Intruksi Ambigu" text="
+“Buatkan minuman yang enak.”<br>
+Komputer tidak tahu ukuran, bahan, atau langkah yang dimaksud.
+" %}
+<br>
+{% include callout.html color="green" title="Instruksi jelas" text="
+“Ambil gelas, tuang 200 ml air, masukkan 1 sendok gula, aduk.”<br>
+Program membutuhkan instruksi yang jelas dan berurutan.
+" %}
+<br>
+? **Pertanyaan: apa yang terjadi jika satu langkah salah atau tidak lengkap?**
 
 ---
 
@@ -406,7 +416,6 @@ Tanda titik dua : dan indentasi menentukan blok kode.
 
 ### Perulangan/Loop
 
-<br>
 {% include callout.html color="red" title="📢" text="Jangan menulis hal yang sama berkali-kali
 " %}
 <br>
@@ -453,6 +462,29 @@ for i in range(1, 6): # range(1,6) Mulai 1, berhenti sebelum 6.
 for i in range(2, 11, 2): # range(start, stop, step) Argumen stop tidak ikut.
     print(i)
 ```
+
+<br>
+
+#### `while`: ulangi selama kondisi benar
+
+```python
+hitung = 1
+
+while hitung <= 5:
+    print(hitung)
+    hitung += 1
+```
+
+<br>
+{% include callout.html color="red" title="Waspadai infinite loop
+" text="Jika kondisi tidak pernah menjadi False, program dapat berjalan terus.
+" %}
+<br>
+{% include callout.html color="green" title="break & continue" text="break: hentikan loop.
+continue: lanjut ke iterasi berikutnya.
+" %}
+<br>
+ⓘ **Latihan, minta kata sandi sampai pengguna memasukkan jawaban yang benar.**
 
 ---
 
