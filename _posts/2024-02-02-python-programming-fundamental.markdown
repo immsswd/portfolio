@@ -171,7 +171,7 @@ print("Halo")
 " %}
 <br>
 {% include callout.html color="yellow" title="Case-sensitive
-" text="nama dan Nama dianggap nama berbeda.<br>
+" text="**nama** dan **Nama** dianggap berbeda, karena yang pertama diawali huruf kecil sedangkan yang kedua diawali huruf besar<br>
 " %}
 <br>
 {% include callout.html color="red" title="Test
@@ -233,3 +233,74 @@ print(skor)  # 90
 <br>
 
 **Latihan: buat variabel nama, kelas, dan hobi lalu tampilkan semuanya!**
+
+---
+
+### Tipe data dasar
+
+Tipe data adalah klasifikasi atau pengelompokan nilai dalam pemrograman yang memberi tahu komputer bagaimana cara mengolah, menyimpan, dan membaca data tersebut.[^1]
+
+| Tipe Data  | Deskripsi        | Contoh di Python     |
+| ---------- | ---------------- | -------------------- |
+| `str`      | Teks             | `"Contoh di Python"` |
+| `int`      | Bilangan bulat   | `17`                 |
+| `float`    | Bilangan desimal | `3.14`               |
+| `bool`     | Benar / salah    | `True` / `False`     |
+| `NoneType` | Belum ada nilai  | `None`               |
+
+---
+
+### Konversi tipe data
+
+Konversi tipe data (type conversion atau casting) dalam pemrograman adalah proses mengubah suatu nilai dari satu jenis tipe data (misalnya teks atau string) menjadi tipe data lain (misalnya angka bulat atau integer). [^2]
+
+```python
+umur_teks = "16"
+umur_angka = int(umur_teks)
+
+harga_teks = "12500.5"
+harga = float(harga_teks)
+
+print(umur_angka + 1)  # 17
+
+```
+
+<br>
+{% include callout.html color="green" title="Fungsi penting
+" text="`int()`, `float()`, `str()`, `bool()`
+" %}
+<br>
+{% include callout.html color="yellow" title="Hati-hati" text="`int('halo')` akan menghasilkan ValueError. kenapa? karena **halo** adalah karakter bukan angka (string) jadi mengubah kata halo ke tipe data `int` akan menghasilkan error!
+" %}
+<br>
+{% include callout.html color="green" title="Pertanyaan" text="Mengapa input dari pengguna sering perlu dikonversi?
+" %}
+
+---
+
+{% include callout.html color="blue" title="" text="Jawab: Input dari pengguna sering kali perlu dikonversi karena secara default, hampir semua sistem dan bahasa pemrograman menerima input pengguna dalam bentuk teks (string).
+" %}
+
+---
+
+### Operator aritmatika
+
+Operator aritmatika adalah simbol khusus dalam pemrograman yang digunakan untuk melakukan operasi matematika dasar pada nilai atau variabel (disebut operan)
+
+| Operator | Operasi         | Contoh di Python |
+| -------- | --------------- | ---------------- |
+| `+`      | Penjumlahan     | `7 + 2 → 9`      |
+| `-`      | Pengurangan     | `7 - 2 → 5`      |
+| `*`      | Perkalian       | `7 * 2 → 14`     |
+| `/`      | Pembagian       | `7 / 2 → 3.5`    |
+| `//`     | Pembagian bulat | `7 // 2 → 3`     |
+| `%`      | Sisa bagi       | `7 % 2 → 1`      |
+| `**`     | Pangkat         | `7 ** 2 → 49`    |
+
+---
+
+### Catatan kaki
+
+[^1]: https://dif.telkomuniversity.ac.id/tipe-data/
+
+[^2]: https://www.datacamp.com/id/tutorial/python-data-type-conversion
