@@ -299,8 +299,37 @@ Operator aritmatika adalah simbol khusus dalam pemrograman yang digunakan untuk 
 
 ---
 
+### Operator perbandingan dan logika
+
+Operator perbandingan dan operator logika adalah simbol-simbol khusus dalam pemrograman yang digunakan untuk mengambil keputusan, menyaring data, atau mengatur alur kerja program (flow control seperti if-else dan perulangan while/for).[^3]
+
+{% include callout.html color="blue" title="Perbandingan" text="== sama dengan <br>
+!= tidak sama <br>
+\> lebih besar<br>
+
+\< lebih kecil <br>
+\>= / <= lebih besar sama dengan/kecil atau sama dengan <br>
+" %}
+<br>
+{% include callout.html color="green" title="Logika" text="and: keduanya benar <br>
+or: minimal satu benar <br>
+not: membalik nilai boolean (Negasi)<br>
+" %}
+<br>
+
+```python
+# Contoh:
+umur = 16 # inputan
+print(umur >= 17)  # False
+print(umur >= 13 and umur <= 18)  # True
+```
+
+---
+
 ### Catatan kaki
 
 [^1]: https://dif.telkomuniversity.ac.id/tipe-data/
 
 [^2]: https://www.datacamp.com/id/tutorial/python-data-type-conversion
+
+[^3]: https://dqlab.id/belajar-coding-python-bersama-dqlab
