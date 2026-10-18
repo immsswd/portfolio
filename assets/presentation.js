@@ -278,6 +278,27 @@
     const target = event.target;
     if (target instanceof HTMLImageElement) {
       openImageViewer(target);
+      return;
+    }
+
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    const link = target.closest("a[href^='#']");
+    const anchorTarget = link?.hash
+      ? document.getElementById(decodeURIComponent(link.hash.slice(1)))
+      : null;
+    const destinationSlide = anchorTarget?.closest(".presentation-slide");
+    const destinationIndex = destinationSlide
+      ? slides.indexOf(destinationSlide)
+      : -1;
+
+    if (destinationIndex !== -1 && destinationIndex !== currentIndex) {
+      event.preventDefault();
+      showSlide(destinationIndex);
+      window.history.pushState(null, "", link.href);
+      anchorTarget.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   });
 

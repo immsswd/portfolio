@@ -359,7 +359,7 @@ print(f"Tahun depan umurmu {umur + 1}.")
 
 <br>
 
-ⓘ **Latihan, buatkan nama, kelas, dan dua angka, tampilkan jumlahnya**
+ⓘ **Latihan, buatkan nama, kelas, dan nomor kursi, tampilkan **
 
 ---
 
@@ -420,7 +420,7 @@ Tanda titik dua : dan indentasi menentukan blok kode.
 " %}
 <br>
 
-**Tanpa perulangan:**
+**✘ Tanpa perulangan:**
 
 ```python
 print(1)
@@ -430,7 +430,8 @@ print(3)
 ```
 
 <br>
-**Menggunakan perulangan:**
+
+**✔ Menggunakan perulangan:**
 
 ```python
 for angka in range(1, 101):
@@ -525,6 +526,195 @@ for item in buah:
 
 ---
 
+### Tuple, set, dan dictionary
+
+#### 1. Tuple
+
+**Tuple** dalam Python adalah tipe data koleksi yang digunakan untuk menyimpan sekumpulan data atau nilai secara berurutan, namun bersifat immutable (tidak dapat diubah, ditambah, atau dihapus setelah dibuat). Tuple biasanya ditulis menggunakan tanda kurung biasa `()`. [^6]
+
+**Contoh penggunaan, seperti:**
+
+- Data koordinat GPS = `(10,20)`
+- Warna RGB = `(255, 255, 255)`
+
+**Ciri-ciri Tuple:**
+
+- Berurutan
+- Umumnya tidak diubah setelah dibuat (Immutable)
+- Cocok untuk data tetap
+
+#### 2. Set
+
+**Set** dalam Python adalah tipe data koleksi yang menyimpan sekumpulan elemen bersifat unik (tidak ada duplikasi) dan tidak berurutan (unordered). Set ditulis menggunakan tanda kurung kurawal `{}` atau fungsi `set()`. [^7]
+
+**Contoh penggunaan, seperti:**
+
+- warna = `{"merah", "biru"}`
+- nama_izin = `{"andi", "budi", "cintia"}`
+
+contoh menggunakan fungsi `set()`:
+
+```python
+data = [1, 2, 2, 3, 4, 4, 5]
+data_unik = set(data)  # Hasil: {1, 2, 3, 4, 5}, dari list [] diubah ke {}
+```
+
+<br>
+
+**Ciri-ciri set:**
+
+- Nilai unik
+- Tidak menyimpan duplikat
+- Urutan bukan tujuan utamanya
+
+#### 3. Dictionary
+
+**Dictionary** dalam Python adalah struktur data yang menyimpan kumpulan data dalam bentuk pasangan kunci dan nilai **(key-value pairs)**, seperti format `{ 'kunci': 'nilai' }`. [^8]
+
+{% include callout.html color="gray" icon="💡" title="Key to remember!" text=" pasangan `{\"key\":\"value\"}`
+" %}
+<br>
+**Contoh penggunaan, seperti:**
+
+```python
+kontak_hp = {
+    "Ibu": "0812-3456-7890",
+    "Andi Teman Kuliah": "0857-1111-2222",
+    "Budi Sembako": "0819-8888-9999"
+}
+```
+
+<br>
+**Ciri-ciri Dictionary:**
+
+- Pasangan key-value
+- Akses dengan key
+- Cocok untuk data berlabel
+
+{% include callout.html color="blue" title="📝" text=" Pilih struktur data sesuai kebutuhan—jangan menggunakan list untuk semua masalah.
+" %}
+
+---
+
+### Fungsi: buat kode yang dapat digunakan ulang
+
+Fungsi dalam Python adalah blok kode terorganisasi yang dirancang untuk menjalankan tugas tertentu dan dapat dipanggil berulang kali di dalam program. [^9]
+
+Untuk memulai pembuatan fungsi diawali dengan `def`
+
+**Contoh kode:**
+
+```python
+def luas_persegi_panjang(panjang, lebar):
+    return panjang * lebar
+
+hasil = luas_persegi_panjang(8, 4)
+print(hasil)  # 32
+```
+
+<br>
+{% include callout.html color="blue" title="Parameter dan Argumen" text=" **Parameter**: `panjang` dan `lebar`. Mereka adalah variabel sementara yang tertulis di dalam kurung baris pertama (`def luas_persegi_panjang(...)`). Tugasnya menerima nilai kiriman.<br>
+**Argumen**: `8` dan `4`. Mereka adalah angka atau nilai asli yang kamu masukkan ke dalam kurung saat memanggil fungsi di baris bawahnya (`luas_persegi_panjang(8, 4)`).
+" %}
+<br>
+{% include callout.html color="green" title="return" text="Mengembalikan hasil kepada pemanggil.
+" %}
+
+---
+
+### Bedakan `print()` dan `return`
+
+{% include callout.html color="yellow" title="print()" text="Menampilkan sesuatu ke layar.<br>
+Cocok untuk melihat hasil atau memberi informasi.
+" %}
+<br>
+{% include callout.html color="blue" title="return" text="Mengirimkan nilai keluar dari fungsi.<br>
+Hasilnya dapat disimpan atau digunakan dalam perhitungan lain.
+" %}
+<br>
+**Contoh:**
+
+```python
+def tambah(a, b):
+    return a + b
+hasil = tambah(2, 3)
+print(hasil)
+```
+
+<br>
+**Perbedaan**
+
+| Fitur                      | print()                                                        | return                                             |
+| -------------------------- | -------------------------------------------------------------- | -------------------------------------------------- |
+| Fungsi Utama               | Menampilkan data ke layar komputer.                            | Mengirim nilai keluar dari fungsi.                 |
+| Bisa disimpan ke variabel? | Tidak secara langsung. Hasilnya akan bernilai kosong (`None`). | Bisa. Nilainya dapat disimpan dan diolah kembali.  |
+| Efek pada Fungsi           | Fungsi tetap berjalan sampai baris terakhir selesai.           | Fungsi langsung berhenti saat `return` dijalankan. |
+
+---
+
+### Error yang sering ditemui di dalam Python
+
+| Jenis Error   | Penyebab                               | Contoh Kode     |
+| ------------- | -------------------------------------- | --------------- |
+| `SyntaxError` | Sintaks Python tidak valid.            | `print("Halo"`  |
+| `NameError`   | Variabel atau fungsi belum dikenali.   | `print(nama)`   |
+| `TypeError`   | Operasi tidak sesuai dengan tipe data. | `"umur: " + 16` |
+| `ValueError`  | Nilai tidak valid untuk konversi.      | `int("abc")`    |
+
+\| `IndentationError` | Indentasi salah atau tidak konsisten. | `if True:`
+
+{% include callout.html color="green" title="💡 Tips" text="Baca pesan error dari baris terakhir, lalu periksa nama, tipe data, tanda baca, dan indentasi.
+" %}
+
+---
+
+### Cara Debugging yang benar
+
+- Baca pesan error sampai selesai; cari nama error dan nomor baris.
+- Periksa nilai variabel menggunakan print() atau debugger.
+- Uji program dengan input kecil dan kasus tepi.
+- Ubah satu hal dalam satu waktu.
+- Setelah memperbaiki, jalankan ulang pengujian.
+  <br>
+  {% include callout.html color="yellow" title="🧠 Mindset" text="Error bukan tanda gagal.
+  Error adalah petunjuk tentang apa yang perlu diperiksa.
+  " %}
+
+---
+
+### Latihan: Menghitung Rata-Rata Nilai Siswa
+
+Studi kasus: Program Penilaian Siswa
+
+Seorang guru ingin membuat program Python sederhana untuk menghitung rata-rata nilai siswa dari tiga ujian. Program juga harus menentukan apakah siswa tersebut tuntas atau perlu latihan berdasarkan nilai rata-ratanya.
+
+**Instruksi soal**
+Buatlah program Python yang dapat:
+
+1. Meminta pengguna memasukkan nama siswa.
+2. Meminta pengguna memasukkan tiga nilai ujian.
+3. Menghitung rata-rata dari ketiga nilai tersebut.
+4. Menampilkan nama siswa dan nilai rata-rata dengan 1 angka di belakang koma.
+5. Menentukan status siswa dengan ketentuan:
+   - Rata-rata ≥ 75: tampilkan Tuntas.
+   - Rata-rata < 75: tampilkan Perlu latihan.
+
+Contoh output:
+
+```bash
+Nama siswa: Andi
+Nilai 1: 80
+Nilai 2: 75
+Nilai 3: 90
+
+Rata-rata Andi: 81.7
+Tuntas
+```
+
+<br>
+
+---
+
 ### Catatan kaki
 
 [^1]: https://dif.telkomuniversity.ac.id/tipe-data/
@@ -536,3 +726,11 @@ for item in buah:
 [^4]: https://www.petanikode.com/python-input-output/
 
 [^5]: https://dqlab.id/step-by-step-percabangan-else-if-python
+
+[^6]: https://www.petanikode.com/python-tuple/
+
+[^7]: https://www.revou.co/panduan-teknis/python-set
+
+[^8]: https://www.revou.co/panduan-teknis/dictionary-python
+
+[^9]: https://www.datacamp.com/id/tutorial/functions-python-tutorial
