@@ -8,6 +8,10 @@
   const previousButton = controls?.querySelector("[data-presentation-previous]");
   const nextButton = controls?.querySelector("[data-presentation-next]");
   const counter = controls?.querySelector(".presentation-counter");
+  const jumpForm = controls?.querySelector("[data-presentation-jump-form]");
+  const jumpInput = controls?.querySelector("[data-presentation-jump]");
+  const jumpButton = jumpForm?.querySelector("button[type='submit']");
+  const pageIndicator = main?.querySelector(".presentation-page-indicator");
   const imageViewer = document.querySelector(".presentation-image-viewer");
   const imageViewerImage = imageViewer?.querySelector(
     ".presentation-image-viewer-image",
@@ -28,7 +32,11 @@
     !controls ||
     !previousButton ||
     !nextButton ||
-    !counter
+    !counter ||
+    !(jumpForm instanceof HTMLFormElement) ||
+    !(jumpInput instanceof HTMLInputElement) ||
+    !(jumpButton instanceof HTMLButtonElement) ||
+    !pageIndicator
   ) {
     return;
   }
@@ -120,6 +128,13 @@
     deck.append(header);
     controls.hidden = false;
     counter.textContent = "Slide 1 of 1";
+    jumpInput.value = "1";
+    jumpInput.max = "1";
+    jumpInput.disabled = true;
+    jumpButton.disabled = true;
+    pageIndicator.textContent = "01 / 01";
+    pageIndicator.setAttribute("aria-label", "Slide 1 of 1");
+    pageIndicator.hidden = false;
     previousButton.disabled = true;
     nextButton.disabled = true;
     return;
@@ -232,6 +247,12 @@
 
   content.remove();
   controls.hidden = false;
+  jumpInput.min = "1";
+  jumpInput.max = String(slides.length);
+  jumpInput.value = "1";
+  jumpInput.disabled = slides.length === 1;
+  jumpButton.disabled = slides.length === 1;
+  pageIndicator.hidden = false;
 
   let imageViewerOpener = null;
 
@@ -321,16 +342,46 @@
     slides[currentIndex].classList.add("is-active");
 
     counter.textContent = `Slide ${currentIndex + 1} of ${slides.length}`;
+    jumpInput.value = String(currentIndex + 1);
+    pageIndicator.textContent =
+      `${String(currentIndex + 1).padStart(2, "0")} / ` +
+      String(slides.length).padStart(2, "0");
+    pageIndicator.setAttribute(
+      "aria-label",
+      `Slide ${currentIndex + 1} of ${slides.length}`,
+    );
     previousButton.disabled = slides.length === 1;
     nextButton.disabled = slides.length === 1;
   }
 
   counter.textContent = `Slide 1 of ${slides.length}`;
+  pageIndicator.textContent =
+    `01 / ${String(slides.length).padStart(2, "0")}`;
+  pageIndicator.setAttribute("aria-label", `Slide 1 of ${slides.length}`);
   previousButton.disabled = slides.length === 1;
   nextButton.disabled = slides.length === 1;
 
   previousButton.addEventListener("click", () => showSlide(currentIndex - 1));
   nextButton.addEventListener("click", () => showSlide(currentIndex + 1));
+  jumpInput.addEventListener("input", () => jumpInput.setCustomValidity(""));
+  jumpForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const requestedSlide = Number(jumpInput.value);
+    if (
+      !Number.isInteger(requestedSlide) ||
+      requestedSlide < 1 ||
+      requestedSlide > slides.length
+    ) {
+      jumpInput.setCustomValidity(
+        `Enter a slide number from 1 to ${slides.length}.`,
+      );
+      jumpInput.reportValidity();
+      return;
+    }
+
+    jumpInput.setCustomValidity("");
+    showSlide(requestedSlide - 1);
+  });
 
   document.addEventListener("keydown", (event) => {
     if (imageViewer.open) {

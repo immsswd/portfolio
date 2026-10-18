@@ -47,6 +47,10 @@
       </header>
       <article class="presentation-content">{{ content }}</article>
       <div class="presentation-deck" aria-label="Presentation slides"></div>
+      <span
+        class="presentation-page-indicator"
+        aria-hidden="true"
+        hidden></span>
       {% if page.ppt_slides %}
       <div data-presentation-slide-map hidden>
         {% for ppt_slide in page.ppt_slides %}
@@ -76,6 +80,30 @@
           <span aria-hidden="true">&larr;</span>
         </button>
         <span class="presentation-counter" aria-live="polite"></span>
+        <form
+          class="presentation-jump-form"
+          data-presentation-jump-form
+          aria-label="Go to slide">
+          <label class="presentation-visually-hidden" for="presentation-jump"
+            >Go to slide number</label
+          >
+          <input
+            id="presentation-jump"
+            class="presentation-jump-input"
+            type="number"
+            min="1"
+            step="1"
+            inputmode="numeric"
+            required
+            data-presentation-jump
+            aria-label="Go to slide number" />
+          <button
+            class="presentation-jump-submit"
+            type="submit"
+            aria-label="Go to slide">
+            <span aria-hidden="true">&crarr;</span>
+          </button>
+        </form>
         <button type="button" data-presentation-next aria-label="Next slide">
           <span aria-hidden="true">&rarr;</span>
         </button>

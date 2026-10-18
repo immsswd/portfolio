@@ -103,7 +103,7 @@ Program membutuhkan instruksi yang jelas dan berurutan.
 
 ### Pola dasar: Input → Process → Output (hasil)
 
-![ipo](/portfolio/assets/img/py/python2.png)
+![ipo](/portfolio/assets/img/py/python2.png){:.presentation-image--left .presentation-image--medium}
 
 **Contoh:**
 
@@ -130,7 +130,7 @@ Pilih salah satu cara; untuk kelas, VS Code cocok untuk latihan berkelanjutan.
 
 Sekarang buka IDLE atau Visual studio:
 
-{% include callout.html color="blue" title="Instruksi" text="Buat sebuah file bernama `hello.py` .py adalah tanda bahwa file ini adalah file python, tulis lalu jalankan
+{% include callout.html color="blue" title="Instruksi" text="Buat sebuah file bernama `hello.py`. Ektensi dari `.py` adalah tanda bahwa file ini adalah file python, tulis lalu jalankan
 " %} <br>
 
 ```python
@@ -283,7 +283,7 @@ print(umur_angka + 1)  # 17
 {% include callout.html color="yellow" title="Hati-hati" text="`int('halo')` akan menghasilkan ValueError. kenapa? karena **halo** adalah karakter bukan angka (string) jadi mengubah kata halo ke tipe data `int` akan menghasilkan error!
 " %}
 <br>
-{% include callout.html color="green" title="Pertanyaan" text="Mengapa input dari pengguna sering perlu dikonversi?
+{% include callout.html color="gray" icon="❔" title="Pertanyaan" text="Mengapa input dari pengguna sering perlu dikonversi?
 " %}
 
 ---
