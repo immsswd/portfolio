@@ -90,7 +90,7 @@ body.presentation-page {
 .presentation-content h2,
 .presentation-content h3,
 .presentation-content h4 {
-  margin: 0 0 0.65em;
+  margin: 0;
   color: #18181b;
   font-weight: 620;
   letter-spacing: -0.04em;
@@ -109,13 +109,12 @@ body.presentation-page {
   font-size: clamp(1.25rem, 2.5vw, 2rem);
 }
 
-.presentation-content p,
-.presentation-content ul,
-.presentation-content ol,
-.presentation-content blockquote,
-.presentation-content pre,
-.presentation-content table {
-  margin: 0 0 1.5em;
+.presentation-content > :not(br) {
+  margin-block: 0;
+}
+
+.presentation-content > :not(br) ~ :not(br) {
+  margin-block-start: clamp(0.9rem, 1.8vh, 1.5rem);
 }
 
 .presentation-content ul,

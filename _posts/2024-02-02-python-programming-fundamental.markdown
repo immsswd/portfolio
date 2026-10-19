@@ -359,7 +359,7 @@ print(f"Tahun depan umurmu {umur + 1}.")
 
 <br>
 
-ⓘ **Latihan, buatkan nama, kelas, dan nomor kursi, tampilkan **
+ⓘ **Latihan, buatkan nama, kelas, dan nomor kursi, tampilkan**
 
 ---
 

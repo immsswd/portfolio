@@ -361,6 +361,10 @@
     slides[currentIndex].dataset.direction = direction;
     slides[currentIndex].hidden = false;
     slides[currentIndex].classList.add("is-active");
+    slides[currentIndex].scrollIntoView({
+      behavior: "instant",
+      block: "start",
+    });
 
     counter.textContent = `Slide ${currentIndex + 1} of ${slides.length}`;
     jumpInput.value = String(currentIndex + 1);
