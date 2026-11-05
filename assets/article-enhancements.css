@@ -136,25 +136,44 @@
   content: "";
 }
 
-.highlight {
+.highlight,
+.code-block {
   position: relative;
+  min-width: 0;
   overflow: hidden;
-  padding-top: 2.55rem;
-  border: 1px solid #293548;
-  border-radius: 0.75rem;
-  background: #101827;
+  margin: 1.5rem 0;
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+  border: 1px solid #eee4db;
+  border-radius: 0.55rem;
+  background: #f8f8f8;
+}
+
+.doc-article .code-block {
+  margin: 20px 0;
+}
+
+.has-copy-button {
+  padding-top: 2.75rem;
+}
+
+.has-copy-button > .code-copy-button {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
 }
 
 .highlight pre,
+.code-block > pre,
 .doc-article .highlight pre,
 .presentation-content .highlight pre {
+  min-width: 0;
   margin: 0;
-  padding: 0.65rem 1.2rem 1.15rem;
+  padding: 0;
   overflow-x: auto;
   border: 0;
   border-radius: 0;
   background: transparent;
-  color: #e2e8f0;
+  color: #334155;
 }
 
 .highlight pre code,
@@ -162,17 +181,26 @@
 .presentation-content .highlight pre code {
   padding: 0;
   background: transparent;
-  color: #e2e8f0;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.9rem;
+  color: #334155;
+  font-family:
+    "DM Mono",
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+  font-size: 0.85rem;
   line-height: 1.7;
+  font-variant-ligatures: none;
+  tab-size: 2;
 }
 
 .highlight .c,
 .highlight .cm,
 .highlight .c1,
 .highlight .cs {
-  color: #8492a6;
+  color: #738091;
 }
 
 .highlight .k,
@@ -181,7 +209,7 @@
 .highlight .kp,
 .highlight .kr,
 .highlight .kt {
-  color: #c4b5fd;
+  color: #7957a8;
   font-weight: 600;
 }
 
@@ -195,7 +223,7 @@
 .highlight .sh,
 .highlight .si,
 .highlight .sx {
-  color: #a7f3d0;
+  color: #207b55;
 }
 
 .highlight .m,
@@ -204,81 +232,138 @@
 .highlight .mi,
 .highlight .mo,
 .highlight .il {
-  color: #fbbf24;
+  color: #ad6d00;
 }
 
 .highlight .nf,
 .highlight .na,
 .highlight .nb,
 .highlight .nc {
-  color: #7dd3fc;
+  color: #167094;
 }
 
 .highlight .o,
 .highlight .ow,
 .highlight .p {
-  color: #cbd5e1;
+  color: #52606d;
 }
 
 .code-copy-button {
   position: absolute;
-  top: 0.55rem;
-  right: 0.6rem;
-  padding: 0.3rem 0.65rem;
-  border: 1px solid #3a475a;
-  border-radius: 0.4rem;
-  background: #1d2939;
-  color: #dbe4ef;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #eadfce;
+  border-radius: 0.5rem;
+  background: #fffdfa;
+  color: #929292;
   cursor: pointer;
-  font-family: inherit;
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 1.4;
-  z-index: 1;
+  z-index: 2;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
 }
 
 .code-copy-button:hover {
-  border-color: #607089;
-  background: #29384d;
+  border-color: #d9cbbb;
+  background: #ffffff;
+  color: #626262;
+}
+
+.code-copy-button svg {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.code-copy-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
 }
 
 .code-copy-button:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid #9ca3af;
   outline-offset: 2px;
 }
 
 .code-copy-button.is-copied {
-  border-color: #34d399;
-  color: #a7f3d0;
+  color: #38835c;
 }
 
 .code-copy-button.is-error {
-  border-color: #f87171;
-  color: #fecaca;
+  color: #c2413b;
 }
 
 .doc-article > pre,
 .presentation-content > pre {
-  position: relative;
+  min-width: 0;
   margin: 1.5rem 0;
-  padding: 2.8rem 1.2rem 1.15rem;
+  padding: clamp(1rem, 2.5vw, 1.35rem);
   overflow-x: auto;
-  border: 1px solid #293548;
-  border-radius: 0.75rem;
-  background: #101827;
-  color: #e2e8f0;
+  border: 1px solid #eee4db;
+  border-radius: 0.55rem;
+  background: #f8f8f8;
+  color: #334155;
+}
+
+.doc-article .code-block > pre,
+.presentation-content .code-block > pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #334155;
 }
 
 .doc-article > pre code,
 .presentation-content > pre code {
+  min-width: 0;
   padding: 0;
   background: transparent;
-  color: #e2e8f0;
-  font-size: 0.9rem;
+  color: #334155;
+  font-family:
+    "DM Mono",
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+  font-size: 0.85rem;
   line-height: 1.7;
+  font-variant-ligatures: none;
+  tab-size: 2;
 }
 
 @media (max-width: 600px) {
+  .highlight,
+  .code-block,
+  .doc-article > pre,
+  .presentation-content > pre {
+    border-radius: 0.5rem;
+  }
+
+  .highlight pre code,
+  .code-block pre code,
+  .doc-article > pre code,
+  .presentation-content > pre code {
+    font-size: 0.8rem;
+  }
+
   .article-callout-grid {
     grid-template-columns: 1fr;
   }

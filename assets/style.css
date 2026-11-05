@@ -108,26 +108,36 @@ blockquote {
 code,
 pre {
   font-family:
-    Lucida Console,
-    Monaco,
-    Bitstream Vera Sans Mono,
-    Terminal,
+    "DM Mono",
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
     Consolas,
-    Liberation Mono,
-    DejaVu Sans Mono,
-    Courier New,
     monospace;
-  color: #333;
-  font-size: 90%; /* 10% smaller than the default font size */
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+code {
+  padding: 0.15em 0.4em;
+  border-radius: 0.3em;
+  background: #f4f4f4;
+  color: #334155;
 }
 
 pre {
-  padding: 8px 15px;
+  padding: clamp(0.75rem, 2.5vw, 1.25rem);
+  border: 1px solid #eee4db;
+  border-radius: 0.55rem;
   background: #f8f8f8;
-  border-radius: 5px;
-  border: 1px solid #e5e5e5;
+  color: #334155;
   overflow-x: auto;
+}
+
+pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
 }
 
 table {
