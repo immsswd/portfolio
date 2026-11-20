@@ -28,19 +28,32 @@
           {% include explorer.html %}
 
           <footer class="site-footer">{% include footer.html %}</footer>
-          <button
-            class="sidebar-toggle sidebar-toggle--hide"
-            type="button"
-            data-sidebar-toggle="hide"
-            aria-controls="site-sidebar"
-            aria-expanded="true"
-            title="Hide sidebar">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3.5" y="4.5" width="17" height="15" rx="2" />
-              <path d="M9 4.5v15m9-10-3 3 3 3" />
-            </svg>
-            <span>Hide sidebar</span>
-          </button>
+          <div class="sidebar-actions">
+            <button
+              class="sidebar-toggle sidebar-toggle--hide"
+              type="button"
+              data-sidebar-toggle="hide"
+              aria-controls="site-sidebar"
+              aria-expanded="true"
+              title="Hide sidebar">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3.5" y="4.5" width="17" height="15" rx="2" />
+                <path d="M9 4.5v15m9-10-3 3 3 3" />
+              </svg>
+              <span>Hide sidebar</span>
+            </button>
+            <button
+              class="sidebar-toggle sidebar-toggle--reset"
+              type="button"
+              data-sidebar-width-reset
+              aria-label="Reset sidebar width"
+              title="Reset sidebar width">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 12a9 9 0 1 0 2.64-6.36L3 8" />
+                <path d="M3 3v5h5" />
+              </svg>
+            </button>
+          </div>
           <div
             class="sidebar-resize"
             role="separator"

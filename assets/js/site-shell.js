@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const workspace = document.querySelector(".site-workspace");
   const sidebar = document.getElementById("site-sidebar");
   const resizeHandle = sidebar?.querySelector(".sidebar-resize");
+  const resetSidebarWidthButton = sidebar?.querySelector(
+    "[data-sidebar-width-reset]",
+  );
   const sidebarToggleButtons = document.querySelectorAll(
     "[data-sidebar-toggle]",
   );
@@ -28,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (workspace && resizeHandle) {
     const minimumWidth = 220;
+    const widthPreferenceKey = "portfolio-sidebar-width";
     const mobileBreakpoint = window.matchMedia("(max-width: 720px)");
     const maximumWidth = () =>
       Math.max(minimumWidth, Math.floor(Math.min(460, workspace.clientWidth / 2)));
@@ -47,10 +51,37 @@ document.addEventListener("DOMContentLoaded", () => {
       resizeHandle.setAttribute("aria-valuemax", String(maxWidth));
       resizeHandle.setAttribute("aria-valuenow", String(width));
     };
+    const getSavedSidebarWidth = () => {
+      const savedWidth = Number(
+        window.localStorage.getItem(widthPreferenceKey),
+      );
+      return Number.isFinite(savedWidth) && savedWidth >= minimumWidth
+        ? savedWidth
+        : null;
+    };
+    const saveSidebarWidth = () => {
+      window.localStorage.setItem(
+        widthPreferenceKey,
+        String(getSidebarWidth()),
+      );
+    };
 
     if (!mobileBreakpoint.matches) {
-      setSidebarWidth(getSidebarWidth());
+      setSidebarWidth(getSavedSidebarWidth() ?? getSidebarWidth());
     }
+
+    resetSidebarWidthButton?.addEventListener("click", () => {
+      window.localStorage.removeItem(widthPreferenceKey);
+      document.documentElement.style.removeProperty("--shell-sidebar-width");
+      resizeHandle.setAttribute(
+        "aria-valuemax",
+        String(maximumWidth()),
+      );
+      resizeHandle.setAttribute(
+        "aria-valuenow",
+        String(Math.round(getSidebarWidth())),
+      );
+    });
     resizeHandle.addEventListener("pointerdown", (event) => {
       if (mobileBreakpoint.matches) return;
 
@@ -72,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const finishResize = (event) => {
       if (resizeHandle.hasPointerCapture(event.pointerId)) {
         resizeHandle.releasePointerCapture(event.pointerId);
+        saveSidebarWidth();
       }
       document.body.classList.remove("is-resizing-sidebar");
     };
@@ -96,13 +128,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       event.preventDefault();
       setSidebarWidth(requestedWidth);
+      saveSidebarWidth();
     });
     window.addEventListener("resize", () => {
       if (
         !mobileBreakpoint.matches &&
         !shell?.classList.contains("is-sidebar-hidden")
       ) {
-        setSidebarWidth(getSidebarWidth());
+        setSidebarWidth(getSavedSidebarWidth() ?? getSidebarWidth());
       }
     });
   }

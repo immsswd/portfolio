@@ -227,9 +227,23 @@ body.is-resizing-sidebar {
   stroke-width: 1.6;
 }
 
-.sidebar-toggle--hide {
-  width: 100%;
+.sidebar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   margin-top: 0.4rem;
+}
+
+.sidebar-toggle--hide {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.sidebar-toggle--reset {
+  width: 34px;
+  flex: 0 0 auto;
+  padding: 0;
+  border-color: #e2e8f0;
 }
 
 .sidebar-toggle--show {
@@ -736,6 +750,11 @@ body.is-resizing-sidebar {
 
   .sidebar-toggle--hide {
     justify-content: flex-start;
+  }
+
+  .sidebar-toggle--reset {
+    width: 40px;
+    min-height: 40px;
   }
 
   .site-identity {
