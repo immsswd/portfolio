@@ -228,20 +228,20 @@ body.is-resizing-sidebar {
 }
 
 .sidebar-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 36px;
   align-items: center;
   gap: 0.35rem;
   margin-top: 0.4rem;
 }
 
 .sidebar-toggle--hide {
+  width: 100%;
   min-width: 0;
-  flex: 1 1 auto;
 }
 
 .sidebar-toggle--reset {
-  width: 34px;
-  flex: 0 0 auto;
+  width: 36px;
   padding: 0;
   border-color: #e2e8f0;
 }
@@ -750,6 +750,10 @@ body.is-resizing-sidebar {
 
   .sidebar-toggle--hide {
     justify-content: flex-start;
+  }
+
+  .sidebar-actions {
+    grid-template-columns: minmax(0, 1fr) 40px;
   }
 
   .sidebar-toggle--reset {
