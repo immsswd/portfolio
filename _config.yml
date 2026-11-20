@@ -13,6 +13,11 @@ description: > # this means to ignore newlines until "baseurl:"
 # url: "" # the base hostname & protocol for your site, e.g. http://example.com
 show_docs: false
 
+site_identity:
+  show_name: true
+  show_role: true
+  show_description: true
+
 # -- activate when in prod mode
 baseurl: "/portfolio" # the subpath of your site, e.g. /blog
 url: "https://immsswd.github.io" # the base hostname & protocol for your site, e.g. http://example.com

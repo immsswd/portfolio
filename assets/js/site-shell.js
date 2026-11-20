@@ -132,8 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (scrollUpButton) {
     const updateScrollButton = () => {
-      scrollUpButton.style.display =
-        window.scrollY > 240 ? "block" : "none";
+      scrollUpButton.hidden = window.scrollY <= 240;
     };
 
     window.addEventListener("scroll", updateScrollButton, { passive: true });

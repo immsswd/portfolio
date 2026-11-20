@@ -11,11 +11,19 @@
 
       <div class="site-workspace">
         <aside class="site-sidebar" id="site-sidebar" aria-label="Site explorer">
+          {% if site.site_identity.show_name != false or site.site_identity.show_role != false %}
           <a class="site-identity" href="{{ '/' | relative_url }}">
+            {% if site.site_identity.show_name != false %}
             <span class="site-identity__name">{{ site.title | escape }}</span>
+            {% endif %}
+            {% if site.site_identity.show_role != false %}
             <span class="site-identity__role">Data Analyst · Analytics Engineer</span>
+            {% endif %}
           </a>
+          {% endif %}
+          {% if site.site_identity.show_description != false %}
           <p class="site-identity__description">{{ site.description }}</p>
+          {% endif %}
 
           {% include explorer.html %}
 
@@ -75,6 +83,17 @@
           <path d="M9 4.5v15m5-7 3 3-3 3" />
         </svg>
         <span>Show sidebar</span>
+      </button>
+      <button
+        type="button"
+        id="scrollUpBtn"
+        title="Go to top"
+        aria-label="Scroll to top"
+        hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 19V5" />
+          <path d="m6 11 6-6 6 6" />
+        </svg>
       </button>
     </div>
 
