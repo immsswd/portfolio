@@ -12,7 +12,9 @@
       <div class="site-workspace">
         <aside class="site-sidebar" id="site-sidebar" aria-label="Site explorer">
           {% if site.site_identity.show_name != false or site.site_identity.show_role != false %}
-          <a class="site-identity" href="{{ '/' | relative_url }}">
+          <a
+            class="site-identity{% if site.site_identity.show_role == false %} site-identity--name-only{% endif %}"
+            href="{{ '/' | relative_url }}">
             {% if site.site_identity.show_name != false %}
             <span class="site-identity__name">{{ site.title | escape }}</span>
             {% endif %}
@@ -27,7 +29,7 @@
 
           {% include explorer.html %}
 
-          <footer class="site-footer">{% include footer.html %}</footer>
+          <footer class="site-footer site-footer--sidebar">{% include footer.html %}</footer>
           <div class="sidebar-actions">
             <button
               class="sidebar-toggle sidebar-toggle--hide"
@@ -69,18 +71,34 @@
           {% if page.date %}
           <header class="article-header">
             <h1>{{ page.title | escape }}</h1>
-            <div class="article-meta">
-              <time datetime="{{ page.date | date_to_xmlschema }}">
-                {{ page.date | date: "%B %d, %Y" }}
-              </time>
-              {% if page.categories %}
-              <span>{{ page.categories | join: ", " }}</span>
-              {% endif %}
+            <div class="article-header__details">
+              <div class="article-meta">
+                <time datetime="{{ page.date | date_to_xmlschema }}">
+                  {{ page.date | date: "%B %d, %Y" }}
+                </time>
+                {% if page.categories %}
+                <span>{{ page.categories | join: ", " }}</span>
+                {% endif %}
+              </div>
+              <a
+                class="article-share"
+                href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.social_share_origin | append: site.baseurl | append: page.url | url_encode }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Share this article on LinkedIn"
+                title="Share on LinkedIn">
+                <span class="article-share__icon" aria-hidden="true">in</span>
+                <span>Share</span>
+              </a>
             </div>
           </header>
           {% endif %}
 
           {{ content }}
+
+          <footer class="site-footer site-footer--mobile">
+            {% include footer.html %}
+          </footer>
         </main>
       </div>
       <button

@@ -5,7 +5,11 @@ title: Home
 
 <div class="home-intro">
   <p class="eyebrow">Notes &amp; projects</p>
+  {% if paginator.page > 1 %}
+  <h1>Older articles</h1>
+  {% else %}
   <h1>Latest articles</h1>
+  {% endif %}
   <p>
     A collection of my projects, notes, and ideas. Browse by category or year.
   </p>

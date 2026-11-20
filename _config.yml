@@ -21,6 +21,7 @@ site_identity:
 # -- activate when in prod mode
 baseurl: "/portfolio" # the subpath of your site, e.g. /blog
 url: "https://immsswd.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+social_share_origin: "https://immsswd.github.io" # canonical host used by social preview crawlers
 
 # social-media
 twitter_username: null
