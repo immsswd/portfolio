@@ -7,8 +7,7 @@ title: Home
   <p class="eyebrow">Notes &amp; projects</p>
   <h1>Latest articles</h1>
   <p>
-    A collection of my projects, notes, and ideas. Browse by category or year
-    to find something that interests you.
+    A collection of my projects, notes, and ideas. Browse by category or year.
   </p>
 </div>
 
@@ -21,15 +20,16 @@ title: Home
       </time>
       {% if post.categories %}
       <span>{{ post.categories | join: ", " }}</span>
-      {% endif %}
-      {% if post.quarto_notebook %}
+      {% endif %} {% if post.quarto_notebook %}
       <span class="post-list-item__kind">Quarto notebook</span>
       {% endif %}
     </div>
     <h2>
       <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
     </h2>
-    <p>{{ post.excerpt | strip_html | normalize_whitespace | truncate: 190 }}</p>
+    <p>
+      {{ post.excerpt | strip_html | normalize_whitespace | truncate: 190 }}
+    </p>
   </article>
   {% endfor %}
 </div>
