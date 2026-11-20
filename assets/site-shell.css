@@ -418,6 +418,34 @@ body.is-resizing-sidebar {
   font-weight: 650;
 }
 
+.sidebar-article-tooltip {
+  position: fixed;
+  z-index: 60;
+  max-width: min(18rem, calc(100vw - 1.5rem));
+  box-sizing: border-box;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 0.55rem;
+  background: #172033;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 20%);
+  color: #f8fafc;
+  font-size: 0.76rem;
+  font-weight: 500;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(3px);
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+}
+
+.sidebar-article-tooltip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .explorer__file {
   width: 15px;
   height: 15px;

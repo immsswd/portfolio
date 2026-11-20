@@ -7,7 +7,7 @@ permalink: /about/
 <h1 class="mb-3">{{ page.title }}</h1>
 Hey there 👋
 
-I’m a results-driven Data Analyst with 5+ years of experience transforming complex, messy datasets into clear, actionable insights. I specialize in exploring data, uncovering hidden patterns, and answering the key question: “what’s really going on here?”—using tools like Power BI, Microsoft Fabric, and the Azure data stack.
+I’m a results-driven Data Analyst with 5+ years of experience transforming complex, messy datasets into clear, actionable insights. I specialize in exploring data, uncovering hidden patterns, and answering the key question: “what’s really going on here?”—using tools like Power BI, Microsoft Fabric ([DP-600](https://learn.microsoft.com/en-us/users/imms/credentials/855e52b17ea57b21?ref=https%3A%2F%2Fwww.linkedin.com%2F)), and the Azure data stack.
 
 A big part of my work involves data modeling, building interactive dashboards, and creating scalable analytics solutions that support informed business decisions. I enjoy working at the intersection of data, business, and technology—turning raw numbers into compelling visuals and stories through strong data visualization, DAX, and semantic modeling practices aligned with [PL-300](https://learn.microsoft.com/en-us/users/imam-3474/credentials/de53d5ff2deefee2) standards.
 

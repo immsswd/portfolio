@@ -161,6 +161,79 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  const articleLinks = document.querySelectorAll(".explorer__post");
+
+  if (articleLinks.length > 0) {
+    const tooltip = document.createElement("div");
+    tooltip.id = "sidebar-article-tooltip";
+    tooltip.className = "sidebar-article-tooltip";
+    tooltip.setAttribute("role", "tooltip");
+    tooltip.hidden = true;
+    document.body.append(tooltip);
+
+    let activeArticleLink = null;
+    const positionTooltip = () => {
+      if (!activeArticleLink) return;
+
+      const linkRect = activeArticleLink.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+      const gap = 8;
+      const edge = 12;
+      let left = linkRect.right + gap;
+
+      if (left + tooltipRect.width > window.innerWidth - edge) {
+        left = linkRect.left - tooltipRect.width - gap;
+      }
+
+      left = Math.max(
+        edge,
+        Math.min(left, window.innerWidth - tooltipRect.width - edge),
+      );
+      const top = Math.max(
+        edge,
+        Math.min(
+          linkRect.top + (linkRect.height - tooltipRect.height) / 2,
+          window.innerHeight - tooltipRect.height - edge,
+        ),
+      );
+
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${top}px`;
+    };
+    const showTooltip = (link) => {
+      const label = link.querySelector(".explorer__label");
+      if (!label) return;
+
+      if (activeArticleLink && activeArticleLink !== link) {
+        activeArticleLink.removeAttribute("aria-describedby");
+      }
+      activeArticleLink = link;
+      tooltip.textContent = label.textContent.trim();
+      tooltip.hidden = false;
+      link.setAttribute("aria-describedby", tooltip.id);
+      positionTooltip();
+      requestAnimationFrame(() => tooltip.classList.add("is-visible"));
+    };
+    const hideTooltip = (link) => {
+      if (activeArticleLink !== link) return;
+      if (link.matches(":hover") || link === document.activeElement) return;
+
+      tooltip.classList.remove("is-visible");
+      tooltip.hidden = true;
+      link.removeAttribute("aria-describedby");
+      activeArticleLink = null;
+    };
+
+    articleLinks.forEach((link) => {
+      link.addEventListener("mouseenter", () => showTooltip(link));
+      link.addEventListener("mouseleave", () => hideTooltip(link));
+      link.addEventListener("focus", () => showTooltip(link));
+      link.addEventListener("blur", () => hideTooltip(link));
+    });
+    window.addEventListener("scroll", positionTooltip, true);
+    window.addEventListener("resize", positionTooltip);
+  }
+
   const scrollUpButton = document.getElementById("scrollUpBtn");
 
   if (scrollUpButton) {
