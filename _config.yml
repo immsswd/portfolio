@@ -15,8 +15,8 @@ show_docs: false
 
 site_identity:
   show_name: true
-  show_role: true
-  show_description: true
+  show_role: false
+  show_description: false
 
 # -- activate when in prod mode
 baseurl: "/portfolio" # the subpath of your site, e.g. /blog
