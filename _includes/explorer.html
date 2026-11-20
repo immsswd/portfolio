@@ -1,0 +1,70 @@
+{% assign posts_by_category = site.posts | group_by_exp: "post", "post.categories[0]" | sort: "name" %}
+{% assign active_category = page.categories | first %}
+{% assign active_year = page.date | date: "%Y" %}
+
+<details class="mobile-explorer" open>
+  <summary class="mobile-explorer__toggle">
+    <span>Browse posts</span>
+    <span class="mobile-explorer__hint">Categories and years</span>
+    <span class="mobile-explorer__chevron" aria-hidden="true"></span>
+  </summary>
+  <nav class="explorer" aria-label="Posts by category and year">
+    <div class="explorer__heading">Browse posts</div>
+    <div class="explorer__tree">
+      {% for category_group in posts_by_category %}
+      {% assign category_name = category_group.name | default: "Uncategorized" %}
+      {% assign years = category_group.items | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
+      <details
+        class="explorer__category"
+        data-active="{% if active_category == category_name %}true{% else %}false{% endif %}"
+        open>
+        <summary class="explorer__summary">
+          <span class="explorer__chevron" aria-hidden="true"></span>
+          <svg class="explorer__folder" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3.5 6.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor" opacity=".72"/>
+            <path d="M3.5 9h17v8.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor"/>
+          </svg>
+          <span class="explorer__label">{{ category_name | escape }}</span>
+        </summary>
+
+        <div class="explorer__children">
+          {% for year_group in years %}
+          <details
+            class="explorer__year"
+            {% if active_category == category_name and active_year == year_group.name %}open{% endif %}>
+            <summary class="explorer__summary">
+              <span class="explorer__chevron" aria-hidden="true"></span>
+              <svg class="explorer__folder explorer__folder--year" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3.5 6.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor" opacity=".72"/>
+                <path d="M3.5 9h17v8.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor"/>
+              </svg>
+              <span class="explorer__label">{{ year_group.name }}</span>
+              <span class="explorer__count">{{ year_group.items.size }}</span>
+            </summary>
+
+            <div class="explorer__posts">
+              {% for post in year_group.items %}
+              <a
+                class="explorer__post{% if post.url == page.url %} is-active{% endif %}"
+                href="{{ post.url | relative_url }}"
+                {% if post.url == page.url %}aria-current="page"{% endif %}>
+                <svg class="explorer__file" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M5 2.5h6l4 4v10.8a.7.7 0 0 1-.7.7H5.7a.7.7 0 0 1-.7-.7V3.2a.7.7 0 0 1 .7-.7z" fill="white" stroke="currentColor"/>
+                  <path d="M11 2.7v4h3.8" fill="none" stroke="currentColor"/>
+                  <path d="M7 10h6M7 12.5h6M7 15h4" stroke="currentColor" stroke-linecap="round"/>
+                </svg>
+                <span class="explorer__label">{{ post.title | escape }}</span>
+                {% if post.layout == "presentation" %}
+                <span class="explorer__kind" title="Slide presentation">Slides</span>
+                {% endif %}
+              </a>
+              {% endfor %}
+            </div>
+          </details>
+          {% endfor %}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </nav>
+</details>

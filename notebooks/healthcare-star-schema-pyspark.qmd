@@ -1,0 +1,289 @@
+---
+title: "Building a Healthcare Star Schema with PySpark"
+date: 2024-12-15
+jupyter: python3
+format:
+  html:
+    toc: true
+    code-fold: false
+    embed-resources: true
+execute:
+  echo: true
+---
+
+This Quarto notebook builds a small encounter-level star schema with PySpark. It uses synthetic, de-identified sample records so the notebook can run without downloading or exposing patient data.
+
+The fact table grain is **one row per encounter**. It links to patient, date, facility, and diagnosis dimensions and stores length of stay and total cost as measures.
+
+## 1. Start Spark and create sample data
+
+The sample uses the same columns expected in a typical encounter CSV. Replace the in-memory rows with an approved, de-identified source when adapting this workflow.
+
+```{python}
+#| label: setup-and-sample
+from datetime import date
+from decimal import Decimal
+import os
+import sys
+
+from pyspark.sql import SparkSession, Window
+from pyspark.sql import functions as F
+from pyspark.sql.types import (
+    DateType,
+    DecimalType,
+    IntegerType,
+    StringType,
+    StructField,
+    StructType,
+)
+
+os.environ["PYSPARK_PYTHON"] = sys.executable
+
+spark = (
+    SparkSession.builder
+    .master("local[*]")
+    .appName("healthcare-star-schema")
+    .config("spark.driver.host", "127.0.0.1")
+    .config("spark.driver.bindAddress", "127.0.0.1")
+    .getOrCreate()
+)
+
+source_schema = StructType([
+    StructField("encounter_id", StringType(), False),
+    StructField("patient_id", StringType(), False),
+    StructField("encounter_date", DateType(), False),
+    StructField("birth_date", DateType(), True),
+    StructField("gender", StringType(), True),
+    StructField("facility_id", StringType(), True),
+    StructField("facility_name", StringType(), True),
+    StructField("admission_type", StringType(), True),
+    StructField("diagnosis_code", StringType(), True),
+    StructField("diagnosis_description", StringType(), True),
+    StructField("length_of_stay", IntegerType(), True),
+    StructField("total_cost", DecimalType(12, 2), True),
+])
+
+sample_rows = [
+    ("E1001", "P001", date(2024, 12, 1), date(1985, 5, 12), "F", "H01", "North Clinic", "Emergency", "I10", "Hypertension", 2, Decimal("750.00")),
+    ("E1002", "P002", date(2024, 12, 2), date(1972, 8, 24), "M", "H01", "North Clinic", "Elective", "E11.9", "Type 2 diabetes", 3, Decimal("1820.50")),
+    ("E1003", "P001", date(2024, 12, 4), date(1985, 5, 12), "F", "H02", "West Hospital", "Emergency", "J18.9", "Pneumonia", 5, Decimal("3490.00")),
+    ("E1004", "P003", date(2024, 12, 4), date(1990, 3, 9), "F", "H02", "West Hospital", "Urgent", "I10", "Hypertension", 1, Decimal("430.00")),
+    ("E1005", "P002", date(2024, 12, 7), date(1972, 8, 24), "M", "H01", "North Clinic", "Emergency", "E11.9", "Type 2 diabetes", 2, Decimal("1275.25")),
+]
+
+raw = spark.createDataFrame(sample_rows, schema=source_schema)
+raw.show(truncate=False)
+```
+
+For a CSV with the same columns, replace the `createDataFrame` line with:
+
+```{python}
+#| label: read-csv
+#| eval: false
+raw = (
+    spark.read
+    .option("header", True)
+    .option("dateFormat", "yyyy-MM-dd")
+    .schema(source_schema)
+    .csv("data/healthcare_encounters.csv")
+)
+```
+
+## 2. Clean and validate encounter rows
+
+Normalize common text fields and require an encounter ID, patient key, and encounter date. In a production pipeline, send rejected rows to a monitored quarantine location rather than dropping them.
+
+```{python}
+#| label: clean-and-validate
+clean = (
+    raw
+    .withColumn("encounter_id", F.trim("encounter_id"))
+    .withColumn("patient_id", F.trim("patient_id"))
+    .withColumn("facility_id", F.trim("facility_id"))
+    .withColumn("diagnosis_code", F.upper(F.trim("diagnosis_code")))
+    .withColumn("gender", F.upper(F.trim("gender")))
+    .withColumn("admission_type", F.trim("admission_type"))
+    .withColumn("diagnosis_description", F.trim("diagnosis_description"))
+)
+
+valid_encounters = clean.filter(
+    F.col("encounter_id").isNotNull()
+    & (F.col("encounter_id") != "")
+    & F.col("patient_id").isNotNull()
+    & (F.col("patient_id") != "")
+    & F.col("encounter_date").isNotNull()
+)
+
+rejected_count = clean.count() - valid_encounters.count()
+print(f"Rows rejected for missing encounter keys or date: {rejected_count}")
+```
+
+Enforce the fact-table grain before joining dimensions:
+
+```{python}
+#| label: check-encounter-grain
+duplicate_encounters = (
+    valid_encounters
+    .groupBy("encounter_id")
+    .count()
+    .filter(F.col("count") > 1)
+)
+
+if duplicate_encounters.limit(1).count() > 0:
+    raise ValueError("Source data contains duplicate encounter_id values")
+```
+
+## 3. Create dimensions
+
+This batch example assigns surrogate keys by sorting natural keys. It stops if one natural key has conflicting descriptive attributes. For incremental production loads, persist key mappings; use a slowly changing dimension design if historical attribute changes must be retained.
+
+```{python}
+#| label: build-dimensions
+def make_dimension(frame, natural_key, attributes, surrogate_key):
+    members = frame.select(natural_key, *attributes).dropDuplicates()
+    conflicts = (
+        members
+        .groupBy(natural_key)
+        .count()
+        .filter(F.col("count") > 1)
+    )
+
+    if conflicts.limit(1).count() > 0:
+        raise ValueError(f"Conflicting attributes found for {natural_key}")
+
+    key_order = Window.orderBy(natural_key)
+    return (
+        members
+        .withColumn(surrogate_key, F.row_number().over(key_order))
+        .select(surrogate_key, natural_key, *attributes)
+    )
+
+
+dim_patient = make_dimension(
+    valid_encounters, "patient_id", ["birth_date", "gender"], "patient_key"
+)
+dim_facility = make_dimension(
+    valid_encounters, "facility_id", ["facility_name"], "facility_key"
+)
+dim_diagnosis = make_dimension(
+    valid_encounters,
+    "diagnosis_code",
+    ["diagnosis_description"],
+    "diagnosis_key",
+)
+
+date_bounds = valid_encounters.agg(
+    F.min("encounter_date").alias("min_date"),
+    F.max("encounter_date").alias("max_date"),
+)
+
+dim_date = (
+    date_bounds
+    .select(
+        F.explode(
+            F.sequence(
+                F.col("min_date"),
+                F.col("max_date"),
+                F.expr("INTERVAL 1 DAY"),
+            )
+        ).alias("calendar_date")
+    )
+    .withColumn("date_key", F.date_format("calendar_date", "yyyyMMdd").cast("int"))
+    .withColumn("year", F.year("calendar_date"))
+    .withColumn("quarter", F.quarter("calendar_date"))
+    .withColumn("month", F.month("calendar_date"))
+    .withColumn("day", F.dayofmonth("calendar_date"))
+    .select("date_key", "calendar_date", "year", "quarter", "month", "day")
+)
+
+dim_patient.orderBy("patient_key").show(truncate=False)
+dim_facility.orderBy("facility_key").show(truncate=False)
+dim_diagnosis.orderBy("diagnosis_key").show(truncate=False)
+dim_date.orderBy("calendar_date").show(truncate=False)
+```
+
+## 4. Build the encounter fact table
+
+Use left joins for optional facility and diagnosis details, and inner joins for the required patient and date keys. The select list keeps natural patient identifiers out of the analytical fact table.
+
+```{python}
+#| label: build-fact
+patient_keys = dim_patient.select("patient_id", "patient_key")
+facility_keys = dim_facility.select("facility_id", "facility_key")
+diagnosis_keys = dim_diagnosis.select("diagnosis_code", "diagnosis_key")
+date_keys = dim_date.select("calendar_date", "date_key")
+
+e = valid_encounters.alias("e")
+p = patient_keys.alias("p")
+f = facility_keys.alias("f")
+d = diagnosis_keys.alias("d")
+dt = date_keys.alias("dt")
+
+fact_encounter = (
+    e
+    .join(p, F.col("e.patient_id") == F.col("p.patient_id"), "inner")
+    .join(f, F.col("e.facility_id") == F.col("f.facility_id"), "left")
+    .join(d, F.col("e.diagnosis_code") == F.col("d.diagnosis_code"), "left")
+    .join(dt, F.col("e.encounter_date") == F.col("dt.calendar_date"), "inner")
+    .select(
+        F.col("e.encounter_id"),
+        F.col("p.patient_key"),
+        F.col("dt.date_key"),
+        F.col("f.facility_key"),
+        F.col("d.diagnosis_key"),
+        F.col("e.admission_type"),
+        F.col("e.length_of_stay"),
+        F.col("e.total_cost"),
+    )
+)
+
+if fact_encounter.count() != valid_encounters.count():
+    raise ValueError("Fact row count does not match the validated encounter count")
+
+fact_encounter.orderBy("encounter_id").show(truncate=False)
+```
+
+## 5. Explore the model
+
+The dimensions describe the measures in the fact table. For example, aggregate total cost and encounter counts by facility:
+
+```{python}
+#| label: cost-by-facility
+(
+    fact_encounter
+    .join(dim_facility.select("facility_key", "facility_name"), on="facility_key")
+    .groupBy("facility_name")
+    .agg(
+        F.count("*").alias("encounter_count"),
+        F.sum("total_cost").alias("total_cost"),
+        F.avg("length_of_stay").alias("average_length_of_stay"),
+    )
+    .orderBy("facility_name")
+    .show(truncate=False)
+)
+```
+
+## 6. Save the tables
+
+Choose a storage location and write permissions appropriate to your environment. This example uses `errorifexists` so a rerun cannot silently overwrite existing tables.
+
+```{python}
+#| label: write-parquet
+output_path = "output/healthcare_star_schema"
+
+dim_patient.write.mode("errorifexists").parquet(f"{output_path}/dim_patient")
+dim_facility.write.mode("errorifexists").parquet(f"{output_path}/dim_facility")
+dim_diagnosis.write.mode("errorifexists").parquet(f"{output_path}/dim_diagnosis")
+dim_date.write.mode("errorifexists").parquet(f"{output_path}/dim_date")
+fact_encounter.write.mode("errorifexists").parquet(f"{output_path}/fact_encounter")
+```
+
+The result is a star schema: `fact_encounter` connects to patient, date, facility, and diagnosis dimensions. Keep patient-level data de-identified, document each table's grain, and apply your organization's privacy and data-quality controls before using real healthcare data.
+
+## Run this Quarto notebook
+
+The notebook needs Quarto, a Jupyter `python3` kernel, PySpark, and a compatible Java runtime. With those available, render it with:
+
+```powershell
+quarto render notebooks/healthcare-star-schema-pyspark.qmd
+```

@@ -417,6 +417,12 @@
       return;
     }
 
+    if (event.key === "Escape") {
+      event.preventDefault();
+      window.location.assign(main.dataset.homeUrl);
+      return;
+    }
+
     if (event.target instanceof HTMLImageElement) {
       return;
     }
@@ -430,11 +436,6 @@
         (target.isContentEditable ||
           ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))
     ) {
-      return;
-    }
-
-    if (event.key === "Escape") {
-      window.location.assign(main.dataset.homeUrl);
       return;
     }
 

@@ -1,66 +1,99 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     {% include head.html %}
   </head>
   <body>
-    <div class="wrapper">
-      <header>{% include header.html %}</header>
-      <section class="pl-0">
-        {% include tools-header.html %}{{ content }}
-      </section>
-      <footer>{% include footer.html %}</footer>
+    <div class="site-shell">
+      <header class="site-topbar">
+        {% include header.html %}
+      </header>
+
+      <div class="site-workspace">
+        <aside class="site-sidebar" id="site-sidebar" aria-label="Site explorer">
+          <a class="site-identity" href="{{ '/' | relative_url }}">
+            <span class="site-identity__name">{{ site.title | escape }}</span>
+            <span class="site-identity__role">Data Analyst · Analytics Engineer</span>
+          </a>
+          <p class="site-identity__description">{{ site.description }}</p>
+
+          {% include explorer.html %}
+
+          <footer class="site-footer">{% include footer.html %}</footer>
+          <button
+            class="sidebar-toggle sidebar-toggle--hide"
+            type="button"
+            data-sidebar-toggle="hide"
+            aria-controls="site-sidebar"
+            aria-expanded="true"
+            title="Hide sidebar">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3.5" y="4.5" width="17" height="15" rx="2" />
+              <path d="M9 4.5v15m9-10-3 3 3 3" />
+            </svg>
+            <span>Hide sidebar</span>
+          </button>
+          <div
+            class="sidebar-resize"
+            role="separator"
+            aria-label="Resize sidebar"
+            aria-orientation="vertical"
+            aria-valuemin="220"
+            aria-valuemax="460"
+            aria-valuenow="290"
+            tabindex="0"></div>
+        </aside>
+
+        <main class="site-main" id="main-content">
+          {% if page.date %}
+          <header class="article-header">
+            <h1>{{ page.title | escape }}</h1>
+            <div class="article-meta">
+              <time datetime="{{ page.date | date_to_xmlschema }}">
+                {{ page.date | date: "%B %d, %Y" }}
+              </time>
+              {% if page.categories %}
+              <span>{{ page.categories | join: ", " }}</span>
+              {% endif %}
+            </div>
+          </header>
+          {% endif %}
+
+          {{ content }}
+        </main>
+      </div>
+      <button
+        class="sidebar-toggle sidebar-toggle--show"
+        type="button"
+        data-sidebar-toggle="show"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+        title="Show sidebar"
+        hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3.5" y="4.5" width="17" height="15" rx="2" />
+          <path d="M9 4.5v15m5-7 3 3-3 3" />
+        </svg>
+        <span>Show sidebar</span>
+      </button>
     </div>
+
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/article-enhancements.js' | relative_url }}"></script>
-    <script>
-      // Get the button
-      var scrollUpBtn = document.getElementById("scrollUpBtn");
-
-      // When the user scrolls down 20px from the top of the document, show the button
-      window.onscroll = function () {
-        scrollFunction();
-      };
-
-      /**
-       * Shows or hides the "Scroll to top" button based on the scroll position.
-       * If the user has scrolled more than 20px from the top of the document, the button is shown.
-       * Otherwise, it is hidden.
-       */
-      function scrollFunction() {
-        if (
-          document.body.scrollTop > 20 ||
-          document.documentElement.scrollTop > 20
-        ) {
-          scrollUpBtn.style.display = "block";
-        } else {
-          scrollUpBtn.style.display = "none";
-        }
-      }
-
-      // When the user clicks on the button, smoothly scroll to the top of the document
-      function topFunction() {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth", // Smooth scrolling
-        });
-      }
-    </script>
+    <script src="{{ '/assets/js/site-shell.js' | relative_url }}"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".pl-0 img").forEach((img) => {
-          // Skip if already wrapped
+        document.querySelectorAll(".site-main img").forEach((img) => {
           if (img.closest("a")) return;
 
           const link = document.createElement("a");
           link.href = img.src;
           link.className = "glightbox";
-
           img.parentNode.insertBefore(link, img);
           link.appendChild(img);
         });
 
-        GLightbox();
+        if (typeof GLightbox === "function") GLightbox();
       });
     </script>
   </body>

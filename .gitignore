@@ -9,3 +9,5 @@ Pipfile.lock
 node_modules/   
 .env
 _posts/archives/
+notebooks/*
+!notebooks/healthcare-star-schema-pyspark.qmd

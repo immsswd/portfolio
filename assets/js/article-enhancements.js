@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("pre > code").forEach((code) => {
+  document.querySelectorAll("pre > code").forEach((code, index) => {
     const button = document.createElement("button");
     button.className = "code-copy-button";
     button.type = "button";
@@ -68,7 +68,20 @@ document.addEventListener("DOMContentLoaded", () => {
       container.appendChild(pre);
     }
 
-    container.classList.add("has-copy-button");
-    container.appendChild(button);
+    const pre = code.parentElement;
+    if (!pre.id) {
+      let codeBlockId = `code-block-${index + 1}`;
+      while (document.getElementById(codeBlockId)) {
+        codeBlockId = `${codeBlockId}-next`;
+      }
+      pre.id = codeBlockId;
+    }
+
+    const actions = document.createElement("div");
+    actions.className = "code-block__actions";
+    actions.append(button);
+
+    container.classList.add("has-code-controls");
+    container.appendChild(actions);
   });
 });

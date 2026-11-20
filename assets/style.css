@@ -307,6 +307,40 @@ footer {
   font-style: italic; /* Optional for better appearance */
 }
 
+.article-breadcrumb {
+  margin: 0.2rem 0 0.65rem;
+  color: #888;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.article-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.article-breadcrumb li + li::before {
+  margin-right: 0.35rem;
+  color: #c2b9b1;
+  content: "/";
+}
+
+.article-breadcrumb a {
+  color: #777;
+}
+
+.article-breadcrumb a:hover {
+  color: #444;
+}
+
+.article-breadcrumb [aria-current="page"] {
+  color: #555;
+}
+
 .libre-bodoni-400 {
   font-family: "Libre Bodoni", serif;
   font-optical-sizing: auto;

@@ -36,6 +36,15 @@
 '/page'" %} {% if page.url == "/about/" or page.url == "/archives/" or page.url
 == filtered_pages[0].url %} {%else %}
 <h1 class="mb-1">{{ page.title }}</h1>
+{% if page.date %}
+<nav class="article-breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{ '/' | relative_url }}">Home</a></li>
+    <li><a href="{{ '/archives/' | relative_url }}">Archives</a></li>
+    <li aria-current="page">{{ page.title | escape }}</li>
+  </ol>
+</nav>
+{% endif %}
 <p class="post-date mt-0 mb-4">
   {{ page.date | date: "%B %d, %Y" }}. [{{ page.categories}}]
 </p>

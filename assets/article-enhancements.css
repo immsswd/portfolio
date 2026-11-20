@@ -152,14 +152,17 @@
   margin: 20px 0;
 }
 
-.has-copy-button {
+.has-code-controls {
   padding-top: 2.75rem;
 }
 
-.has-copy-button > .code-copy-button {
+.code-block__actions {
   position: absolute;
   top: 0.45rem;
   right: 0.45rem;
+  z-index: 2;
+  display: flex;
+  gap: 0.35rem;
 }
 
 .highlight pre,
@@ -265,6 +268,10 @@
     background-color 160ms ease,
     border-color 160ms ease,
     color 160ms ease;
+}
+
+.code-block__actions > .code-copy-button {
+  position: static;
 }
 
 .code-copy-button:hover {
