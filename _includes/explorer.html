@@ -12,6 +12,19 @@
     <div class="explorer__heading-row">
       <div class="explorer__heading">Browse posts</div>
       <button
+        class="explorer__search-button"
+        type="button"
+        data-explorer-search-toggle
+        aria-label="Search posts"
+        aria-controls="explorer-search-panel"
+        aria-expanded="false"
+        title="Search posts">
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <circle cx="8.5" cy="8.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="m12 12 4 4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/>
+        </svg>
+      </button>
+      <button
         class="explorer__collapse-all"
         type="button"
         data-explorer-collapse-all
@@ -21,6 +34,39 @@
           <path d="M3.5 5.5h13M6.5 10h7M8.5 14.5h3" fill="none" stroke="currentColor" stroke-linecap="round"/>
         </svg>
       </button>
+    </div>
+    <div class="explorer__search">
+      <div class="explorer__search-panel" id="explorer-search-panel" hidden>
+        <svg class="explorer__search-icon" viewBox="0 0 20 20" aria-hidden="true">
+          <circle cx="8.5" cy="8.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="m12 12 4 4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/>
+        </svg>
+        <input
+          class="explorer__search-input"
+          type="search"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Search posts"
+          aria-controls="explorer-search-results"
+          aria-expanded="false"
+          placeholder="Search posts"/>
+        <button
+          class="explorer__search-clear"
+          type="button"
+          aria-label="Clear search"
+          title="Clear search"
+          hidden>
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="m4 4 8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/>
+          </svg>
+        </button>
+        <div
+          class="explorer__search-results"
+          id="explorer-search-results"
+          role="listbox"
+          aria-label="Search results"
+          hidden></div>
+      </div>
     </div>
     <div class="explorer__tree">
       {% for category_group in posts_by_category %}
