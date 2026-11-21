@@ -161,6 +161,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  const explorerCollapseButton = document.querySelector(
+    "[data-explorer-collapse-all]",
+  );
+
+  if (explorerCollapseButton) {
+    const folderDetails = Array.from(
+      document.querySelectorAll(".explorer__category, .explorer__year"),
+    );
+    const updateCollapseButton = () => {
+      const openFolders = folderDetails.filter((details) => details.open);
+      const allCollapsed = openFolders.length === 0;
+
+      explorerCollapseButton.setAttribute(
+        "aria-label",
+        allCollapsed ? "Expand all folders" : "Collapse all folders",
+      );
+      explorerCollapseButton.title = allCollapsed
+        ? "Expand all folders"
+        : "Collapse all folders";
+      explorerCollapseButton.innerHTML = allCollapsed
+        ? '<svg class="explorer__collapse-all-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 6h12v9H4zM4 6l1.5-2h9L16 6M7.5 10.5h5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        : '<svg class="explorer__collapse-all-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 5.5h13M6.5 10h7M8.5 14.5h3" fill="none" stroke="currentColor" stroke-linecap="round"/></svg>';
+    };
+
+    explorerCollapseButton.addEventListener("click", () => {
+      const shouldCollapse = folderDetails.some((details) => details.open);
+      folderDetails.forEach((details) => {
+        details.open = !shouldCollapse;
+      });
+      updateCollapseButton();
+    });
+
+    folderDetails.forEach((details) => {
+      details.addEventListener("toggle", updateCollapseButton);
+    });
+    updateCollapseButton();
+  }
+
   const articleLinks = document.querySelectorAll(".explorer__post");
 
   if (articleLinks.length > 0) {

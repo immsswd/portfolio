@@ -9,7 +9,19 @@
     <span class="mobile-explorer__chevron" aria-hidden="true"></span>
   </summary>
   <nav class="explorer" aria-label="Posts by category and year">
-    <div class="explorer__heading">Browse posts</div>
+    <div class="explorer__heading-row">
+      <div class="explorer__heading">Browse posts</div>
+      <button
+        class="explorer__collapse-all"
+        type="button"
+        data-explorer-collapse-all
+        aria-label="Collapse all folders"
+        title="Collapse all folders">
+        <svg class="explorer__collapse-all-icon" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M3.5 5.5h13M6.5 10h7M8.5 14.5h3" fill="none" stroke="currentColor" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
     <div class="explorer__tree">
       {% for category_group in posts_by_category %}
       {% assign category_name = category_group.name | default: "Uncategorized" %}
@@ -21,8 +33,14 @@
         <summary class="explorer__summary">
           <span class="explorer__chevron" aria-hidden="true"></span>
           <svg class="explorer__folder" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M3.5 6.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor" opacity=".72"/>
-            <path d="M3.5 9h17v8.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor"/>
+            <g class="explorer__folder-open">
+              <path d="M3.5 6.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor" opacity=".72"/>
+              <path d="M3.5 9h17v8.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor"/>
+              <path d="M5.5 12h13" fill="none" stroke="#fff" stroke-linecap="round" opacity=".8"/>
+            </g>
+            <g class="explorer__folder-closed">
+              <path d="M3.5 6.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor"/>
+            </g>
           </svg>
           <span class="explorer__label">{{ category_name | escape }}</span>
         </summary>
@@ -35,8 +53,14 @@
             <summary class="explorer__summary">
               <span class="explorer__chevron" aria-hidden="true"></span>
               <svg class="explorer__folder explorer__folder--year" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3.5 6.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor" opacity=".72"/>
-                <path d="M3.5 9h17v8.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor"/>
+                <g class="explorer__folder-open">
+                  <path d="M3.5 6.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor" opacity=".72"/>
+                  <path d="M3.5 9h17v8.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor"/>
+                  <path d="M5.5 12h13" fill="none" stroke="#fff" stroke-linecap="round" opacity=".8"/>
+                </g>
+                <g class="explorer__folder-closed">
+                  <path d="M3.5 6.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="currentColor"/>
+                </g>
               </svg>
               <span class="explorer__label">{{ year_group.name }}</span>
               <span class="explorer__count">{{ year_group.items.size }}</span>
