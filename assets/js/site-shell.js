@@ -11,6 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   if (shell && sidebar && sidebarToggleButtons.length > 0) {
+    const sidebarVisibilityKey = "portfolio-sidebar-hidden";
+    const mobileBreakpoint = window.matchMedia("(max-width: 720px)");
+    const getSavedSidebarHidden = () =>
+      !mobileBreakpoint.matches &&
+      window.localStorage.getItem(sidebarVisibilityKey) === "true";
     const setSidebarHidden = (isHidden) => {
       shell.classList.toggle("is-sidebar-hidden", isHidden);
       sidebarToggleButtons.forEach((button) => {
@@ -18,6 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
         button.hidden = isHidden ? !isShowButton : isShowButton;
         button.setAttribute("aria-expanded", String(!isHidden));
       });
+      if (!mobileBreakpoint.matches) {
+        window.localStorage.setItem(
+          sidebarVisibilityKey,
+          String(isHidden),
+        );
+      }
     };
 
     sidebarToggleButtons.forEach((button) => {
@@ -26,7 +37,26 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    setSidebarHidden(false);
+    setSidebarHidden(getSavedSidebarHidden());
+
+    const syncSidebarVisibility = () => {
+      if (mobileBreakpoint.matches) {
+        shell.classList.remove("is-sidebar-hidden");
+        sidebarToggleButtons.forEach((button) => {
+          const isShowButton = button.dataset.sidebarToggle === "show";
+          button.hidden = isShowButton;
+          button.setAttribute("aria-expanded", "true");
+        });
+      } else {
+        setSidebarHidden(getSavedSidebarHidden());
+      }
+    };
+
+    if (mobileBreakpoint.addEventListener) {
+      mobileBreakpoint.addEventListener("change", syncSidebarVisibility);
+    } else {
+      mobileBreakpoint.addListener(syncSidebarVisibility);
+    }
   }
 
   if (workspace && resizeHandle) {
