@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 330" role="img" aria-labelledby="title desc">
+  <title id="title">From notebook experiment to dependable data model</title>
+  <desc id="desc">Three connected steps: explore in a notebook, define and test the data model, then run and own a repeatable pipeline. The result is a tested model teammates can refresh.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1 1 6 4 1 7" fill="none" stroke="#94a3b8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <rect width="1080" height="330" rx="18" fill="#f8fafc"/>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="28" y="38" width="300" height="186" rx="14" fill="#fff" stroke="#cbd5e1"/>
+    <circle cx="58" cy="70" r="15" fill="#dbeafe"/>
+    <text x="58" y="75" fill="#1d4ed8" font-size="13" font-weight="700" text-anchor="middle">1</text>
+    <text x="84" y="75" fill="#0f172a" font-size="17" font-weight="700">Explore</text>
+    <text x="50" y="116" fill="#334155" font-size="14">Use a notebook to test ideas</text>
+    <text x="50" y="140" fill="#64748b" font-size="13">and learn what the data can tell you.</text>
+    <rect x="50" y="168" width="256" height="34" rx="7" fill="#eff6ff"/>
+    <text x="63" y="190" fill="#1e40af" font-size="12" font-weight="600">Useful for discovery; fragile to rerun</text>
+
+    <path d="M337 130h30" fill="none" marker-end="url(#arrow)" stroke="#94a3b8" stroke-width="2"/>
+
+    <rect x="390" y="38" width="300" height="186" rx="14" fill="#fff" stroke="#93c5fd"/>
+    <circle cx="420" cy="70" r="15" fill="#dbeafe"/>
+    <text x="420" y="75" fill="#1d4ed8" font-size="13" font-weight="700" text-anchor="middle">2</text>
+    <text x="446" y="75" fill="#0f172a" font-size="17" font-weight="700">Define the model</text>
+    <text x="412" y="116" fill="#334155" font-size="14">State the grain, keys, and rules.</text>
+    <text x="412" y="140" fill="#64748b" font-size="13">Check uniqueness and required values.</text>
+    <rect x="412" y="168" width="256" height="34" rx="7" fill="#eff6ff"/>
+    <text x="425" y="190" fill="#1e40af" font-size="12" font-weight="600">Make assumptions visible and testable</text>
+
+    <path d="M699 130h30" fill="none" marker-end="url(#arrow)" stroke="#94a3b8" stroke-width="2"/>
+
+    <rect x="752" y="38" width="300" height="186" rx="14" fill="#fff" stroke="#86efac"/>
+    <circle cx="782" cy="70" r="15" fill="#dcfce7"/>
+    <text x="782" y="75" fill="#15803d" font-size="13" font-weight="700" text-anchor="middle">3</text>
+    <text x="808" y="75" fill="#0f172a" font-size="17" font-weight="700">Run and own</text>
+    <text x="774" y="116" fill="#334155" font-size="14">Make inputs and runs repeatable.</text>
+    <text x="774" y="140" fill="#64748b" font-size="13">Record failures and name an owner.</text>
+    <rect x="774" y="168" width="256" height="34" rx="7" fill="#f0fdf4"/>
+    <text x="787" y="190" fill="#166534" font-size="12" font-weight="600">Schedule it when the team is ready</text>
+
+    <rect x="111" y="254" width="858" height="48" rx="12" fill="#0f172a"/>
+    <text x="540" y="284" fill="#fff" font-size="15" font-weight="600" text-anchor="middle">Result: a tested model teammates can reproduce and refresh</text>
+  </g>
+</svg>
